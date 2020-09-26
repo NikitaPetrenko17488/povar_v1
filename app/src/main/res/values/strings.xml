@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Мои рецепты</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment358</string>
+    <string name="nazvanie_froma1">Кулинарная книга </string>
+    <string name="nazvanie_forma2">Добавить рецепт </string>
+    <string name="nazvanie_froma3">Изменить рецепт </string>
+    <string name="nazvanie_forma4">удалить рецепт </string>
+    <string name="nazvanie_forma5">Рецепты </string>
+    <string name="name_recept"><b>Название: </b></string>
+    <string name="ingridient_recept"><b>Ингридиенты: </b> </string>
+    <string name="formula_recept"><b>Рецепт: </b></string>
+    <string name="Obrabotka_Pers_dannix"><![CDATA[Нажимая кнопку <<Зарегистрироваться>> Вы даете согласие на обработку персональных данных]]></string>
+
+</resources>

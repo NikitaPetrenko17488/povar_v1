@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/routes"
+    tools:ignore="UnusedNavigation"
+
+    app:startDestination="@id/editCodeFragment">
+
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.povar.fragments.fragment1"
+        android:label="@string/nazvanie_froma1"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_fragment1_to_fragment2"
+            app:destination="@id/fragment2" />
+        <action
+            android:id="@+id/action_fragment1_to_fragment4"
+            app:destination="@id/fragment4" />
+        <action
+            android:id="@+id/action_fragment1_to_fragment5"
+            app:destination="@id/fragment5" />
+        <action
+            android:id="@+id/action_fragment1_to_fragment3"
+            app:destination="@id/fragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.povar.fragments.fragment2"
+        android:label="@string/nazvanie_forma2"
+        tools:layout="@layout/fragment_add" />
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="com.example.povar.fragments.fragment3"
+        android:label="@string/nazvanie_froma3"
+        tools:layout="@layout/fragment_update" />
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.povar.fragments.fragment4"
+        android:label="@string/nazvanie_forma4"
+        tools:layout="@layout/fragment_delete" />
+    <fragment
+        android:id="@+id/fragment5"
+        android:name="com.example.povar.fragments.fragment5"
+        android:label="@string/nazvanie_forma5"
+        tools:layout="@layout/fragment_view1" />
+    <fragment
+        android:id="@+id/editNumberFragment"
+        android:name="com.example.povar.fragments.EditNumberFragment"
+        android:label="Регистрация"
+        tools:layout="@layout/fragment_edit_number">
+        <action
+            android:id="@+id/action_editNumberFragment_to_fragment1"
+            app:destination="@id/fragment1"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/editCodeFragment"
+        android:name="com.example.povar.fragments.EditCodeFragment"
+        android:label="Авторизация"
+        tools:layout="@layout/fragment_edit_code">
+        <action
+            android:id="@+id/action_editCodeFragment_to_editNumberFragment"
+            app:destination="@id/editNumberFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_editCodeFragment_to_fragment1"
+            app:destination="@id/fragment1" />
+    </fragment>
+</navigation>

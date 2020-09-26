@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".fragments.EditCodeFragment">
+
+    <TextView
+        android:id="@+id/TextView_autentification1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Введите ваш логин и пароль"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        android:layout_marginTop="95dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/image_autentification2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/user"
+        app:layout_constraintBottom_toBottomOf="@id/autentificationCodeLogin"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/autentificationCodeLogin" />
+
+    <ImageView
+        android:id="@+id/image_autentification1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/zamok"
+        app:layout_constraintBottom_toBottomOf="@id/autentificationCodePassword"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/autentificationCodePassword" />
+
+    <EditText
+        android:id="@+id/autentificationCodeLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Логин"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_autentification1"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="16dp"
+       />
+    <EditText
+        android:id="@+id/autentificationCodePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autentificationCodeLogin"
+        android:maxLines="1"
+
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:hint="Пароль"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+
+        android:id="@+id/StartRegistry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:background="@null"
+        android:text="Регистрация"
+        android:textColor="@color/Grey"
+        android:textSize="17dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="@+id/autentificationCodePassword"
+        tools:ignore="MissingConstraints" />
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:id="@+id/button_next1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_button_next"
+        android:windowSoftInputMode="stateVisible|adjustResize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,9 +27,9 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-private var Massiv_Users = mutableListOf<User>()
+var Massiv_Users = mutableListOf<User>()
 
-class EditCodeFragment : Fragment() {
+class EditCodeFragment() : Fragment() {
 
 
     private var param1: String? = null

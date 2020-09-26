@@ -11,5 +11,7 @@
     <string name="ingridient_recept"><b>Ингридиенты: </b> </string>
     <string name="formula_recept"><b>Рецепт: </b></string>
     <string name="Obrabotka_Pers_dannix"><![CDATA[Нажимая кнопку <<Зарегистрироваться>> Вы даете согласие на обработку персональных данных]]></string>
+    <string name="title">title</string>
+    <string name="description">description</string>
 
 </resources>

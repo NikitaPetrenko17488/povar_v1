@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener
 
 class RegistryActivity: AppCompatActivity() {
 
-    private var Massiv_Users = mutableListOf<User>()
+     var Massiv_Users = mutableListOf<User>()
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,7 @@ class RegistryActivity: AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        loadDataBase()
         // получаем navController
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.navFragment2) as NavHostFragment? ?: return
@@ -46,5 +47,21 @@ class RegistryActivity: AppCompatActivity() {
 
     }
 
+         fun loadDataBase() {
+            REF_DABATABSE_ROOT.child(NODE_USERS)//.child("боржанский")
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
 
-}
+                    }
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (snapshot: DataSnapshot in dataSnapshot.children) {
+                            val user = snapshot.getValue(User::class.java) ?: User()
+                            Massiv_Users.add(user)
+
+                        }
+                    }
+                })
+
+
+}}

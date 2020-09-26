@@ -50,10 +50,7 @@ class fragment5 : Fragment() {
         super.onStart()
         initRecepts()
         //create_recycle()
-
-
     }
-
 
    fun create_recycle()
     {
@@ -62,7 +59,6 @@ class fragment5 : Fragment() {
         rv.layoutManager = llm
 
     }
-
 
     private fun initRecepts() {
 

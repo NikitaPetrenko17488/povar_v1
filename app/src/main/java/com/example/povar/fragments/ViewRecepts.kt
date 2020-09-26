@@ -1,6 +1,5 @@
 package com.example.povar.fragments
 import DataAdapter
-import android.graphics.Movie
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Recept
@@ -30,18 +28,9 @@ private var Massiv = mutableListOf<Recept>()
 
 class fragment5 : Fragment() {
 
-    private val mNicolasCageMovies = listOf(
-        Movie("Raising Arizona", 1987),
-        Movie("Vampire's Kiss", 1988),
-        Movie("Con Air", 1997),
-        Movie("Gone in 60 Seconds", 1997),
-        Movie("National Treasure", 2004),
-        Movie("The Wicker Man", 2006),
-        Movie("Ghost Rider", 2007),
-        Movie("Knowing", 2009)
-    )
 
-    data class Movie(val title: String, val year: Int)
+
+
 
     private var param1: String? = null
     private var param2: String? = null
@@ -65,8 +54,9 @@ class fragment5 : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        create_recycle()
         initRecepts()
+        create_recycle()
+
 
     }
 
@@ -78,14 +68,15 @@ class fragment5 : Fragment() {
             mTitleView = itemView.findViewById(R.id.name_recept)
             mYearView = itemView.findViewById(R.id.formula_recept)
         }
-        fun bind(movie: Movie) {
-            mTitleView?.text = movie.title
-            mYearView?.text = movie.year.toString()
+        fun bind(movie: Recept) {
+            mTitleView?.text = movie.name
+            mYearView?.text = movie.formula
         }
     }
    fun create_recycle() {
 
             rv.apply {
+                 val mNicolasCageMovies: MutableList<Recept> =Massiv
                 layoutManager = LinearLayoutManager(activity)
                 adapter = DataAdapter(mNicolasCageMovies)
             }
@@ -104,16 +95,6 @@ class fragment5 : Fragment() {
 
                     }
 
-                    var count = 0
-
-                    for (index in Massiv.withIndex()) {
-                        TextViewView.text = String.format("%s%s%s%s", TextViewView.text, "Название: ", Massiv[count].name, "\n\n")
-                        TextViewView.text = String.format("%s%s%s%s", TextViewView.text, "Ингридиенты: ", Massiv[count].ingridients, "\n\n")
-                        TextViewView.text = String.format("%s%s%s%s", TextViewView.text, "Рецепт: ", Massiv[count].formula, "\n\n\n\n")
-                        count++
-                        //
-                    }
-                    Massiv.removeAll { true }
                 }
 
             })

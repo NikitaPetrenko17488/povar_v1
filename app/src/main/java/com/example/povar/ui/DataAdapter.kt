@@ -15,4 +15,5 @@ class DataAdapter(private val list: MutableList<Recept>)
         holder.bind(movie)
     }
     override fun getItemCount(): Int = list.size
+
 }

@@ -1,17 +1,15 @@
 package com.example.povar.fragments
 
-import android.R.attr.data
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.povar.R
+import com.example.povar.activity.AdminActivity
 import com.example.povar.activity.MainActivity
-import com.example.povar.activity.RegistryActivity
 import com.example.povar.models.User
 import com.example.povar.ui.NODE_USERS
 import com.example.povar.ui.REF_DABATABSE_ROOT
@@ -23,23 +21,16 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_edit_code.*
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
 var Massiv_Users = mutableListOf<User>()
 
 class EditCodeFragment() : Fragment() {
 
 
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -53,6 +44,7 @@ class EditCodeFragment() : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         loadDataBase()
         godAutentification()
         startRegistry()
@@ -82,7 +74,7 @@ class EditCodeFragment() : Fragment() {
     }
     fun godAutentification() {
         button_next1.setOnClickListener {
-        var boolLogin: Int = 0
+        var boolLogin: Int = 0 /////////////////////////////////////////////////////////////
         var count = 0
 
         for (index in Massiv_Users.withIndex()) {
@@ -99,10 +91,14 @@ class EditCodeFragment() : Fragment() {
 
         if (boolLogin == 1) {
 
-            ////
-           // var intent = Intent(RegistryActivity,MainActivity::class.java)
-            startActivity(Intent(activity, MainActivity::class.java))
-            /////
+           if (Massiv_Users[count].admin==0) {
+               startActivity(Intent(activity, MainActivity::class.java))
+           }
+            else if (Massiv_Users[count].admin==1)
+            {
+                startActivity(Intent(activity, AdminActivity::class.java))/////////////
+            }
+
 
         } else {
             showToast("Неправильный логин или пароль")
@@ -110,15 +106,5 @@ class EditCodeFragment() : Fragment() {
     }
         Massiv_Users.removeAll{true}
     }
-    companion object {
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditCodeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

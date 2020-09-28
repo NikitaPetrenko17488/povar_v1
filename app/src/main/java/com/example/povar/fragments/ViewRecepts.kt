@@ -1,11 +1,15 @@
 package com.example.povar.fragments
+
 import DataAdapter
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,34 +17,25 @@ import com.example.povar.R
 import com.example.povar.models.Recept
 import com.example.povar.ui.NODE_RECEPTS
 import com.example.povar.ui.REF_DABATABSE_ROOT
-
+import com.example.povar.ui.showToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_view1.*
+import java.lang.Thread.sleep
+import kotlin.concurrent.thread
 
-
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 private var Massiv = mutableListOf<Recept>()
+var counter =0
 
 class fragment5 : Fragment() {
 
 
-
-
-
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        Massiv.removeAll { true }
+        counter=0
 
     }
 
@@ -49,49 +44,65 @@ class fragment5 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_view1, container, false)
+        return inflater.inflate(R.layout.fragment_view1, container,false)
+
     }
 
     override fun onStart() {
+
         super.onStart()
-        initRecepts()
-        create_recycle()
+
+             initRecepts()
+
+         //   create_recycle()
+
 
 
     }
 
     class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item, parent, false)) {
-        private var mTitleView: TextView? = null
-        private var mYearView: TextView? = null
+        private var mName: TextView? = null
+        private var mFormula: TextView? = null
         init {
-            mTitleView = itemView.findViewById(R.id.name_recept)
-            mYearView = itemView.findViewById(R.id.formula_recept)
+            mName = itemView.findViewById(R.id.name_recept)
+            mFormula = itemView.findViewById(R.id.formula_recept)
         }
         fun bind(movie: Recept) {
-            mTitleView?.text = movie.name
-            mYearView?.text = movie.formula
+            mName?.text = movie.name
+            mFormula?.text = movie.formula
         }
     }
    fun create_recycle() {
 
-            rv.apply {
-                 val mNicolasCageMovies: MutableList<Recept> =Massiv
-                layoutManager = LinearLayoutManager(activity)
-                adapter = DataAdapter(mNicolasCageMovies)
-            }
+                    Log.d("ploxo","ploxo")
+                    rv.apply {
+                        layoutManager = LinearLayoutManager(activity)
+                        adapter = DataAdapter(Massiv)
+
+                    }
+
+
    }
+
+
     private fun initRecepts() {
 
         REF_DABATABSE_ROOT.child(NODE_RECEPTS)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(activity, "Нет подключения к базе..", Toast.LENGTH_SHORT).show()
+                    showToast("Нет подключения к базе..")
                 }
+
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
                         Massiv.add(recept)
+                        counter++
+                        Log.d("ploxo2", counter.toString())
+
+                        if (counter>0)
+                            create_recycle()
 
                     }
 
@@ -99,18 +110,8 @@ class fragment5 : Fragment() {
 
             })
 
+
     }
 
-    companion object {
 
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment5().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

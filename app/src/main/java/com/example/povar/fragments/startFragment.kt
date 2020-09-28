@@ -9,21 +9,13 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.povar.R
 import kotlinx.android.synthetic.main.fragment_start.view.*
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class fragment1 : Fragment() {
-
-    private var param1: String? = null
-    private var param2: String? = null
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
 
         }
 

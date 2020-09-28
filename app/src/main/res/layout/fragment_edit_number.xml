@@ -6,7 +6,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".fragments.EditNumberFragment">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        app:titleTextColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Регистрация"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/TextView_registry1"
         android:layout_width="wrap_content"

@@ -54,6 +54,9 @@
             android:id="@+id/action_editNumberFragment_to_fragment1"
             app:destination="@id/fragment1"
             app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_editNumberFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
     <fragment
         android:id="@+id/editCodeFragment"
@@ -71,4 +74,9 @@
             android:id="@+id/action_editCodeFragment_to_fragment1"
             app:destination="@id/fragment1" />
     </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.povar.fragments.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
 </navigation>

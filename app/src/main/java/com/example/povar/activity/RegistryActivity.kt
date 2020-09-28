@@ -29,7 +29,7 @@ class RegistryActivity: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        // получаем navController
+
 
 
     }

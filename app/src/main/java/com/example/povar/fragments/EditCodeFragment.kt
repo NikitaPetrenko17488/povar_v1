@@ -10,11 +10,9 @@ import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.activity.AdminActivity
 import com.example.povar.activity.MainActivity
+import com.example.povar.activity.RegistryActivity
 import com.example.povar.models.User
-import com.example.povar.ui.NODE_USERS
-import com.example.povar.ui.REF_DABATABSE_ROOT
-import com.example.povar.ui.replaceFragment2
-import com.example.povar.ui.showToast
+import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -91,12 +89,14 @@ class EditCodeFragment() : Fragment() {
 
         if (boolLogin == 1) {
 
-           if (Massiv_Users[count].admin==0) {
-               startActivity(Intent(activity, MainActivity::class.java))
+           if (Massiv_Users[count].admin==1)/////////////////////
+           {
+               startActivity(Intent(activity, AdminActivity::class.java))
            }
-            else if (Massiv_Users[count].admin==1)
+            else if (Massiv_Users[count].admin==0)//////////////////
             {
-                startActivity(Intent(activity, AdminActivity::class.java))/////////////
+                startActivity(Intent(activity, MainActivity::class.java))
+
             }
 
 

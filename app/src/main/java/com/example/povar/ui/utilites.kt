@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.example.povar.R
 import com.example.povar.models.User
 import com.google.firebase.database.DataSnapshot
@@ -42,3 +44,5 @@ fun Fragment.replaceFragment2(fragment: Fragment)
         )?.commit()
 
 }
+
+

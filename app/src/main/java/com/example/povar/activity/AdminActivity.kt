@@ -29,6 +29,8 @@ class AdminActivity: AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         val toolbar = findViewById<Toolbar>(R.id.toolbar3)
         toolbar.setupWithNavController(navController, appBarConfiguration)
-        navController.navigate(R.id.adminFragment)
+
+        navController.popBackStack()
+        navController.navigate(R.id.viewUsersForAdmin)
     }
 }

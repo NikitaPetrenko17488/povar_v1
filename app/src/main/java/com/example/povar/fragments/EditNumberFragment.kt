@@ -33,11 +33,7 @@ class EditNumberFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentLayout = inflater.inflate(R.layout.fragment_start, container, false)
-        //навигационный контроллер
 
-        val navController = NavHostFragment.findNavController(this)
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edit_number, container, false)
     }
 

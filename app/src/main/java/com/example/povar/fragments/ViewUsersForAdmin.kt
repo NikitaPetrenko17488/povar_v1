@@ -1,18 +1,18 @@
 package com.example.povar.fragments
 
-import DataAdapter
+import DataAdapterUsers
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
-import com.example.povar.models.Recept
-import com.example.povar.ui.NODE_RECEPTS
+import com.example.povar.models.User
+import com.example.povar.ui.NODE_USERS
 import com.example.povar.ui.REF_DABATABSE_ROOT
 import com.example.povar.ui.showToast
 import com.google.firebase.database.DataSnapshot
@@ -21,64 +21,62 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_view1.*
 
 
-private var Massiv = mutableListOf<Recept>()
-var counter =0
+private var Massiv_Users2 = mutableListOf<User>()
+var counter2 =0
 
-class fragment5 : Fragment() {
+class ViewUsersForAdmin : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Massiv.removeAll { true }
-        counter=0
-
+        Massiv_Users2.removeAll { true }
+        counter2=0
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return inflater.inflate(R.layout.fragment_view1, container,false)
-
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.view_users_for_admin, container, false)
     }
+
 
     override fun onStart() {
-
         super.onStart()
-
-             initRecepts()
-
+        initUsers()
     }
 
-    class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-        RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
+    fun create_recycle() {
+
+        Log.d("ploxo","ploxo")
+        recicle_view_users.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = DataAdapterUsers(Massiv_Users2)
+
+        }
+
+    }
+    class MovieViewHolder2(inflater: LayoutInflater, parent: ViewGroup) :
+        RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_users, parent, false)) {
         private var mName: TextView? = null
-        private var mFormula: TextView? = null
+        private var mLogin: TextView? = null
+
         init {
-            mName = itemView.findViewById(R.id.name_recept)
-            mFormula = itemView.findViewById(R.id.formula_recept)
+            mName = itemView.findViewById(R.id.textViewNameForAdmin)
+            mLogin = itemView.findViewById(R.id.textViewLoginForAdmin)
+
         }
-        fun bind(movie: Recept) {
+        fun bind(movie: User) {
             mName?.text = movie.name
-            mFormula?.text = movie.formula
+            mLogin?.text = movie.login
+
         }
     }
-   fun create_recycle() {
 
-                    Log.d("ploxo","ploxo")
-                    recicle_view_users.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = DataAdapter(Massiv)
+    private fun initUsers() {
 
-                    }
-
-   }
-
-
-    private fun initRecepts() {
-
-        REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+        REF_DABATABSE_ROOT.child(NODE_USERS)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
                     showToast("Нет подключения к базе..")
@@ -86,12 +84,13 @@ class fragment5 : Fragment() {
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
-                        val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-                        Massiv.add(recept)
-                        counter++
-                        Log.d("ploxo2", counter.toString())
+                        val user = snapshot.getValue(User::class.java) ?: User()
+                        Massiv_Users2.add(user)
+                        Log.d("ploxo2", Massiv_Users2[counter2].name)
+                        counter2++
 
-                        if (counter>0)
+
+                        if (counter2>0)
                             create_recycle()
                     }
 
@@ -101,6 +100,5 @@ class fragment5 : Fragment() {
 
 
     }
-
 
 }

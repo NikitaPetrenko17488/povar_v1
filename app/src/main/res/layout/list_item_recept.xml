@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="25dp"
         android:id="@+id/image_src"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
@@ -24,7 +24,7 @@
         android:id="@+id/name_recept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="25dp"
         android:text="@string/title"
         android:textSize="30dp"
         android:layout_marginEnd="106dp"
@@ -46,6 +46,23 @@
         app:layout_constraintStart_toEndOf="@id/image_src"
         app:layout_constraintTop_toBottomOf="@id/name_recept"
         tools:ignore="MissingConstraints" />
+
+    <Button
+
+        android:id="@+id/ViewRecept"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="16dp"
+        android:gravity="start|bottom"
+        android:text="Посмотреть рецепт.."
+        android:textSize="18dp"
+        android:textColor="@color/Grey"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@id/image_src"
+        app:layout_constraintTop_toBottomOf="@id/formula_recept"
+        tools:ignore="MissingConstraints" />
             <Button
                 android:id="@+id/editReceptItem"
                 android:layout_height="30dp"
@@ -55,7 +72,7 @@
                 app:layout_constraintEnd_toStartOf="@id/delitteReceptItem"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="16dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="25dp"
                 tools:ignore="MissingConstraints"
 
                 />
@@ -64,7 +81,7 @@
         android:id="@+id/delitteReceptItem"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="25dp"
         android:adjustViewBounds="true"
         android:src="@drawable/dellete"
         android:background="@drawable/dellete"

@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
+import com.example.povar.ui.STORAGE
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_start.view.*
@@ -37,6 +38,7 @@ class fragment1 : Fragment() {
         }
 
     }
+
 
     override fun onCreateView(
 
@@ -61,5 +63,10 @@ class fragment1 : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
 
+
+
+    }
 }

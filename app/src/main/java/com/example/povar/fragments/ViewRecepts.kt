@@ -49,8 +49,17 @@ class fragment5 : Fragment() {
 
              initRecepts()
 
+
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        Massiv.removeAll { true }
+        counter=0
+
+
+    }
     class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
         private var mName: TextView? = null
@@ -61,7 +70,7 @@ class fragment5 : Fragment() {
         }
         fun bind(movie: Recept) {
             mName?.text = movie.name
-            mFormula?.text = movie.formula
+            mFormula?.text = movie.ingridients
         }
     }
    fun create_recycle() {

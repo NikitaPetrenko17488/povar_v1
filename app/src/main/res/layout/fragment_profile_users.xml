@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProfileUsers"
+    android:layout_marginTop="8dp">
+
+    <Button
+        android:id="@+id/Exit"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Выйти"
+        android:textSize="18dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="4dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/NameTextInProfie"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="46dp"
+        android:text="Имя - "
+        android:textSize="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="155dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/LoginTextInProfie"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:text="Логин - "
+        android:textSize="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="155dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NameInProfile"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/LoginInProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/LoginTextInProfie"
+        app:layout_constraintTop_toBottomOf="@id/NameInProfile"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/NameInProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="46dp"
+        android:textSize="25dp"
+
+        app:layout_constraintStart_toEndOf="@id/NameTextInProfie"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="46dp"
+        android:src="@drawable/user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/count_recept_for_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Кол-во рецептов: "
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circleImageView" />
+
+    <TextView
+        android:id="@+id/count_recept_for_user_4islo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintStart_toEndOf="@id/count_recept_for_user"
+        app:layout_constraintTop_toBottomOf="@id/circleImageView" />
+
+    <TextView
+        android:id="@+id/ocenka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Средняя оценка: "
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/count_recept_for_user" />
+
+    <TextView
+        android:id="@+id/ocenka_4islo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/ocenka"
+        app:layout_constraintTop_toBottomOf="@id/count_recept_for_user" />
+
+    <Button
+        android:id="@+id/EditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Редактировать профиль"
+        android:textSize="20dp"
+       android:layout_marginStart="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ocenka"
+        android:layout_marginTop="36dp"
+        tools:ignore="MissingConstraints" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,11 @@
         android:id="@+id/fragment5"
         android:name="com.example.povar.fragments.fragment5"
         android:label="@string/nazvanie_forma5"
-        tools:layout="@layout/fragment_view1" />
+        tools:layout="@layout/fragment_view1" >
+        <action
+            android:id="@+id/action_fragment5_to_profileUsers"
+            app:destination="@id/profileUsers" />
+    </fragment>
     <fragment
         android:id="@+id/editNumberFragment"
         android:name="com.example.povar.fragments.EditNumberFragment"
@@ -54,6 +58,9 @@
             android:id="@+id/action_editNumberFragment_to_fragment1"
             app:destination="@id/fragment1"
             app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_editNumberFragment_to_fragment5"
+            app:destination="@id/fragment5" />
     </fragment>
     <fragment
         android:id="@+id/editCodeFragment"
@@ -79,4 +86,9 @@
         android:name="com.example.povar.fragments.ViewUsersForAdmin"
         android:label="Список пользователей"
         tools:layout="@layout/view_users_for_admin" />
+    <fragment
+        android:id="@+id/profileUsers"
+        android:name="com.example.povar.fragments.ProfileUsers"
+        android:label="Мой профиль"
+        tools:layout="@layout/fragment_profile_users" />
 </navigation>

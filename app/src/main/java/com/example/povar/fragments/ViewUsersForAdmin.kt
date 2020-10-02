@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_view1.*
+import kotlinx.android.synthetic.main.view_users_for_admin.*
 
 
 private var Massiv_Users2 = mutableListOf<User>()

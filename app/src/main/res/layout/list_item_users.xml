@@ -21,18 +21,19 @@
 
 
         />
+
     <Button
         android:id="@+id/buttonDelite"
-        android:layout_marginTop="65dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonGlaz"
-        android:layout_marginStart="26dp"
-        android:layout_height="35dp"
-        android:text="Удалить"
         android:layout_width="wrap_content"
+        android:layout_height="35dp"
+       android:layout_marginEnd="16dp"
+        android:layout_marginTop="65dp"
+        android:text="Удалить"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonGlaz"
 
 
-        />
+        app:layout_constraintTop_toTopOf="parent" />
     <ImageView
         android:id="@+id/imageViewUsersForAdmin"
         android:layout_width="90dp"

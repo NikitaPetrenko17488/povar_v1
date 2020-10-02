@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CONSTRAINT_FRAGMENT"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.fragment5"
-    tools:ignore="MissingDefaultResource"
     android:visibility="visible"
-    >
+    tools:context=".fragments.fragment5"
+    tools:ignore="MissingDefaultResource">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,16 +20,14 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recicle_view_users"
+                android:id="@+id/recicle_view_recept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                tools:listitem="@layout/list_item_recept"
 
-                >
+                tools:listitem="@layout/list_item_recept">
 
             </androidx.recyclerview.widget.RecyclerView>
-
 
 
         </LinearLayout>

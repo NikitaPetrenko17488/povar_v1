@@ -11,17 +11,13 @@ import com.example.povar.ui.*
 import kotlinx.android.synthetic.main.fragment_update.*
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class fragment3 : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
     }
 
     override fun onStart() {

@@ -25,7 +25,6 @@ class ProfileUsers : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
     }
 
     override fun onCreateView(
@@ -42,8 +41,6 @@ class ProfileUsers : Fragment() {
         name=STORAGE.name
         login=STORAGE.login
         photo=STORAGE.photo
-
-
 
 
         var name_user =

@@ -8,7 +8,7 @@ class STORAGE_FOR_RECYCLE_RECEPT {
         var ingridients = ""
         var photo = ""
         var formula = ""
-        var update = 0
+        var ID=""
 
     }
 }

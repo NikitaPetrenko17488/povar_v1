@@ -34,7 +34,7 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
             STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoSrc
-            STORAGE_FOR_RECYCLE_RECEPT.update=1
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
             click.sendData()
 
         }

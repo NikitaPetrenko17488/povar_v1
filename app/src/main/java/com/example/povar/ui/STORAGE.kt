@@ -8,6 +8,7 @@ companion object
     var name = ""
     var login =""
     var photo=""
+    var ID=""
 
 }
 

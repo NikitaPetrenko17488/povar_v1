@@ -82,8 +82,9 @@ class EditProfileUser : Fragment() {
                     mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
                 dateMap[CHIELD_USER_NAME]=names.toString()
                 dateMap[CHIELD_USER_LOGIN] = logins.toString()
+                dateMap[CHIELD_USER_ID]=STORAGE.ID
 
-                REF_DABATABSE_ROOT.child(NODE_USERS).child(logins).updateChildren(dateMap)
+                REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID).updateChildren(dateMap)
 
                 Toast.makeText(activity, "Данные успешно обновлены..", Toast.LENGTH_SHORT).show()
                 replaceFragment(ProfileUsers())

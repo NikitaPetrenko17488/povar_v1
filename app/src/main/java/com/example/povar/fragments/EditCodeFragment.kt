@@ -88,6 +88,7 @@ class EditCodeFragment() : Fragment() {
         }
 
         if (boolLogin == 1) {
+                STORAGE.ID= Massiv_Users[count].id
                 STORAGE.counter =count
                 STORAGE.name= Massiv_Users[count].name
                 STORAGE.login= Massiv_Users[count].login

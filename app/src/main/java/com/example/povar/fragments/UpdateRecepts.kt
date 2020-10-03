@@ -1,5 +1,6 @@
 package com.example.povar.fragments
 
+import android.os.Build.ID
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -31,9 +32,6 @@ class fragment3 : Fragment() {
     private fun updateRecept() {
 
 
-
-
-
         if (EditTextNameUpdate.text.toString().isEmpty()) {  // если пусто в названии блюда, то
             Toast.makeText(activity, "Введите название бюда", Toast.LENGTH_SHORT).show()
 
@@ -52,13 +50,14 @@ class fragment3 : Fragment() {
 
                 val dateMap =
                     mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
-                dateMap[CHIELD_RECEPT_ID]
+
+                dateMap[CHIELD_RECEPT_ID]= STORAGE_FOR_RECYCLE_RECEPT.ID
                 dateMap[CHIELD_RECEPT_NAME] = name
                 dateMap[CHIELD_RECEPT_INGRIDIENTS] = ingridients
                 dateMap[CHIELD_RECEPT_FORMULA] = formula
 
 
-                REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(name).updateChildren(dateMap)
+                REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMap)
 
                 replaceFragment(fragment5())
 

@@ -1,6 +1,7 @@
 package com.example.povar.fragments
 
 import DataAdapter
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
@@ -35,7 +41,6 @@ private var Massiv = mutableListOf<Recept>()
 
 class fragment5 : Fragment(),Click {
 
-    var xuy: Click? =null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +64,7 @@ class fragment5 : Fragment(),Click {
     }
 
     override fun onStart() {
+
         super.onStart()
 
 
@@ -96,11 +102,6 @@ class fragment5 : Fragment(),Click {
             mButton?.setOnClickListener{
 
 
-                STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
-                STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
-                STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
-                STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoSrc
-                STORAGE_FOR_RECYCLE_RECEPT.update=1
 
 
             }
@@ -150,8 +151,10 @@ class fragment5 : Fragment(),Click {
 
 
     override fun sendData() {
-        Log.d("z", "z")
        replaceFragment(fragment3())
+
+        showUserNameAdnImage(activity!!)
+
     }
 
 

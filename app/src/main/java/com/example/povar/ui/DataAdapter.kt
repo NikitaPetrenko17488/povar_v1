@@ -9,6 +9,7 @@ import com.example.povar.fragments.fragment5
 
 import com.example.povar.models.Recept
 import com.example.povar.models.User
+import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 import kotlinx.android.synthetic.main.list_item_recept.view.*
 
 
@@ -28,7 +29,14 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
 
         holder.itemView.editReceptItem.setOnClickListener{
 
+
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoSrc
+            STORAGE_FOR_RECYCLE_RECEPT.update=1
             click.sendData()
+
         }
 
 

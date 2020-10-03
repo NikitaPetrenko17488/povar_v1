@@ -1,10 +1,12 @@
 package com.example.povar.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import com.example.povar.R
 import com.example.povar.ui.*
@@ -22,10 +24,16 @@ class fragment3 : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        Avotzapolnenie()
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
     }
 
     private fun updateRecept() {
+
+
+
+
+
         if (EditTextNameUpdate.text.toString().isEmpty()) {  // если пусто в названии блюда, то
             Toast.makeText(activity, "Введите название бюда", Toast.LENGTH_SHORT).show()
 
@@ -41,7 +49,7 @@ class fragment3 : Fragment() {
                     EditTextIngridientUpdate.text.toString() //запись в перемнную из ЕдитТекст
                 val formula =
                     EditTextFormulaUpdate.text.toString()// запись в перемнную из ЕдитТекст
-                val uid = AUTH.currentUser?.uid.toString()
+
                 val dateMap =
                     mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
                 dateMap[CHIELD_RECEPT_ID]
@@ -52,7 +60,7 @@ class fragment3 : Fragment() {
 
                 REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(name).updateChildren(dateMap)
 
-                replaceFragment(fragment1())
+                replaceFragment(fragment5())
 
                 Toast.makeText(activity, "Блюдо успешно обновлено..", Toast.LENGTH_SHORT).show()
             }
@@ -68,6 +76,19 @@ class fragment3 : Fragment() {
         return inflater.inflate(R.layout.fragment_update, container, false)
 
     }
+fun Avotzapolnenie()
+{
+    Log.d(STORAGE_FOR_RECYCLE_RECEPT.name,"xuy")
 
+    var avtozagrNameUpdateRecept=
+        activity!!.findViewById<EditText>(R.id.EditTextNameUpdate)
+    avtozagrNameUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.name)
+    var avtozagrIngridientsUpdateRecept=
+        activity!!.findViewById<EditText>(R.id.EditTextIngridientUpdate)
+    avtozagrIngridientsUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridients)
+    var avtozagrFormulaUpdateRecept=
+        activity!!.findViewById<EditText>(R.id.EditTextFormulaUpdate)
+    avtozagrFormulaUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
+}
 
 }

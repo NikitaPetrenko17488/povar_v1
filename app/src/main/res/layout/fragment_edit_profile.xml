@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.EditProfileUser">
+
+    <TextView
+        android:id="@+id/NameTextInProfie"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="46dp"
+        android:text="Имя - "
+        android:textSize="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="155dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/LoginTextInProfie"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:text="Логин - "
+        android:textSize="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="155dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NameInProfileEdit"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/LoginInProfileEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/LoginTextInProfie"
+        app:layout_constraintTop_toBottomOf="@id/NameInProfileEdit"
+        tools:ignore="MissingConstraints"
+        android:text=""
+        />
+
+    <EditText
+        android:id="@+id/NameInProfileEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:textSize="25dp"
+        android:maxLines="1"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@id/NameTextInProfie"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="bottom"
+         />
+
+    <ImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="46dp"
+        android:src="@drawable/user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/SaveProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        android:layout_marginTop="26dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView"
+        tools:ignore="MissingConstraints" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

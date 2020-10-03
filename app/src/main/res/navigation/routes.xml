@@ -11,20 +11,7 @@
         android:id="@+id/fragment1"
         android:name="com.example.povar.fragments.fragment1"
         android:label="@string/nazvanie_froma1"
-        tools:layout="@layout/fragment_start">
-        <action
-            android:id="@+id/action_fragment1_to_fragment2"
-            app:destination="@id/fragment2" />
-        <action
-            android:id="@+id/action_fragment1_to_fragment4"
-            app:destination="@id/fragment4" />
-        <action
-            android:id="@+id/action_fragment1_to_fragment5"
-            app:destination="@id/fragment5" />
-        <action
-            android:id="@+id/action_fragment1_to_fragment3"
-            app:destination="@id/fragment3" />
-    </fragment>
+        tools:layout="@layout/fragment_start"/>
     <fragment
         android:id="@+id/fragment2"
         android:name="com.example.povar.fragments.fragment2"
@@ -47,7 +34,24 @@
         tools:layout="@layout/fragment_view1" >
         <action
             android:id="@+id/action_fragment5_to_profileUsers"
-            app:destination="@id/profileUsers" />
+            app:destination="@id/profileUsers"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_fragment5_to_fragment3"
+            app:destination="@id/fragment3"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_fragment5_to_fragment2"
+            app:destination="@id/fragment2" />
+        <action
+            android:id="@+id/action_fragment5_to_fragment4"
+            app:destination="@id/fragment4" />
     </fragment>
     <fragment
         android:id="@+id/editNumberFragment"
@@ -55,12 +59,12 @@
         android:label="Регистрация"
         tools:layout="@layout/fragment_edit_number">
         <action
-            android:id="@+id/action_editNumberFragment_to_fragment1"
-            app:destination="@id/fragment1"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
-        <action
             android:id="@+id/action_editNumberFragment_to_fragment5"
-            app:destination="@id/fragment5" />
+            app:destination="@id/fragment5"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/editCodeFragment"
@@ -75,11 +79,12 @@
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
         <action
-            android:id="@+id/action_editCodeFragment_to_fragment1"
-            app:destination="@id/fragment1" />
-        <action
             android:id="@+id/action_editCodeFragment_to_viewUsersForAdmin"
-            app:destination="@id/viewUsersForAdmin" />
+            app:destination="@id/viewUsersForAdmin"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/viewUsersForAdmin"
@@ -90,5 +95,14 @@
         android:id="@+id/profileUsers"
         android:name="com.example.povar.fragments.ProfileUsers"
         android:label="Мой профиль"
-        tools:layout="@layout/fragment_profile_users" />
+        tools:layout="@layout/fragment_profile_users" >
+        <action
+            android:id="@+id/action_profileUsers_to_editProfileUser"
+            app:destination="@id/editProfileUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileUser"
+        android:name="com.example.povar.fragments.EditProfileUser"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

@@ -40,7 +40,7 @@ class EditProfileUser : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        showUserNameAdnImage(activity!!)
+        hideUserNameAdnImage(activity!!)
 
         var login =
             activity!!.findViewById<EditText>(R.id.LoginInProfileEdit)

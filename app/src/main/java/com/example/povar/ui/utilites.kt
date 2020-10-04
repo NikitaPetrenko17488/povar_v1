@@ -2,6 +2,7 @@ package com.example.povar.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -49,7 +50,7 @@ fun Fragment.replaceFragment2(fragment: Fragment)
 }
 
 
-fun showUserNameAdnImage( activity:Activity)
+fun hideUserNameAdnImage( activity:Activity)
 {
     var nameUserInActivity =
         activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
@@ -58,6 +59,19 @@ fun showUserNameAdnImage( activity:Activity)
         activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
     circleImage.setImageDrawable(null)
 
+}
+
+fun showUserNameAdnImage(activity: Activity)
+{
+
+    val bd: BitmapDrawable = activity!!.resources.getDrawable(R.drawable.user) as BitmapDrawable
+    var name=STORAGE.name
+    var nameUserInActivity =
+        activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
+    nameUserInActivity.text=name
+    var circleImage =
+        activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
+    circleImage.setImageDrawable(bd)
 }
 
 

@@ -1,5 +1,6 @@
 package com.example.povar.fragments
 
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build.ID
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.povar.R
 import com.example.povar.ui.*
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_update.*
 
 
@@ -90,4 +93,9 @@ fun Avotzapolnenie()
     avtozagrFormulaUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
 }
 
+    override fun onStop() {
+        super.onStop()
+
+     showUserNameAdnImage(activity!!)
+    }
 }

@@ -28,7 +28,9 @@ import kotlinx.android.synthetic.main.fragment_view1.*
 
 interface Click
 {
-    fun sendData()
+    fun updateRecycle()
+
+    fun deletteRecycle()
 }
 
 
@@ -59,6 +61,7 @@ class fragment5 : Fragment(),Click {
     ): View? {
 
 
+
         return inflater.inflate(R.layout.fragment_view1, container,false)
 
     }
@@ -66,7 +69,6 @@ class fragment5 : Fragment(),Click {
     override fun onStart() {
 
         super.onStart()
-
 
          initRecepts()
 
@@ -98,10 +100,7 @@ class fragment5 : Fragment(),Click {
 
             mName?.text = movie.name
             mFormula?.text = movie.ingridients
-
             mButton?.setOnClickListener{
-
-
 
 
             }
@@ -150,11 +149,17 @@ class fragment5 : Fragment(),Click {
 
 
 
-    override fun sendData() {
+    override fun updateRecycle() {
        replaceFragment(fragment3())
 
-        showUserNameAdnImage(activity!!)
+        hideUserNameAdnImage(activity!!)
 
+    }
+
+    override fun deletteRecycle() {
+        REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
+            .removeValue { error, ref ->  }
+        replaceFragment(fragment5())
     }
 
 

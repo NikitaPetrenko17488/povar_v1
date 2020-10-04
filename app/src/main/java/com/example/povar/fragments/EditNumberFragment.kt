@@ -94,10 +94,12 @@ class EditNumberFragment : Fragment() {
                             val name = registryCodeName.text.toString()
                             val dateMap =
                                 mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+                            var ID=login
                             dateMap[CHIELD_USER_LOGIN] = login
                             dateMap[CHIELD_USER_PASSWORD] = password
                             dateMap[CHIELD_USER_NAME] = name
-                            REF_DABATABSE_ROOT.child(NODE_USERS).child(login)
+                            dateMap[CHIELD_USER_ID]=ID
+                            REF_DABATABSE_ROOT.child(NODE_USERS).child(ID)
                                 .updateChildren(dateMap)
 
                             startActivity(Intent(activity, MainActivity::class.java))

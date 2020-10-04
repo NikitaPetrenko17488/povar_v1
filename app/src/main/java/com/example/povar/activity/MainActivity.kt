@@ -1,6 +1,7 @@
 package com.example.povar.activity
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -25,7 +26,12 @@ class MainActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val bd: BitmapDrawable =resources.getDrawable(R.drawable.user) as BitmapDrawable
+        var name_users= STORAGE.name
+        var name =findViewById<TextView>(R.id.textViewNameforActivityMain)
+        name.text=name_users
+        var circleImage =findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
+        circleImage.setImageDrawable(bd)
 
         initFirebase()
 

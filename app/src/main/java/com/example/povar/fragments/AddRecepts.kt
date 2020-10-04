@@ -23,6 +23,7 @@ class fragment2 : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        hideUserNameAdnImage(activity!!)
         button_add.setOnClickListener { addRecept() }  // если клик по кнопке вызвать метод
     }
 
@@ -46,13 +47,14 @@ class fragment2 : Fragment() {
 
                 val dateMap =
                     mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
-                dateMap[CHIELD_RECEPT_ID]
+                var ID=name
+                dateMap[CHIELD_RECEPT_ID] = ID
                 dateMap[CHIELD_RECEPT_NAME] = name
                 dateMap[CHIELD_RECEPT_INGRIDIENTS]=ingridients
                 dateMap[CHIELD_RECEPT_FORMULA] = formula
 
 
-                REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(name).updateChildren(dateMap)
+                REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMap)
 
                      replaceFragment(fragment2())
 

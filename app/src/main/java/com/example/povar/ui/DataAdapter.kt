@@ -29,15 +29,22 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
 
         holder.itemView.editReceptItem.setOnClickListener{
 
-
             STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
             STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoSrc
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
-            click.sendData()
+            click.updateRecycle()
 
         }
+
+        holder.itemView.deletteReceptItem.setOnClickListener{
+
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            click.deletteRecycle()
+
+        }
+
 
 
     }

@@ -72,14 +72,14 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/edit"
-        app:layout_constraintEnd_toStartOf="@id/delitteReceptItem"
+        app:layout_constraintEnd_toStartOf="@id/deletteReceptItem"
         app:layout_constraintTop_toBottomOf="@id/image_src"
         app:layout_constraintTop_toTopOf="parent"
 
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/delitteReceptItem"
+        android:id="@+id/deletteReceptItem"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"

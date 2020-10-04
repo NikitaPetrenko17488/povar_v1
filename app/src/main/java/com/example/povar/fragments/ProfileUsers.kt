@@ -14,6 +14,7 @@ import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
 import com.example.povar.ui.STORAGE
 import com.example.povar.ui.replaceFragment
+import com.example.povar.ui.showUserNameAdnImage
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_profile_users.*
 
@@ -49,8 +50,9 @@ class ProfileUsers : Fragment() {
         EditProfile.setOnClickListener{replaceFragment(EditProfileUser())
 
 
-
         }
+
+        addPoka4to.setOnClickListener{replaceFragment(fragment2())}
 
         var name_user =
             activity!!.findViewById<View>(R.id.NameInProfile) as TextView
@@ -69,15 +71,8 @@ class ProfileUsers : Fragment() {
     }
 
     override fun onStop() {
-        val bd: BitmapDrawable = activity!!.resources.getDrawable(R.drawable.user) as BitmapDrawable
         super.onStop()
-        name=STORAGE.name
-        var nameUserInActivity =
-            activity!!.findViewById<TextView>(R.id.textViewNameforActivityMain)
-        nameUserInActivity.text=name
-        var circleImage =
-            activity!!.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-        circleImage.setImageDrawable(bd)
+        showUserNameAdnImage(activity!!)
 
 
     }

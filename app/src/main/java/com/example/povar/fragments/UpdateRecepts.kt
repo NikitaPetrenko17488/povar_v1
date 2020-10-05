@@ -1,5 +1,6 @@
 package com.example.povar.fragments
 
+import android.app.Activity
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build.ID
 import android.os.Bundle
@@ -12,10 +13,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.povar.R
+import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_update.*
-
+import kotlinx.android.synthetic.main.list_item_recept.*
 
 
 class fragment3 : Fragment() {
@@ -30,6 +34,8 @@ class fragment3 : Fragment() {
         super.onStart()
         Avotzapolnenie()
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
+
+        image_src.setOnClickListener{ changePhotoRecept() }
     }
 
     private fun updateRecept() {
@@ -98,4 +104,14 @@ fun Avotzapolnenie()
 
      showUserNameAdnImage(activity!!)
     }
+}
+
+
+
+private fun changePhotoRecept() {
+//    CropImage.activity()
+//        .setAspectRatio(1,1)
+//        .setRequestedSize(600,600)
+//        .setCropShape(CropImageView.CropShape.OVAL)
+//        .start(activity as MainActivity)
 }

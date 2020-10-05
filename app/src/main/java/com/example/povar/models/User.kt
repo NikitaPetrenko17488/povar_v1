@@ -5,6 +5,6 @@ data class User(
     var name:String ="",
     var login:String="",
     var password:String="",
-    var photoSrc:String="",
+    var photoUrl:String="",
     var admin:Int=0
 )

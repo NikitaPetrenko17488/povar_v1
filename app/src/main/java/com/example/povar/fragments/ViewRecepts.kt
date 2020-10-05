@@ -31,6 +31,9 @@ interface Click
     fun updateRecycle()
 
     fun deletteRecycle()
+
+    fun viewRecycle()
+
 }
 
 
@@ -161,6 +164,14 @@ class fragment5 : Fragment(),Click {
             .removeValue { error, ref ->  }
         replaceFragment(fragment5())
     }
+
+    override fun viewRecycle() {
+      replaceFragment(ViewOneReceptInRecycle())
+
+        hideUserNameAdnImage(activity!!)
+    }
+
+
 
 
 }

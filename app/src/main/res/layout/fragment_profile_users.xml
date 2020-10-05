@@ -26,7 +26,7 @@
         android:text="Имя - "
         android:textSize="25dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="155dp"
+        android:layout_marginLeft="165dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -39,7 +39,7 @@
         android:text="Логин - "
         android:textSize="25dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="155dp"
+        android:layout_marginLeft="165dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/NameInProfile"
         tools:ignore="MissingConstraints" />
@@ -67,9 +67,9 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/circleImageView"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
+        android:id="@+id/ImageViewInProfile"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="46dp"
         android:src="@drawable/user"
@@ -86,7 +86,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="26dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/circleImageView" />
+        app:layout_constraintTop_toBottomOf="@id/ImageViewInProfile" />
 
     <TextView
         android:id="@+id/count_recept_for_user_4islo"
@@ -97,7 +97,7 @@
         android:layout_marginTop="16dp"
 
         app:layout_constraintStart_toEndOf="@id/count_recept_for_user"
-        app:layout_constraintTop_toBottomOf="@id/circleImageView" />
+        app:layout_constraintTop_toBottomOf="@id/ImageViewInProfile" />
 
     <TextView
         android:id="@+id/ocenka"

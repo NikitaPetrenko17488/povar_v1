@@ -32,7 +32,7 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
             STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
             STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
-            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoSrc
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
             click.updateRecycle()
 
@@ -42,6 +42,18 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
 
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
             click.deletteRecycle()
+
+        }
+
+
+
+        holder.itemView.ViewRecept.setOnClickListener{
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            click.viewRecycle()
 
         }
 

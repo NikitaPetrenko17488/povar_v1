@@ -1,5 +1,7 @@
 package com.example.povar.fragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +11,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.povar.R
+import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
 import com.example.povar.ui.STORAGE.Companion.login
 import com.example.povar.ui.STORAGE.Companion.name
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageActivity
+import com.theartofdev.edmodo.cropper.CropImageView
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_profile_users.*
@@ -46,6 +52,11 @@ class EditProfileUser : Fragment() {
             activity!!.findViewById<EditText>(R.id.LoginInProfileEdit)
         var name=
             activity!!.findViewById<EditText>(R.id.NameInProfileEdit)
+        ImageViewProfileEdit.downloadSetImage(STORAGE.photo)
+
+        ImageViewProfileEdit.setOnClickListener{
+
+            changePhotoUser()}
 
         SaveProfile.setOnClickListener{
 
@@ -59,9 +70,18 @@ class EditProfileUser : Fragment() {
         name.setText(STORAGE.name)
     }
 
+    private fun changePhotoUser() {
+        CropImage.activity()
+            .setAspectRatio(1,1)
+            .setRequestedSize(600,600)
+            .setCropShape(CropImageView.CropShape.OVAL)
+            .start((activity as MainActivity))
+    }
+
+
+
     override fun onStop() {
         super.onStop()
-
 
     }
 

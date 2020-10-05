@@ -5,7 +5,7 @@ data class Recept (
     var name:String ="",
     var formula:String="",
     var ingridients:String="",
-    var photoSrc:String="",
+    var photoUrl:String="",
     var user_id:String=""
 
 )

@@ -1,8 +1,12 @@
 package com.example.povar.ui
 
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.media.Image
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -14,7 +18,9 @@ import com.example.povar.models.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_main.*
 
 fun Fragment.showToast(message:String)
 {
@@ -71,7 +77,26 @@ fun showUserNameAdnImage(activity: Activity)
     nameUserInActivity.text=name
     var circleImage =
         activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-    circleImage.setImageDrawable(bd)
+    circleImage.downloadSetImage(STORAGE.photo)
+
+
+}
+
+fun CircleImageView.downloadSetImage(url:String)
+{
+    Picasso.get()
+        .load(url)
+        .placeholder(R.drawable.user)   ////// запись в картинку
+        .into(this)
+
+}
+
+fun ImageView.downloadSetImage(url: String)
+{
+    Picasso.get()
+        .load(url)
+        .placeholder(R.drawable.user)   ////// запись в картинку
+        .into(this)
 }
 
 

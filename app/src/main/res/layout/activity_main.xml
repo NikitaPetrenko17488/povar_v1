@@ -28,12 +28,10 @@
         android:id="@+id/myRecept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="6dp"
         android:text=" Мои рецепты "
         android:background="@null"
         android:textSize="13dp"
-        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toStartOf="@+id/dopFunc"
         app:layout_constraintStart_toEndOf="@+id/AllRecept" />
@@ -90,8 +88,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageViewForActivityMain"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="5dp"
         android:src="@drawable/user"
@@ -103,7 +101,7 @@
         android:id="@+id/textViewNameforActivityMain"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="65dp"
         android:gravity="top"
         android:text=""
         android:textSize="25dp"
@@ -117,8 +115,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"

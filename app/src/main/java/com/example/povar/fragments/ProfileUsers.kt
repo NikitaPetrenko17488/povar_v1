@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
 import com.example.povar.ui.STORAGE
+import com.example.povar.ui.downloadSetImage
 import com.example.povar.ui.replaceFragment
 import com.example.povar.ui.showUserNameAdnImage
 import de.hdodenhof.circleimageview.CircleImageView
@@ -59,6 +61,10 @@ class ProfileUsers : Fragment() {
 
         var login_user =
             activity!!.findViewById<TextView>(R.id.LoginInProfile)
+
+        ImageViewInProfile.downloadSetImage(STORAGE.photo)
+
+
         name_user.text=name
         login_user.text=login
 
@@ -73,6 +79,7 @@ class ProfileUsers : Fragment() {
     override fun onStop() {
         super.onStop()
         showUserNameAdnImage(activity!!)
+
 
 
     }

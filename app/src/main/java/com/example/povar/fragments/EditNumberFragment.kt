@@ -101,6 +101,9 @@ class EditNumberFragment : Fragment() {
                             dateMap[CHIELD_USER_ID]=ID
                             REF_DABATABSE_ROOT.child(NODE_USERS).child(ID)
                                 .updateChildren(dateMap)
+                                STORAGE.name=name
+                                STORAGE.login=login
+                                
 
                             startActivity(Intent(activity, MainActivity::class.java))
                         }

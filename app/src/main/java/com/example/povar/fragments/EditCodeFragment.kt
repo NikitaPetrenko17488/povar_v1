@@ -92,7 +92,7 @@ class EditCodeFragment() : Fragment() {
                 STORAGE.counter =count
                 STORAGE.name= Massiv_Users[count].name
                 STORAGE.login= Massiv_Users[count].login
-                STORAGE.photo= Massiv_Users[count].photoSrc
+                STORAGE.photo= Massiv_Users[count].photoUrl
 
            if (Massiv_Users[count].admin==1)/////////////////////
            {

@@ -2,12 +2,14 @@ package com.example.povar.fragments
 
 import DataAdapter
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -18,13 +20,17 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
+import com.example.povar.activity.MainActivity
 
 import com.example.povar.models.Recept
 import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_view1.*
+import kotlinx.android.synthetic.main.list_item_recept.*
 
 interface Click
 {
@@ -75,8 +81,8 @@ class fragment5 : Fragment(),Click {
 
          initRecepts()
 
-
     }
+
 
 
     override fun onPause() {
@@ -91,18 +97,21 @@ class fragment5 : Fragment(),Click {
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
         private var mName: TextView? = null
         private var mFormula: TextView? = null
+         private var mPhoto: ImageView? = null
 
         init {
 
             mName = itemView.findViewById(R.id.name_recept)
             mFormula = itemView.findViewById(R.id.formula_recept)
-            mButton = itemView.findViewById(R.id.editReceptItem);
+            mButton = itemView.findViewById(R.id.editReceptItem)
+            mPhoto=itemView.findViewById(R.id.image_src)
 
         }
         fun bind(movie: Recept) {
 
             mName?.text = movie.name
             mFormula?.text = movie.ingridients
+            mPhoto?.downloadSetImage(movie.photoUrl)
             mButton?.setOnClickListener{
 
 

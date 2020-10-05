@@ -26,7 +26,7 @@
         android:text="Имя - "
         android:textSize="25dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="165dp"
+        android:layout_marginLeft="180dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -39,7 +39,7 @@
         android:text="Логин - "
         android:textSize="25dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="165dp"
+        android:layout_marginLeft="180dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/NameInProfile"
         tools:ignore="MissingConstraints" />
@@ -68,8 +68,8 @@
 
     <ImageView
         android:id="@+id/ImageViewInProfile"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="46dp"
         android:src="@drawable/user"

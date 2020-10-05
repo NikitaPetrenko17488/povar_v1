@@ -31,14 +31,12 @@ class MainActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val bd: BitmapDrawable =resources.getDrawable(R.drawable.user) as BitmapDrawable
         var name_users= STORAGE.name
         var name =findViewById<TextView>(R.id.textViewNameforActivityMain)
         name.text=name_users
-        var circleImage =findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-        circleImage.downloadSetImage(STORAGE.photo)
         myRecept
         initFirebase()
+        circleImageViewForActivityMain.downloadSetImage(STORAGE.photo)
 
     }
 
@@ -49,7 +47,7 @@ class MainActivity :AppCompatActivity() {
         var name =findViewById<TextView>(R.id.textViewNameforActivityMain)
         name.text=name_users
         var circleImage =findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-
+       // circleImage.downloadSetImage(STORAGE.photo)
         // получаем navController
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.navFragment) as NavHostFragment? ?: return
@@ -74,42 +72,6 @@ class MainActivity :AppCompatActivity() {
 
     }
     ///////// при изменении картинки в профиле , засылаю на свервер и пихаю в базу
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode== CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode== Activity.RESULT_OK && data!=null)
-        {
-            val uri = CropImage.getActivityResult(data).uri
-            val path= REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
-                .child(STORAGE.ID)
-            path.putFile(uri).addOnCompleteListener {
-                if(it.isSuccessful)
-                {
-                    path.downloadUrl.addOnCompleteListener{
-                        if(it.isSuccessful){
-                            val photoUrl=it.result.toString()
-                            STORAGE.photo=photoUrl
-                            REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID)
-                                .child(CHIELD_PHOTO_USER_SRC).setValue(photoUrl).addOnCompleteListener {
-                                    if(it.isSuccessful)
-                                    {
-                                        Picasso.get()
-                                            .load(photoUrl)
-                                            .placeholder(R.drawable.user)   ////// запись в картинку
-                                            .into(circleImageViewForActivityMain)
-
-                                    }
-                                }
-
-                        }
-
-                    }
-                }
-
-            }
-        }
-
-    }
-
 
 
 

@@ -93,10 +93,13 @@ fun CircleImageView.downloadSetImage(url:String)
 
 fun ImageView.downloadSetImage(url: String)
 {
-    Picasso.get()
-        .load(url)
-        .placeholder(R.drawable.user)   ////// запись в картинку
-        .into(this)
+    if(url.isNotEmpty()) {
+        Picasso.get()
+            .load(url)
+            .placeholder(R.drawable.user)   ////// запись в картинку
+            .into(this)
+    }
+
 }
 
 

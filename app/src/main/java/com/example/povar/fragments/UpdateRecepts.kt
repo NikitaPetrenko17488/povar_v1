@@ -1,8 +1,8 @@
 package com.example.povar.fragments
 
+
 import android.app.Activity
-import android.graphics.drawable.BitmapDrawable
-import android.os.Build.ID
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.povar.R
@@ -34,8 +35,17 @@ class fragment3 : Fragment() {
         super.onStart()
         Avotzapolnenie()
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
+        ImageUpdateRecept.setOnClickListener {
+            changePhotoRecept()
+        }
 
-        image_src.setOnClickListener{ changePhotoRecept() }
+    }
+
+    private fun changePhotoRecept() {
+        CropImage.activity()
+            .setAspectRatio(1, 1)
+            .setRequestedSize(600, 600)
+            .start((activity as MainActivity), this)
     }
 
     private fun updateRecept() {
@@ -97,6 +107,9 @@ fun Avotzapolnenie()
     var avtozagrFormulaUpdateRecept=
         activity!!.findViewById<EditText>(R.id.EditTextFormulaUpdate)
     avtozagrFormulaUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
+    var avtozagrImageUpdateRecept=
+        activity!!.findViewById<ImageView>(R.id.ImageUpdateRecept)
+    avtozagrImageUpdateRecept.downloadSetImage(STORAGE_FOR_RECYCLE_RECEPT.photo)
 }
 
     override fun onStop() {
@@ -104,14 +117,45 @@ fun Avotzapolnenie()
 
      showUserNameAdnImage(activity!!)
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode== CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==Activity.RESULT_OK &&  data!=null)
+        {
+            val uri = CropImage.getActivityResult(data).uri
+            val path= REF_STORAGE_ROOT.child(FOLDER_IMAGE_RECEPT)
+                .child(STORAGE_FOR_RECYCLE_RECEPT.ID)
+            path.putFile(uri).addOnCompleteListener {
+                if(it.isSuccessful)
+                {
+                    path.downloadUrl.addOnCompleteListener{
+                        if(it.isSuccessful){
+                            val photoUrl=it.result.toString()
+                            STORAGE_FOR_RECYCLE_RECEPT.photo=photoUrl
+                            REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
+                                .child(CHIELD_PHOTO_RECEPT_SRC).setValue(photoUrl).addOnCompleteListener { task2->
+                                    if(task2.isSuccessful)
+                                    {
+
+
+                                    }
+                                }
+
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+    }
+
 }
 
 
 
-private fun changePhotoRecept() {
-//    CropImage.activity()
-//        .setAspectRatio(1,1)
-//        .setRequestedSize(600,600)
-//        .setCropShape(CropImageView.CropShape.OVAL)
-//        .start(activity as MainActivity)
-}
+
+
+
+

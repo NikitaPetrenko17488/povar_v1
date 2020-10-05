@@ -15,6 +15,8 @@ lateinit var UID:String
 const val  NODE_USERS = "users"
 const val NODE_RECEPTS = "recepts"
 const val FOLDER_PROFILE_IMAGE= "profile_image"
+const val FOLDER_IMAGE_RECEPT="image_recept"
+
 
 const val  CHIELD_RECEPT_INGRIDIENTS ="ingridients"
 const val  CHIELD_RECEPT_ID ="id"

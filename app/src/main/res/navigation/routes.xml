@@ -125,4 +125,9 @@
         android:name="com.example.povar.fragments.ViewOneReceptInRecycle"
         android:label="Рецепт"
         tools:layout="@layout/fragment_view_one_recept_in_recycle" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.povar.fragments.Settings"
+        android:label="Настройки"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

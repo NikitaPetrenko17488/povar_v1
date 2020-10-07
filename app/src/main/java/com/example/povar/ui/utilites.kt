@@ -21,6 +21,8 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.list_item_users.view.*
 
 fun Fragment.showToast(message:String)
 {
@@ -84,10 +86,21 @@ fun showUserNameAdnImage(activity: Activity)
 
 fun CircleImageView.downloadSetImage(url:String)
 {
-    Picasso.get()
-        .load(url)
-        .placeholder(R.drawable.recept)   ////// запись в картинку
-        .into(this)
+    if(url.isNotEmpty()) {
+        Picasso.get()
+            .load(url)
+            .placeholder(R.drawable.user)   ////// запись в картинку
+            .into(this)
+    }
+    else{
+
+        Picasso.get()
+            .load("https://firebasestorage.googleapis.com/v0/b/povar-ec909.appspot.com/o/profile_image%2Fuser.png?alt=media&token=8ac10e5d-520b-41ab-a926-51e70fb8064c")
+            .placeholder(R.drawable.user)   ////// запись в картинку
+            .into(this)
+    }
+
+
 
 }
 
@@ -101,5 +114,7 @@ fun ImageView.downloadSetImage(url: String)
     }
 
 }
+
+
 
 

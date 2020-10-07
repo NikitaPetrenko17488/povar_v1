@@ -3,6 +3,7 @@ package com.example.povar.activity
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
@@ -34,12 +35,12 @@ class MainActivity :AppCompatActivity() {
         var name_users= STORAGE.name
         var name =findViewById<TextView>(R.id.textViewNameforActivityMain)
         name.text=name_users
-        myRecept
         initFirebase()
         circleImageViewForActivityMain.downloadSetImage(STORAGE.photo)
-
+        MyReceptClick()
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
 
@@ -66,24 +67,62 @@ class MainActivity :AppCompatActivity() {
             navController.navigate(R.id.profileUsers)
 
         }
-
+            SettingsForActivity.setOnClickListener {
+                navController.navigate(R.id.settings)
+            }
             myRecept.setOnClickListener {
+                MyReceptClick()
+
                 navController.popBackStack()
                 navController.navigate(R.id.fragment5)
 
                 }
 
             AllRecept.setOnClickListener {
+               AllReceptClick()
                 navController.popBackStack()
                 navController.navigate(R.id.viewAllRecept)
+
                 }
 
 
+    }
 
+
+
+
+
+
+
+
+
+
+
+   @SuppressLint("ResourceAsColor")
+   fun MyReceptClick()
+   {
+       ViewLineMyRecept.setBackgroundColor(R.color.black)
+       ViewLineAllRecept.setBackgroundColor(0x00000000)
+       ViewLineDopFun.setBackgroundColor(0x00000000)
+
+       AllRecept.setTypeface(Typeface.DEFAULT)
+       myRecept.setTypeface(Typeface.DEFAULT_BOLD);
+       dopFunc.setTypeface(Typeface.DEFAULT)
+   }
+
+    @SuppressLint("ResourceAsColor")
+    fun AllReceptClick()
+    {
+        AllRecept.setTypeface(Typeface.DEFAULT_BOLD)
+        myRecept.setTypeface(Typeface.DEFAULT);
+        dopFunc.setTypeface(Typeface.DEFAULT)
+
+        ViewLineMyRecept.setBackgroundColor(0x00000000)
+        ViewLineAllRecept.setBackgroundColor(R.color.black)
+        ViewLineDopFun.setBackgroundColor(0x00000000)
 
 
     }
-    ///////// при изменении картинки в профиле , засылаю на свервер и пихаю в базу
 
 
 

@@ -54,7 +54,7 @@ class ProfileUsers : Fragment() {
 
         }
 
-        addPoka4to.setOnClickListener{replaceFragment(fragment2())}
+
 
         var name_user =
             activity!!.findViewById<View>(R.id.NameInProfile) as TextView
@@ -68,11 +68,7 @@ class ProfileUsers : Fragment() {
         name_user.text=name
         login_user.text=login
 
-        Exit.setOnClickListener{
 
-            startActivity(Intent(activity, RegistryActivity::class.java))
-
-        }
 
     }
 

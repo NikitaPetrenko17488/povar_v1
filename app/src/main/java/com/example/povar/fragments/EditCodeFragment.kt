@@ -1,12 +1,16 @@
 package com.example.povar.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.povar.R
 import com.example.povar.activity.AdminActivity
 import com.example.povar.activity.MainActivity
@@ -21,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_edit_code.*
 
 var Massiv_Users = mutableListOf<User>()
 
-class EditCodeFragment() : Fragment() {
+open class EditCodeFragment() : Fragment() {
 
 
 
@@ -70,6 +74,11 @@ class EditCodeFragment() : Fragment() {
         StartRegistry.setOnClickListener {  replaceFragment2(EditNumberFragment()) }
 
     }
+
+    fun ForTest()
+    {
+
+    }
     fun godAutentification() {
         button_next1.setOnClickListener {
         var boolLogin: Int = 0 /////////////////////////////////////////////////////////////
@@ -111,5 +120,20 @@ class EditCodeFragment() : Fragment() {
     }
         Massiv_Users.removeAll{true}
     }
+//                              TEEEEESSSSTTTTTT
+//        class MyRegistry:EditCodeFragment(){
+//
+//            fun Registry(login:String,OgidaemiyLogin:String):String{
+//                var auth:Boolean
+//                if (login.toString()==OgidaemiyLogin.toString()){
+//                   auth=true
+//                }
+//                else{ Log.d(" Неверный логин","0")
+//                auth=false
+//                }
+//
+//                return auth.toString()
+//            }
+//        }
 
 }

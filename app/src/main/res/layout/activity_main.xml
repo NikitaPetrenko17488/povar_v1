@@ -70,7 +70,7 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         android:layout_marginTop="110dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="60dp"
         app:navGraph="@navigation/routes"
         tools:layout="@layout/fragment_view1"
 

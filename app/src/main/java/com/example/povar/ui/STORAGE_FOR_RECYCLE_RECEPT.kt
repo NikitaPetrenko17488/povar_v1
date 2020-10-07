@@ -9,6 +9,7 @@ class STORAGE_FOR_RECYCLE_RECEPT {
         var photo = ""
         var formula = ""
         var ID=""
+        var user_id=""
 
     }
 }

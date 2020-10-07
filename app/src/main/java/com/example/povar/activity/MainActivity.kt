@@ -57,16 +57,28 @@ class MainActivity :AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
+        navController.popBackStack()
+        navController.navigate(R.id.fragment5)
+
         textViewNameforActivityMain.setOnClickListener{
             name.text=null
             circleImage.setImageDrawable(null)
             navController.navigate(R.id.profileUsers)
 
-
         }
 
-         navController.popBackStack()
-         navController.navigate(R.id.fragment5)
+            myRecept.setOnClickListener {
+                navController.popBackStack()
+                navController.navigate(R.id.fragment5)
+
+                }
+
+            AllRecept.setOnClickListener {
+                navController.popBackStack()
+                navController.navigate(R.id.viewAllRecept)
+                }
+
+
 
 
 

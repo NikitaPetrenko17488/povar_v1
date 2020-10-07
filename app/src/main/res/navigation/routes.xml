@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_fragment5_to_fragment4"
             app:destination="@id/fragment4" />
+        <action
+            android:id="@+id/action_fragment5_to_viewOneReceptInRecycle"
+            app:destination="@id/viewOneReceptInRecycle" />
     </fragment>
     <fragment
         android:id="@+id/editNumberFragment"
@@ -105,4 +108,21 @@
         android:name="com.example.povar.fragments.EditProfileUser"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/viewAllRecept"
+        android:name="com.example.povar.fragments.ViewAllRecept"
+        android:label="Все рецепты"
+        tools:layout="@layout/fragment_view_all_recept" >
+        <action
+            android:id="@+id/action_viewAllRecept_to_fragment5"
+            app:destination="@id/fragment5" />
+        <action
+            android:id="@+id/action_viewAllRecept_to_viewOneReceptInRecycle"
+            app:destination="@id/viewOneReceptInRecycle" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewOneReceptInRecycle"
+        android:name="com.example.povar.fragments.ViewOneReceptInRecycle"
+        android:label="Рецепт"
+        tools:layout="@layout/fragment_view_one_recept_in_recycle" />
 </navigation>

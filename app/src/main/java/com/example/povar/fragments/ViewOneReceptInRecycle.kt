@@ -10,8 +10,10 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.povar.R
+import com.example.povar.activity.MainActivity
 import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 import com.example.povar.ui.downloadSetImage
+import com.example.povar.ui.showUserNameAdnImage
 
 
 class ViewOneReceptInRecycle : Fragment() {
@@ -36,11 +38,13 @@ class ViewOneReceptInRecycle : Fragment() {
 
     }
 
-
+    override fun onStop() {
+        super.onStop()
+        showUserNameAdnImage(activity!!)
+    }
 
     fun Avotzapolnenie()
     {
-        Log.d(STORAGE_FOR_RECYCLE_RECEPT.name,"xuy")
 
         var avtozagrNameViewRecept=
             activity!!.findViewById<TextView>(R.id.EditTextNameView)
@@ -55,7 +59,6 @@ class ViewOneReceptInRecycle : Fragment() {
             activity!!.findViewById<ImageView>(R.id.ImageViewRecept)
         avtozagrImageUpdateRecept.downloadSetImage(STORAGE_FOR_RECYCLE_RECEPT.photo)
     }
-
 
 
 }

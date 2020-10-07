@@ -6,7 +6,7 @@
     <string name="nazvanie_forma2">Добавить рецепт </string>
     <string name="nazvanie_froma3">Изменить рецепт </string>
     <string name="nazvanie_forma4">удалить рецепт </string>
-    <string name="nazvanie_forma5">Рецепты </string>
+    <string name="nazvanie_forma5">Мои рецепты </string>
     <string name="name_recept"><b>Название: </b></string>
     <string name="ingridient_recept"><b>Ингридиенты: </b> </string>
     <string name="formula_recept"><b>Рецепт: </b></string>

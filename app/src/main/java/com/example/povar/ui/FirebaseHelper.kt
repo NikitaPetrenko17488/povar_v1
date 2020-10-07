@@ -23,6 +23,7 @@ const val  CHIELD_RECEPT_ID ="id"
 const val  CHIELD_RECEPT_NAME ="name"
 const val  CHIELD_RECEPT_FORMULA="formula"
 const val  CHIELD_PHOTO_RECEPT_SRC="photoUrl"
+const val  CHIELD_RECEPT_USER_ID="user_id"
 
 
 

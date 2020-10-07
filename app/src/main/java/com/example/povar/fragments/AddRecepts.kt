@@ -52,6 +52,7 @@ class fragment2 : Fragment() {
                 dateMap[CHIELD_RECEPT_NAME] = name
                 dateMap[CHIELD_RECEPT_INGRIDIENTS]=ingridients
                 dateMap[CHIELD_RECEPT_FORMULA] = formula
+                dateMap[CHIELD_RECEPT_USER_ID]=STORAGE.ID
 
 
                 REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMap)

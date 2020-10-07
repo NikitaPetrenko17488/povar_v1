@@ -86,7 +86,7 @@ fun CircleImageView.downloadSetImage(url:String)
 {
     Picasso.get()
         .load(url)
-        .placeholder(R.drawable.user)   ////// запись в картинку
+        .placeholder(R.drawable.recept)   ////// запись в картинку
         .into(this)
 
 }
@@ -96,7 +96,7 @@ fun ImageView.downloadSetImage(url: String)
     if(url.isNotEmpty()) {
         Picasso.get()
             .load(url)
-            .placeholder(R.drawable.user)   ////// запись в картинку
+            .placeholder(R.drawable.recept)   ////// запись в картинку
             .into(this)
     }
 

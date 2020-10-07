@@ -40,6 +40,11 @@ class MainActivity :AppCompatActivity() {
         MyReceptClick()
     }
 
+    override fun onStop() {
+        super.onStop()
+
+    }
+
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()

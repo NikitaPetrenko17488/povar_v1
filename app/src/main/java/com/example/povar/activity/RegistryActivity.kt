@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
 import com.example.povar.models.User
+import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 
 import com.example.povar.ui.initFirebase
 
@@ -24,6 +25,9 @@ class RegistryActivity: AppCompatActivity() {
         setContentView(R.layout.activity_regisry)
         initFirebase()
 
+
+
+
     }
 
     override fun onStart() {
@@ -35,5 +39,9 @@ class RegistryActivity: AppCompatActivity() {
     }
 
 
+fun Clear()
+{
 
+
+}
 }

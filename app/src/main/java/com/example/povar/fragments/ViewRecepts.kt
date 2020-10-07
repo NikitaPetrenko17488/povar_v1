@@ -75,6 +75,8 @@ class fragment5 : Fragment(),Click {
 
     override fun onStop() {
         super.onStop()
+        Massiv.removeAll { true }
+        counter=0
 
     }
 
@@ -89,22 +91,21 @@ class fragment5 : Fragment(),Click {
      class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
         private var mName: TextView? = null
-        private var mFormula: TextView? = null
+        private var mIngridients: TextView? = null
          private var mPhoto: ImageView? = null
 
         init {
 
             mName = itemView.findViewById(R.id.name_recept)
-            mFormula = itemView.findViewById(R.id.formula_recept)
+           // mIngridients = itemView.findViewById(R.id.formula_recept)
             mPhoto=itemView.findViewById(R.id.image_src)
 
         }
         fun bind(movie: Recept) {
 
             mName?.text = movie.name
-            mFormula?.text = movie.ingridients
+            //mIngridients?.text = movie.ingridients
             mPhoto?.downloadSetImage(movie.photoUrl)
-
         }
 
 

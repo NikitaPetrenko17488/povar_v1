@@ -103,6 +103,7 @@ class EditNumberFragment : Fragment() {
                                 .updateChildren(dateMap)
                                 STORAGE.name=name
                                 STORAGE.login=login
+                                STORAGE.ID=ID
                                 
 
                             startActivity(Intent(activity, MainActivity::class.java))

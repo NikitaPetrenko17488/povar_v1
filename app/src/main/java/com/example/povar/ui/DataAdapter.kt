@@ -44,7 +44,7 @@ class DataAdapter(private val list: MutableList<Recept>, private val click: Clic
 
 
 
-        holder.itemView.ViewRecept.setOnClickListener{
+        holder.itemView.kek.setOnClickListener{
             STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
             STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
@@ -94,7 +94,7 @@ class DataAdapterAll(private val list: MutableList<Recept>, private val clickAll
         holder.bind(movie)
 
 
-        holder.itemView.ViewRecept_All.setOnClickListener {
+        holder.itemView.Constraint_layout_all.setOnClickListener {
             STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
             STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients

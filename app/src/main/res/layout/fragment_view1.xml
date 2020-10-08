@@ -20,25 +20,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <Button
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="16dp"
                 android:id="@+id/addMyRecept"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Добавить рецепт"
-                android:textSize="18dp"
+                android:gravity="center"
+                android:textSize="15dp"
                 android:layout_gravity="center"
                 android:background="@null"
                 />
+
+
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recicle_view_recept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                android:layout_marginTop="4dp"
                 tools:listitem="@layout/list_item_recept">
 
             </androidx.recyclerview.widget.RecyclerView>

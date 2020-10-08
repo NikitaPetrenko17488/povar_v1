@@ -69,17 +69,17 @@ open class EditCodeFragment() : Fragment() {
             })
     }
 
-    fun startRegistry()
+    private fun startRegistry()
     {
         StartRegistry.setOnClickListener {  replaceFragment2(EditNumberFragment()) }
 
     }
 
-    fun ForTest()
-    {
-
-    }
-    fun godAutentification() {
+//    fun ForTest()
+//    {
+//
+//    }
+    private fun godAutentification() {
         button_next1.setOnClickListener {
         var boolLogin: Int = 0 /////////////////////////////////////////////////////////////
         var count = 0

@@ -25,12 +25,14 @@ import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
+
 class MainActivity :AppCompatActivity() {
 
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         var name_users= STORAGE.name
         var name =findViewById<TextView>(R.id.textViewNameforActivityMain)
@@ -38,6 +40,7 @@ class MainActivity :AppCompatActivity() {
         initFirebase()
         circleImageViewForActivityMain.downloadSetImage(STORAGE.photo)
         MyReceptClick()
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="My"
     }
 
     override fun onStop() {
@@ -67,8 +70,7 @@ class MainActivity :AppCompatActivity() {
         navController.navigate(R.id.fragment5)
 
         textViewNameforActivityMain.setOnClickListener{
-            name.text=null
-            circleImage.setImageDrawable(null)
+
             navController.navigate(R.id.profileUsers)
 
         }
@@ -77,13 +79,14 @@ class MainActivity :AppCompatActivity() {
             }
             myRecept.setOnClickListener {
                 MyReceptClick()
-
+                STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="My"
                 navController.popBackStack()
                 navController.navigate(R.id.fragment5)
 
                 }
 
             AllRecept.setOnClickListener {
+               STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="All"
                AllReceptClick()
                 navController.popBackStack()
                 navController.navigate(R.id.viewAllRecept)

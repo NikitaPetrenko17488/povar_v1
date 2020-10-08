@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
+import com.example.povar.ui.hideSearchForSettings
+import com.example.povar.ui.showSearchForSettings
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
@@ -20,6 +22,8 @@ class Settings : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        hideSearchForSettings(activity!!)
 
     }
 
@@ -42,9 +46,10 @@ class Settings : Fragment() {
         }
     }
 
-
-
-
+    override fun onStop() {
+        super.onStop()
+        showSearchForSettings(activity!!)
+    }
 }
 
 

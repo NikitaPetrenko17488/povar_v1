@@ -35,6 +35,7 @@ class EditProfileUser : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         name=STORAGE.name
+        hideUserNameAdnImage(activity!!)
 
     }
 
@@ -48,9 +49,7 @@ class EditProfileUser : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
         hideUserNameAdnImage(activity!!)
-
         var login =
             activity!!.findViewById<EditText>(R.id.LoginInProfileEdit)
         var name=

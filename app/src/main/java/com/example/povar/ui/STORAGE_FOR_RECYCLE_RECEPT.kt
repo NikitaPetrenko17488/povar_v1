@@ -10,6 +10,7 @@ class STORAGE_FOR_RECYCLE_RECEPT {
         var formula = ""
         var ID=""
         var user_id=""
+        var fragmentContext=""
 
     }
 }

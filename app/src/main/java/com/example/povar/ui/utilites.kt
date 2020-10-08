@@ -6,10 +6,8 @@ import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.media.Image
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -22,7 +20,9 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.list_item_recept.view.*
 import kotlinx.android.synthetic.main.list_item_users.view.*
+import kotlin.math.acos
 
 fun Fragment.showToast(message:String)
 {
@@ -60,6 +60,16 @@ fun Fragment.replaceFragment2(fragment: Fragment)
 
 fun hideUserNameAdnImage( activity:Activity)
 {
+    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
+    searchEditActivity.layoutParams.height=0
+    searchEditActivity.layoutParams.width=0
+
+    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+    searchButtonActivity.layoutParams.height=0
+    searchButtonActivity.layoutParams.width=0
+
+    val toolbar= activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
+    toolbar.layoutParams.height=160
     var nameUserInActivity =
         activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
     nameUserInActivity.text=null
@@ -72,6 +82,17 @@ fun hideUserNameAdnImage( activity:Activity)
 fun showUserNameAdnImage(activity: Activity)
 {
 
+    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
+    searchEditActivity.layoutParams.height=60
+    searchEditActivity.layoutParams.width=400
+
+    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+    searchButtonActivity.layoutParams.height=50
+    searchButtonActivity.layoutParams.width=50
+
+    val toolbar= activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
+    toolbar.layoutParams.height=310
+
     val bd: BitmapDrawable = activity!!.resources.getDrawable(R.drawable.user) as BitmapDrawable
     var name=STORAGE.name
     var nameUserInActivity =
@@ -79,7 +100,10 @@ fun showUserNameAdnImage(activity: Activity)
     nameUserInActivity.text=name
     var circleImage =
         activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-    circleImage.downloadSetImage(STORAGE.photo)
+    if(STORAGE.photo.isNotEmpty()) {
+        circleImage.downloadSetImage(STORAGE.photo)
+    }
+    else{circleImage.setBackgroundResource(R.drawable.user)}
 
 
 }
@@ -114,6 +138,29 @@ fun ImageView.downloadSetImage(url: String)
     }
 
 }
+fun hideSearchForSettings(activity: Activity)
+{
+    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
+    searchEditActivity.layoutParams.height=0
+    searchEditActivity.layoutParams.width=0
+
+    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+    searchButtonActivity.layoutParams.height=0
+    searchButtonActivity.layoutParams.width=0
+}
+
+fun showSearchForSettings(activity: Activity)
+{
+    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
+    searchEditActivity.layoutParams.height=60
+    searchEditActivity.layoutParams.width=400
+
+    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+    searchButtonActivity.layoutParams.height=50
+    searchButtonActivity.layoutParams.width=50
+}
+
+
 
 
 

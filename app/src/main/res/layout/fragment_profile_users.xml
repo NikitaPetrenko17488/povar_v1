@@ -22,7 +22,9 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:text="Логин - "
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NameTextInProfie"
@@ -33,7 +35,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/ocenka"
                app:layout_constraintTop_toBottomOf="@id/count_recept_for_user" />
 
@@ -43,7 +46,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Кол-во рецептов: "
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/LoginTextInProfie" />
@@ -55,28 +60,31 @@
                 android:layout_marginTop="16dp"
                 android:text="Средняя оценка: "
              android:layout_marginStart="16dp"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/count_recept_for_user" />
 
             <Button
+               android:background="@drawable/megaoval"
                 android:id="@+id/EditProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Редактировать профиль"
+                android:layout_marginTop="20dp"
+                android:text=" Редактировать "
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ocenka"
                 tools:ignore="MissingConstraints" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ImageViewInProfile"
-                android:layout_width="245dp"
-                android:layout_height="245dp"
-                android:layout_marginTop="30dp"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
                 android:src="@drawable/user"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -86,9 +94,11 @@
                 android:id="@+id/NameTextInProfie"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="Имя - "
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ImageViewInProfile" />
@@ -97,32 +107,36 @@
                 android:id="@+id/NameInProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:textColor="@color/black"
 
-                android:layout_marginTop="30dp"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 app:layout_constraintStart_toEndOf="@+id/NameTextInProfie"
-                app:layout_constraintTop_toBottomOf="@+id/ImageViewInProfile" />
+                app:layout_constraintTop_toTopOf="@id/NameTextInProfie"
+                app:layout_constraintBottom_toBottomOf="@+id/NameTextInProfie"
+                />
 
             <TextView
                 android:id="@+id/LoginInProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 app:layout_constraintTop_toBottomOf="@id/NameInProfile"
-               android:layout_marginTop="16dp"
-                android:textSize="25dp"
+
+                android:textSize="20dp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/LoginTextInProfie"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="351dp" />
+               app:layout_constraintTop_toTopOf="@id/LoginTextInProfie"
+                app:layout_constraintBottom_toBottomOf="@id/LoginTextInProfie"
+                />
 
             <TextView
                 android:id="@+id/count_recept_for_user_4islo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/LoginInProfile"
-
-
-                android:textSize="25dp"
+                android:textSize="20dp"
                 app:layout_constraintStart_toEndOf="@+id/count_recept_for_user"
                 tools:layout_editor_absoluteY="397dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.povar.fragments
 import DataAdapter
 import DataAdapterAll
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 import kotlinx.android.synthetic.main.fragment_view_all_recept.*
 
@@ -47,6 +49,7 @@ class ViewAllRecept : Fragment(),ClickAll {
     override fun onStart() {
         super.onStart()
         initRecepts()
+        activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
     }
 
     override fun onCreateView(
@@ -127,6 +130,49 @@ class ViewAllRecept : Fragment(),ClickAll {
        // replaceFragment(ViewOneReceptInRecycle())
 
         hideUserNameAdnImage(activity!!)
+    }
+
+   private fun SearchAllRecept() {
+        if (STORAGE_FOR_RECYCLE_RECEPT.fragmentContext == "All") {
+            counter = 0
+            Massiv.removeAll { true }
+
+            REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
+                        showToast("Нет подключения к базе..")
+                    }
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (snapshot: DataSnapshot in dataSnapshot.children) {
+                            val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+
+                            var vxodStroki: String
+                            vxodStroki = activity!!.SearchRecept.text.toString()
+                            Log.d(vxodStroki, "xuy")
+                            Log.d(recept.ingridients.toString(), "xuy2")
+                            var indexIngridient: Boolean = recept.ingridients.contains(vxodStroki)
+                            Log.d(indexIngridient.toString(), "xuy3")
+
+                            if (indexIngridient == true) {
+                                Massiv.add(recept)
+                            } else if (vxodStroki.isEmpty()) {
+
+                                    Massiv.add(recept)
+
+                            }
+
+
+                            counter++
+
+                            if (counter > 0)
+                                create_recycleAll()
+                        }
+
+                    }
+
+                })
+        }
     }
 
 }

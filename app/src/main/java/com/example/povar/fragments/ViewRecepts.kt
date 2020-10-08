@@ -3,6 +3,7 @@ package com.example.povar.fragments
 import DataAdapter
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
+
 
 import com.example.povar.models.Recept
 import com.example.povar.ui.*
@@ -70,6 +72,7 @@ class fragment5 : Fragment(),Click {
 
 
         addMyRecept.setOnClickListener{replaceFragment(fragment2())}
+        activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
 
     }
 
@@ -181,6 +184,48 @@ class fragment5 : Fragment(),Click {
     }
 
 
+  private  fun SearchMyRecept() {
+        if (STORAGE_FOR_RECYCLE_RECEPT.fragmentContext == "My") {
+            counter = 0
+            Massiv.removeAll { true }
 
+            REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
+                        showToast("Нет подключения к базе..")
+                    }
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (snapshot: DataSnapshot in dataSnapshot.children) {
+                            val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+
+                            var vxodStroki: String
+                            vxodStroki = activity!!.SearchRecept.text.toString()
+                            Log.d(vxodStroki, "xuy")
+                            Log.d(recept.ingridients.toString(), "xuy2")
+                            var indexIngridient: Boolean = recept.ingridients.contains(vxodStroki)
+                            Log.d(indexIngridient.toString(), "xuy3")
+
+                            if (recept.user_id == STORAGE.ID && indexIngridient == true) {
+                                Massiv.add(recept)
+                            } else if (vxodStroki.isEmpty()) {
+
+                                if (recept.user_id == STORAGE.ID) {
+                                    Massiv.add(recept)
+                                }
+                            }
+
+
+                            counter++
+
+                            if (counter > 0)
+                                create_recycle()
+                        }
+
+                    }
+
+                })
+        }
+    }
 
 }

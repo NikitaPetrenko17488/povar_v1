@@ -93,6 +93,14 @@ class MainActivity :AppCompatActivity() {
 
                 }
 
+            dopFunc.setOnClickListener {
+                DopClick()
+                navController.popBackStack()
+                navController.navigate(R.id.kalorii)
+
+
+            }
+
 
     }
 
@@ -129,7 +137,18 @@ class MainActivity :AppCompatActivity() {
         ViewLineAllRecept.setBackgroundColor(R.color.black)
         ViewLineDopFun.setBackgroundColor(0x00000000)
 
+    }
 
+    @SuppressLint("ResourceAsColor")
+    fun DopClick()
+    {
+        AllRecept.setTypeface(Typeface.DEFAULT)
+        myRecept.setTypeface(Typeface.DEFAULT);
+        dopFunc.setTypeface(Typeface.DEFAULT_BOLD)
+
+        ViewLineMyRecept.setBackgroundColor(0x00000000)
+        ViewLineAllRecept.setBackgroundColor(0x00000000)
+        ViewLineDopFun.setBackgroundColor(R.color.black)
     }
 
 

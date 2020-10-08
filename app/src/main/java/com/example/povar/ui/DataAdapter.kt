@@ -2,6 +2,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.fragments.*
+import com.example.povar.models.Calorii
 
 import com.example.povar.models.Recept
 import com.example.povar.models.User
@@ -102,6 +103,28 @@ class DataAdapterAll(private val list: MutableList<Recept>, private val clickAll
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
             clickAll.viewRecycle()
         }
+
+    }
+    override fun getItemCount(): Int = list.size
+
+}
+
+
+class DataAdapterCalorii(private val list: MutableList<Calorii>)
+    : RecyclerView.Adapter<Kalorii.MovieViewHolderCalorii>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Kalorii.MovieViewHolderCalorii {
+
+        val inflater = LayoutInflater.from(parent.context)
+        return Kalorii.MovieViewHolderCalorii(inflater, parent)
+    }
+    override fun onBindViewHolder(holder: Kalorii.MovieViewHolderCalorii, position: Int) {
+
+        val movie: Calorii = list[position]
+        holder.bind(movie)
+
+
 
     }
     override fun getItemCount(): Int = list.size

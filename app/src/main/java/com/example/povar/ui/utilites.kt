@@ -1,28 +1,17 @@
 package com.example.povar.ui
 
 import android.app.Activity
-import android.content.ComponentName
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.media.Image
+import android.util.TypedValue
+import android.view.View
 import android.widget.*
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import com.example.povar.R
-import com.example.povar.models.User
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.list_item_recept.view.*
-import kotlinx.android.synthetic.main.list_item_users.view.*
-import kotlin.math.acos
+
 
 fun Fragment.showToast(message:String)
 {
@@ -60,16 +49,16 @@ fun Fragment.replaceFragment2(fragment: Fragment)
 
 fun hideUserNameAdnImage( activity:Activity)
 {
+    var heightVerx=convert.pxFromDp(activity!!,70F)
     val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.layoutParams.height=0
-    searchEditActivity.layoutParams.width=0
+    searchEditActivity.setVisibility(View.INVISIBLE)
 
     val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.layoutParams.height=0
-    searchButtonActivity.layoutParams.width=0
+    searchButtonActivity.setVisibility(View.INVISIBLE)
 
     val toolbar= activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
-    toolbar.layoutParams.height=160
+        toolbar.layoutParams.height=heightVerx.toInt()
+
     var nameUserInActivity =
         activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
     nameUserInActivity.text=null
@@ -81,17 +70,16 @@ fun hideUserNameAdnImage( activity:Activity)
 
 fun showUserNameAdnImage(activity: Activity)
 {
-
+    var heightVerx=convert.pxFromDp(activity!!,120F)
     val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.layoutParams.height=60
-    searchEditActivity.layoutParams.width=400
+    searchEditActivity.setVisibility(View.VISIBLE)
 
     val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.layoutParams.height=50
-    searchButtonActivity.layoutParams.width=50
+    searchButtonActivity.setVisibility(View.VISIBLE)
 
     val toolbar= activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
-    toolbar.layoutParams.height=310
+    toolbar.layoutParams.height=heightVerx.toInt()
+
 
     val bd: BitmapDrawable = activity!!.resources.getDrawable(R.drawable.user) as BitmapDrawable
     var name=STORAGE.name
@@ -141,23 +129,19 @@ fun ImageView.downloadSetImage(url: String)
 fun hideSearchForSettings(activity: Activity)
 {
     val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.layoutParams.height=0
-    searchEditActivity.layoutParams.width=0
+    searchEditActivity.setVisibility(View.INVISIBLE)
 
     val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.layoutParams.height=0
-    searchButtonActivity.layoutParams.width=0
+    searchButtonActivity.setVisibility(View.INVISIBLE)
 }
 
 fun showSearchForSettings(activity: Activity)
 {
     val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.layoutParams.height=60
-    searchEditActivity.layoutParams.width=400
+    searchEditActivity.setVisibility(View.VISIBLE)
 
     val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.layoutParams.height=50
-    searchButtonActivity.layoutParams.width=50
+    searchButtonActivity.setVisibility(View.VISIBLE)
 }
 
 

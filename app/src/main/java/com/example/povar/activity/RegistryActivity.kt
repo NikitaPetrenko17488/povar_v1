@@ -27,21 +27,13 @@ class RegistryActivity: AppCompatActivity() {
 
 
 
-
     }
 
     override fun onStart() {
         super.onStart()
 
 
-
-
     }
 
 
-fun Clear()
-{
-
-
-}
 }

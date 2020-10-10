@@ -128,7 +128,10 @@ class fragment5 : Fragment(),Click {
        }
        else
        {
-         //  activity!!.ToastNoRecepts.text=" "
+           if(activity!=null) {
+               activity!!.ToastNoRecepts.text = " "
+           }
+       }
            if(recicle_view_recept!=null){
                 activity!!.recicle_view_recept.apply {
                     layoutManager = LinearLayoutManager(activity)
@@ -136,7 +139,7 @@ class fragment5 : Fragment(),Click {
 
                 }
            }
-       }
+
 
 
    }

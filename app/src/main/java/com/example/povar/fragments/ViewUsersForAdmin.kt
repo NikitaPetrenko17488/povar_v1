@@ -1,6 +1,7 @@
 package com.example.povar.fragments
 
 import DataAdapterUsers
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,11 +14,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
+import com.example.povar.activity.RegistryActivity
 import com.example.povar.models.User
-import com.example.povar.ui.NODE_USERS
-import com.example.povar.ui.REF_DABATABSE_ROOT
-import com.example.povar.ui.downloadSetImage
-import com.example.povar.ui.showToast
+import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -64,6 +63,7 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
     override fun onStart() {
         super.onStart()
         initUsers()
+        ExitForAdmin.setOnClickListener { startActivity(Intent(activity, RegistryActivity::class.java)) }
     }
 
     fun create_recycle() {
@@ -131,7 +131,11 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
     }
 
     override fun DeletteUser() {
-
+        REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE_USERS_FOR_ADMIN.ID)
+            .removeValue { error, ref ->  }
+        Massiv_Users2.removeAll { true }
+        counter2=0
+        initUsers()
     }
 
 }

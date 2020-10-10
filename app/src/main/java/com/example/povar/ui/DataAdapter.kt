@@ -75,14 +75,18 @@ class DataAdapterUsers(private val list: MutableList<User>,private val ClickAdmi
         val movie2: User = list[position]
 
         holder.itemView.buttonGlaz.setOnClickListener {
-            ClickAdmin.ViewUser()
             STORAGE_USERS_FOR_ADMIN.ID=movie2.id
             STORAGE_USERS_FOR_ADMIN.counter_recept=movie2.counter_recept
             STORAGE_USERS_FOR_ADMIN.login=movie2.login
             STORAGE_USERS_FOR_ADMIN.name=movie2.name
             STORAGE_USERS_FOR_ADMIN.photo=movie2.photoUrl
             STORAGE_USERS_FOR_ADMIN.password=movie2.password
+            ClickAdmin.ViewUser()
 
+        }
+        holder.itemView.buttonDelite.setOnClickListener {
+            STORAGE_USERS_FOR_ADMIN.ID=movie2.id
+            ClickAdmin.DeletteUser()
         }
         holder.bind(movie2)
     }

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import com.example.povar.R
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
@@ -46,6 +47,7 @@ fun Fragment.replaceFragment2(fragment: Fragment)
 }
 
 
+
 fun hideUserNameAdnImage( activity:Activity)
 {
     if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
@@ -57,7 +59,11 @@ fun hideUserNameAdnImage( activity:Activity)
         searchButtonActivity.setVisibility(View.INVISIBLE)
 
         val toolbar = activity.findViewById<LinearLayout>(R.id.LinearActivity)
+        //toolbar.setVisibility(View.GONE)
         toolbar.layoutParams.height = heightVerx.toInt()
+
+
+
 
         var nameUserInActivity =
             activity.findViewById<TextView>(R.id.textViewNameforActivityMain)

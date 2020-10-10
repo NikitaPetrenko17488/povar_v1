@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.fragment2">
+    tools:context=".fragments.fragment2"
+    android:background="@drawable/fon_na_fragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -21,6 +22,7 @@
 
            <de.hdodenhof.circleimageview.CircleImageView
                android:id="@+id/ImageAdd"
+               android:layout_marginTop="26dp"
                android:src="@drawable/recept"
                android:layout_width="150dp"
                android:layout_height="150dp"

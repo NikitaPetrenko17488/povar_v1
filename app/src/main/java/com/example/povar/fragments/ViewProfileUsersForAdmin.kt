@@ -101,11 +101,12 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
                 activity!!.ToastNoReceptsUserForAdmin.text = " Нет рецептов "
             }
         }
-        else
-        {   if(activity!=null) {
+        else {
+            if(activity!=null) {
             activity!!.ToastNoReceptsUserForAdmin.text = " "
+            }
         }
-            if(rvReceptsUserForAdmin!=null){
+        if(rvReceptsUserForAdmin!=null){
             rvReceptsUserForAdmin.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = DataAdapterReceptsUserForAdmin(
@@ -113,8 +114,6 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
                     this@ViewProfileUsersForAdmin
                 )
             }
-        }
-
 
         }
 
@@ -136,7 +135,7 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
                         }
                         counterReceptUserForAdmin++
 
-                        if (counterReceptUserForAdmin>0)
+                        if (counterReceptUserForAdmin>=0)
                             create_recycle()
                     }
 
@@ -156,7 +155,11 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
     }
 
     override fun DeletteReceptsUserForAdmin() {
-        TODO("Not yet implemented")
+        REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
+            .removeValue { error, ref ->  }
+        MassivReceptUserForAdmin.removeAll { true }
+        counterReceptUserForAdmin=0
+        initBase()
     }
 
 }

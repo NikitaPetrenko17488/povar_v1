@@ -4,18 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.Settings">
+    tools:context=".fragments.Settings"
+    android:background="@drawable/fon_na_fragment">
 
     <Button
+
         android:id="@+id/Exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Выход"
-        android:background="@null"
+        android:background="@drawable/megaoval"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="66dp"
         />
 
     <Switch
@@ -24,7 +26,7 @@
         android:id="@+id/switchTemnayaTema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="76dp"
         android:layout_marginStart="16dp"
         android:textSize="20dp"
         android:text="Темная тема "

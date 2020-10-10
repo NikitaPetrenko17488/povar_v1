@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileUsers"
+    android:background="@drawable/fon_na_fragment"
     >
 
 
@@ -81,6 +82,7 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ImageViewInProfile"
+                android:layout_marginTop="26dp"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
                 android:src="@drawable/user"

@@ -1,17 +1,15 @@
 package com.example.povar.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.povar.R
-import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ViewOneReceptInRecycle : Fragment() {
@@ -20,6 +18,9 @@ class ViewOneReceptInRecycle : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        hideSettings(activity!!)
+        hideSearch(activity!!)
+        hideUserNameAdnImage(activity!!)
 
     }
 
@@ -34,14 +35,15 @@ class ViewOneReceptInRecycle : Fragment() {
     override fun onStart() {
         super.onStart()
         Avotzapolnenie()
-        hideSearchForSettings(activity!!)
+
+        hideSettings(activity!!)
+        hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
 
     }
 
     override fun onStop() {
         super.onStop()
-        showUserNameAdnImage(activity!!)
     }
 
     fun Avotzapolnenie()

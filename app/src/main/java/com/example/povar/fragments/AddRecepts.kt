@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.povar.R
 import com.example.povar.ui.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add.*
 
 class fragment2 : Fragment() {
@@ -17,13 +18,19 @@ class fragment2 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
+        hideSettings(activity!!)
+        hideSearch(activity!!)
+        hideUserNameAdnImage(activity!!)
 
     }
 
     override fun onStart() {
         super.onStart()
+
+        hideSettings(activity!!)
+        hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+
         button_add.setOnClickListener { addRecept() }  // если клик по кнопке вызвать метод
     }
 

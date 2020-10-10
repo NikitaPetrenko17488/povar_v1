@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 fun Fragment.showToast(message:String)
@@ -48,14 +49,14 @@ fun Fragment.replaceFragment2(fragment: Fragment)
 fun hideUserNameAdnImage( activity:Activity)
 {
     if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
-        var heightVerx = convert.pxFromDp(activity!!, 70F)
-        val searchEditActivity = activity!!.findViewById<EditText>(R.id.SearchRecept)
+        var heightVerx = convert.pxFromDp(activity, 70F)
+        val searchEditActivity = activity.findViewById<EditText>(R.id.SearchRecept)
         searchEditActivity.setVisibility(View.INVISIBLE)
 
-        val searchButtonActivity = activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+        val searchButtonActivity = activity.findViewById<ImageView>(R.id.SearchReceptButton)
         searchButtonActivity.setVisibility(View.INVISIBLE)
 
-        val toolbar = activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
+        val toolbar = activity.findViewById<LinearLayout>(R.id.LinearActivity)
         toolbar.layoutParams.height = heightVerx.toInt()
 
         var nameUserInActivity =
@@ -103,14 +104,11 @@ fun CircleImageView.downloadSetImage(url:String)
             .into(this)
     }
     else{
-
         Picasso.get()
             .load("https://firebasestorage.googleapis.com/v0/b/povar-ec909.appspot.com/o/profile_image%2Fuser.png?alt=media&token=8ac10e5d-520b-41ab-a926-51e70fb8064c")
             .placeholder(R.drawable.user)   ////// запись в картинку
             .into(this)
     }
-
-
 
 }
 
@@ -126,22 +124,36 @@ fun ImageView.downloadSetImage(url: String)
 }
 
 
-fun hideSearchForSettings(activity: Activity)
+fun hideSettings(activity: Activity)
 {
-    val searchEditActivity=activity.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.setVisibility(View.INVISIBLE)
-
-    val searchButtonActivity=activity.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.setVisibility(View.INVISIBLE)
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main")
+    activity.SettingsForActivity.setVisibility(View.INVISIBLE)
 }
 
-fun showSearchForSettings(activity: Activity)
+fun showSettings(activity: Activity)
 {
-    val searchEditActivity=activity.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.setVisibility(View.VISIBLE)
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main")
+        activity.SettingsForActivity.setVisibility(View.VISIBLE)
+}
 
-    val searchButtonActivity=activity.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.setVisibility(View.VISIBLE)
+fun hideSearch(activity: Activity)
+{
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+        val searchEditActivity = activity.findViewById<EditText>(R.id.SearchRecept)
+        searchEditActivity.setVisibility(View.INVISIBLE)
+        val searchButtonActivity = activity.findViewById<ImageView>(R.id.SearchReceptButton)
+        searchButtonActivity.setVisibility(View.INVISIBLE)
+    }
+}
+
+fun showSearch(activity: Activity)
+{
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+        val searchEditActivity = activity.findViewById<EditText>(R.id.SearchRecept)
+        searchEditActivity.setVisibility(View.VISIBLE)
+        val searchButtonActivity = activity.findViewById<ImageView>(R.id.SearchReceptButton)
+        searchButtonActivity.setVisibility(View.VISIBLE)
+    }
 }
 
 

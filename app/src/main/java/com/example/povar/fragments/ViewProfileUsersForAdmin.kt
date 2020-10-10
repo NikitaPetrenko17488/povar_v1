@@ -97,15 +97,24 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
     fun create_recycle() {
 
         if (MassivReceptUserForAdmin.isEmpty()){
-            ToastNoReceptsUserForAdmin.text=" Нет рецептов "
+            if (activity!=null) {
+                activity!!.ToastNoReceptsUserForAdmin.text = " Нет рецептов "
+            }
         }
         else
-        {
-            ToastNoReceptsUserForAdmin.text=" "
+        {   if(activity!=null) {
+            activity!!.ToastNoReceptsUserForAdmin.text = " "
         }
+            if(rvReceptsUserForAdmin!=null){
             rvReceptsUserForAdmin.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = DataAdapterReceptsUserForAdmin(MassivReceptUserForAdmin,this@ViewProfileUsersForAdmin)
+                layoutManager = LinearLayoutManager(activity)
+                adapter = DataAdapterReceptsUserForAdmin(
+                    MassivReceptUserForAdmin,
+                    this@ViewProfileUsersForAdmin
+                )
+            }
+        }
+
 
         }
 

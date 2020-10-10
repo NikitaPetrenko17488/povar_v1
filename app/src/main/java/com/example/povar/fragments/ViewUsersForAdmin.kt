@@ -21,6 +21,7 @@ import com.example.povar.ui.showToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_view1.*
 import kotlinx.android.synthetic.main.view_users_for_admin.*
 
@@ -66,19 +67,20 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
     }
 
     fun create_recycle() {
-
+            if(recicle_view_users!=null){
         recicle_view_users.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = DataAdapterUsers(Massiv_Users2,this@ViewUsersForAdmin)
-
+            adapter = DataAdapterUsers(Massiv_Users2, this@ViewUsersForAdmin)
         }
+    }
+
 
     }
     class MovieViewHolder2(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_users, parent, false)) {
         private var mName: TextView? = null
         private var mLogin: TextView? = null
-        private var mPhoto:ImageView?= null
+        private var mPhoto: CircleImageView?= null
 
         init {
             mName = itemView.findViewById(R.id.textViewNameForAdmin)

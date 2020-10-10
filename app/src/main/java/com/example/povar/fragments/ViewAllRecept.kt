@@ -1,9 +1,7 @@
 package com.example.povar.fragments
 
-import DataAdapter
 import DataAdapterAll
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +18,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_view1.*
 import kotlinx.android.synthetic.main.fragment_view_all_recept.*
 
 private var Massiv = mutableListOf<Recept>()
@@ -36,8 +33,11 @@ class ViewAllRecept : Fragment(),ClickAll {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
-        showSearchForSettings(activity!!)
+
+        showSettings(activity!!)
+        showSearch(activity!!)
+        showUserNameAdnImage(activity!!)
+
         Massiv.removeAll { true }
         counterAll=0
     }
@@ -50,7 +50,11 @@ class ViewAllRecept : Fragment(),ClickAll {
 
     override fun onStart() {
         super.onStart()
-        showSearchForSettings(activity!!)
+
+        showSettings(activity!!)
+        showSearch(activity!!)
+        showUserNameAdnImage(activity!!)
+
         initRecepts()
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
     }
@@ -68,9 +72,10 @@ class ViewAllRecept : Fragment(),ClickAll {
     fun create_recycleAll() {
 
         recicle_view_receptAll.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = DataAdapterAll(Massiv,this@ViewAllRecept)
-
+            if(recicle_view_receptAll!=null) {
+                layoutManager = LinearLayoutManager(activity)
+                adapter = DataAdapterAll(Massiv, this@ViewAllRecept)
+            }
         }
 
     }
@@ -132,7 +137,6 @@ class ViewAllRecept : Fragment(),ClickAll {
         findNavController().navigate(R.id.viewOneReceptInRecycle)
        // replaceFragment(ViewOneReceptInRecycle())
 
-        hideUserNameAdnImage(activity!!)
     }
 
    private fun SearchAllRecept() {

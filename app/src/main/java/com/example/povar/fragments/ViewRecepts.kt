@@ -20,6 +20,7 @@ import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.internal.Sleeper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 
@@ -45,8 +46,11 @@ class fragment5 : Fragment(),Click {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
-        showSearchForSettings(activity!!)
+
+        showSettings(activity!!)
+        showSearch(activity!!)
+        showUserNameAdnImage(activity!!)
+
         Massiv.removeAll { true }
         counter=0
 
@@ -63,9 +67,12 @@ class fragment5 : Fragment(),Click {
     }
 
     override fun onStart() {
-
         super.onStart()
-        showSearchForSettings(activity!!)
+
+        showSettings(activity!!)
+        showSearch(activity!!)
+        showUserNameAdnImage(activity!!)
+
          initRecepts()
 
         addMyRecept.setOnClickListener{replaceFragment(fragment2())}
@@ -80,10 +87,14 @@ class fragment5 : Fragment(),Click {
 
     }
 
+
+
     override fun onPause() {
         super.onPause()
+
         Massiv.removeAll { true }
         counter=0
+
 
 
     }
@@ -91,13 +102,11 @@ class fragment5 : Fragment(),Click {
      class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
         private var mName: TextView? = null
-        private var mIngridients: TextView? = null
          private var mPhoto: ImageView? = null
 
         init {
 
             mName = itemView.findViewById(R.id.name_recept)
-           // mIngridients = itemView.findViewById(R.id.formula_recept)
             mPhoto=itemView.findViewById(R.id.image_src)
 
         }
@@ -113,19 +122,22 @@ class fragment5 : Fragment(),Click {
 
 
    fun create_recycle() {
-
+        //recicle_view_recept
        if (Massiv.isEmpty()){
-           ToastNoRecepts.text=" Нет рецептов "
+           activity!!.ToastNoRecepts.text=" Нет рецептов "
        }
        else
        {
-           ToastNoRecepts.text=""
-       }
-                    recicle_view_recept.apply {
-                        layoutManager = LinearLayoutManager(activity)
-                        adapter = DataAdapter(Massiv,this@fragment5)
+         //  activity!!.ToastNoRecepts.text=" "
+           if(recicle_view_recept!=null){
+                activity!!.recicle_view_recept.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = DataAdapter(Massiv, this@fragment5)
 
-                    }
+                }
+           }
+       }
+
 
    }
 
@@ -154,7 +166,6 @@ class fragment5 : Fragment(),Click {
 
             })
 
-
     }
 
 
@@ -163,7 +174,6 @@ class fragment5 : Fragment(),Click {
     override fun updateRecycle() {
        replaceFragment(fragment3())
 
-        hideUserNameAdnImage(activity!!)
 
     }
 
@@ -183,9 +193,8 @@ class fragment5 : Fragment(),Click {
 
     override fun viewRecycle() {
         findNavController().navigate(R.id.viewOneReceptInRecycle)
-      //replaceFragment(ViewOneReceptInRecycle())
 
-        hideUserNameAdnImage(activity!!)
+
     }
 
 
@@ -206,10 +215,8 @@ class fragment5 : Fragment(),Click {
 
                             var vxodStroki: String
                             vxodStroki = activity!!.SearchRecept.text.toString()
-                            Log.d(vxodStroki, "xuy")
-                            Log.d(recept.ingridients.toString(), "xuy2")
+
                             var indexIngridient: Boolean = recept.ingridients.contains(vxodStroki)
-                            Log.d(indexIngridient.toString(), "xuy3")
 
                             if (recept.user_id == STORAGE.ID && indexIngridient == true) {
                                 Massiv.add(recept)

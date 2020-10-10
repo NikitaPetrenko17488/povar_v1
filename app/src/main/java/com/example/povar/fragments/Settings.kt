@@ -3,17 +3,15 @@ package com.example.povar.fragments
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
-import com.example.povar.ui.hideSearchForSettings
-import com.example.povar.ui.showSearchForSettings
+import com.example.povar.ui.hideSearch
+import com.example.povar.ui.hideSettings
+import com.example.povar.ui.showUserNameAdnImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 
@@ -23,8 +21,9 @@ class Settings : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        hideSearchForSettings(activity!!)
+        showUserNameAdnImage(activity!!)
+        hideSearch(activity!!)
+       hideSettings(activity!!)
 
     }
 
@@ -39,17 +38,18 @@ class Settings : Fragment() {
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
+        showUserNameAdnImage(activity!!)
+        hideSearch(activity!!)
+        hideSettings(activity!!)
+
         Exit.setOnClickListener{
 
             startActivity(Intent(activity, RegistryActivity::class.java))
-
-
         }
     }
 
     override fun onStop() {
         super.onStop()
-        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
 
     }
 }

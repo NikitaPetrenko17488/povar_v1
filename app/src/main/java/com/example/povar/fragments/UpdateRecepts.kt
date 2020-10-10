@@ -16,6 +16,7 @@ import com.example.povar.R
 import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
 import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_update.*
 
 
@@ -25,13 +26,20 @@ class fragment3 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        hideSettings(activity!!)
+        hideSearch(activity!!)
+        hideUserNameAdnImage(activity!!)
+
     }
 
     override fun onStart() {
         super.onStart()
         Avotzapolnenie()
-        hideSearchForSettings(activity!!)
+
+        hideSettings(activity!!)
+        hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
         ImageUpdateRecept.setOnClickListener {
             changePhotoRecept()
@@ -116,7 +124,6 @@ fun Avotzapolnenie()
     override fun onStop() {
         super.onStop()
 
-     showUserNameAdnImage(activity!!)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

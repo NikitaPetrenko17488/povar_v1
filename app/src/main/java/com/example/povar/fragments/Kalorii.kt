@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Calorii
-import com.example.povar.ui.hideSearchForSettings
-import com.example.povar.ui.showSearchForSettings
+import com.example.povar.ui.hideSearch
+import com.example.povar.ui.showSettings
+import com.example.povar.ui.showUserNameAdnImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_kalorii.*
 
@@ -44,8 +45,10 @@ class Kalorii : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
-        hideSearchForSettings(activity!!)
+
+        showSettings(activity!!)
+        showUserNameAdnImage(activity!!)
+        hideSearch(activity!!)
 
     }
 
@@ -54,14 +57,15 @@ class Kalorii : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_kalorii, container, false)
-
-
     }
 
 
     override fun onStart() {
         super.onStart()
 
+        showSettings(activity!!)
+        showUserNameAdnImage(activity!!)
+        hideSearch(activity!!)
 
         create_recycle()
     }

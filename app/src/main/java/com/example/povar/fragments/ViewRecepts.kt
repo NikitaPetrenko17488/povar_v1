@@ -1,16 +1,13 @@
 package com.example.povar.fragments
 
 import DataAdapter
-import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +21,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile_users.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 
 interface Click
@@ -39,7 +35,7 @@ interface Click
 
 
 private var Massiv = mutableListOf<Recept>()
-    var counter:Int =0
+  var counter:Int =0
 
 
 
@@ -49,6 +45,8 @@ class fragment5 : Fragment(),Click {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
+        showSearchForSettings(activity!!)
         Massiv.removeAll { true }
         counter=0
 
@@ -67,9 +65,8 @@ class fragment5 : Fragment(),Click {
     override fun onStart() {
 
         super.onStart()
-
+        showSearchForSettings(activity!!)
          initRecepts()
-
 
         addMyRecept.setOnClickListener{replaceFragment(fragment2())}
         activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
@@ -173,6 +170,14 @@ class fragment5 : Fragment(),Click {
     override fun deletteRecycle() {
         REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
             .removeValue { error, ref ->  }
+
+        val dateMapUser =
+            mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+        STORAGE.counter_recept=STORAGE.counter_recept-1
+        dateMapUser[CHIELD_COUNTER_RECEPT]=STORAGE.counter_recept
+
+        REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID).updateChildren(dateMapUser)
+
         replaceFragment(fragment5())
     }
 

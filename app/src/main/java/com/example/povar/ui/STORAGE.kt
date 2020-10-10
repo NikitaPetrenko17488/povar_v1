@@ -9,6 +9,7 @@ companion object
     var login =""
     var photo=""
     var ID=""
+    var counter_recept=0
 
 }
 

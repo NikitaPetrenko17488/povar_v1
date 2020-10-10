@@ -11,16 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import com.example.povar.R
 import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
 import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImageView
-import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_update.*
-import kotlinx.android.synthetic.main.list_item_recept.*
 
 
 class fragment3 : Fragment() {
@@ -34,6 +30,8 @@ class fragment3 : Fragment() {
     override fun onStart() {
         super.onStart()
         Avotzapolnenie()
+        hideSearchForSettings(activity!!)
+        hideUserNameAdnImage(activity!!)
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
         ImageUpdateRecept.setOnClickListener {
             changePhotoRecept()
@@ -78,7 +76,10 @@ class fragment3 : Fragment() {
 
                 REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMap)
 
-                replaceFragment(fragment5())
+
+                if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+                    replaceFragment(fragment5())
+                }
 
                 Toast.makeText(activity, "Блюдо успешно обновлено..", Toast.LENGTH_SHORT).show()
             }

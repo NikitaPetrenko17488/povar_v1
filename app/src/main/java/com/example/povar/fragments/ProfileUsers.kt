@@ -15,6 +15,7 @@ import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
 import com.example.povar.ui.*
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile_users.*
 
 
@@ -29,7 +30,7 @@ class ProfileUsers : Fragment() {
         name=STORAGE.name
         login=STORAGE.login
         photo=STORAGE.photo
-
+        hideSearchForSettings(activity!!)
         hideUserNameAdnImage(activity!!)
     }
 
@@ -44,15 +45,15 @@ class ProfileUsers : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         name=STORAGE.name
         login=STORAGE.login
         photo=STORAGE.photo
 
+
         EditProfile.setOnClickListener{
             hideUserNameAdnImage(activity!!)
             replaceFragment(EditProfileUser())
-
-
 
         }
 
@@ -61,18 +62,22 @@ class ProfileUsers : Fragment() {
 
         var login_user =
             activity!!.findViewById<TextView>(R.id.LoginInProfile)
+        var counter_recept =
+            activity!!.findViewById<TextView>(R.id.count_recept_for_user_4islo)
 
         ImageViewInProfile.downloadSetImage(STORAGE.photo)
 
 
         name_user.text=name
         login_user.text=login
+        if(STORAGE.counter_recept.toString().isNotEmpty()){counter_recept.text=STORAGE.counter_recept.toString()}
 
     }
 
     override fun onStop() {
         super.onStop()
         showUserNameAdnImage(activity!!)
+
 
 
 

@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.User
 import com.example.povar.ui.NODE_USERS
 import com.example.povar.ui.REF_DABATABSE_ROOT
+import com.example.povar.ui.downloadSetImage
 import com.example.povar.ui.showToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,15 +24,29 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_view1.*
 import kotlinx.android.synthetic.main.view_users_for_admin.*
 
+interface ViewAdmin
+{
+    fun ViewUser()
+
+    fun DeletteUser()
+
+
+}
 
 private var Massiv_Users2 = mutableListOf<User>()
 var counter2 =0
 
-class ViewUsersForAdmin : Fragment() {
+class ViewUsersForAdmin : Fragment(),ViewAdmin {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Massiv_Users2.removeAll { true }
+        counter2=0
+    }
+
+    override fun onStop() {
+        super.onStop()
         Massiv_Users2.removeAll { true }
         counter2=0
     }
@@ -50,10 +67,9 @@ class ViewUsersForAdmin : Fragment() {
 
     fun create_recycle() {
 
-        Log.d("ploxo","ploxo")
         recicle_view_users.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = DataAdapterUsers(Massiv_Users2)
+            adapter = DataAdapterUsers(Massiv_Users2,this@ViewUsersForAdmin)
 
         }
 
@@ -62,15 +78,19 @@ class ViewUsersForAdmin : Fragment() {
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_users, parent, false)) {
         private var mName: TextView? = null
         private var mLogin: TextView? = null
+        private var mPhoto:ImageView?= null
 
         init {
             mName = itemView.findViewById(R.id.textViewNameForAdmin)
             mLogin = itemView.findViewById(R.id.textViewLoginForAdmin)
+            mPhoto=itemView.findViewById(R.id.imageViewUsersForAdmin)
 
         }
         fun bind(movie: User) {
             mName?.text = movie.name
             mLogin?.text = movie.login
+            mPhoto?.downloadSetImage(movie.photoUrl)
+
 
         }
     }
@@ -87,7 +107,7 @@ class ViewUsersForAdmin : Fragment() {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val user = snapshot.getValue(User::class.java) ?: User()
                         Massiv_Users2.add(user)
-                        Log.d("ploxo2", Massiv_Users2[counter2].name)
+
                         counter2++
 
 
@@ -99,6 +119,16 @@ class ViewUsersForAdmin : Fragment() {
 
             })
 
+
+    }
+
+    override fun ViewUser() {
+
+        findNavController().navigate(R.id.viewProfileUsersForAdmin)
+
+    }
+
+    override fun DeletteUser() {
 
     }
 

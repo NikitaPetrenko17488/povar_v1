@@ -2,8 +2,6 @@ package com.example.povar.ui
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
-import android.util.TypedValue
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -49,51 +47,51 @@ fun Fragment.replaceFragment2(fragment: Fragment)
 
 fun hideUserNameAdnImage( activity:Activity)
 {
-    var heightVerx=convert.pxFromDp(activity!!,70F)
-    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.setVisibility(View.INVISIBLE)
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+        var heightVerx = convert.pxFromDp(activity!!, 70F)
+        val searchEditActivity = activity!!.findViewById<EditText>(R.id.SearchRecept)
+        searchEditActivity.setVisibility(View.INVISIBLE)
 
-    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.setVisibility(View.INVISIBLE)
+        val searchButtonActivity = activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+        searchButtonActivity.setVisibility(View.INVISIBLE)
 
-    val toolbar= activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
-        toolbar.layoutParams.height=heightVerx.toInt()
+        val toolbar = activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
+        toolbar.layoutParams.height = heightVerx.toInt()
 
-    var nameUserInActivity =
-        activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
-    nameUserInActivity.text=null
-    var circleImage =
-        activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-    circleImage.setImageDrawable(null)
+        var nameUserInActivity =
+            activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
+        nameUserInActivity.text = null
+        var circleImage =
+            activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
+        circleImage.setVisibility(View.INVISIBLE)
+//    circleImage.setImageDrawable(null)
 
+    }
 }
 
 fun showUserNameAdnImage(activity: Activity)
 {
-    var heightVerx=convert.pxFromDp(activity!!,120F)
-    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
-    searchEditActivity.setVisibility(View.VISIBLE)
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+        var heightVerx = convert.pxFromDp(activity!!, 120F)
+        val searchEditActivity = activity!!.findViewById<EditText>(R.id.SearchRecept)
+        searchEditActivity.setVisibility(View.VISIBLE)
 
-    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
-    searchButtonActivity.setVisibility(View.VISIBLE)
+        val searchButtonActivity = activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+        searchButtonActivity.setVisibility(View.VISIBLE)
 
-    val toolbar= activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
-    toolbar.layoutParams.height=heightVerx.toInt()
+        val toolbar = activity!!.findViewById<LinearLayout>(R.id.LinearActivity)
+        toolbar.layoutParams.height = heightVerx.toInt()
 
 
-    val bd: BitmapDrawable = activity!!.resources.getDrawable(R.drawable.user) as BitmapDrawable
-    var name=STORAGE.name
-    var nameUserInActivity =
-        activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
-    nameUserInActivity.text=name
-    var circleImage =
-        activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-    if(STORAGE.photo.isNotEmpty()) {
-        circleImage.downloadSetImage(STORAGE.photo)
+        var name = STORAGE.name
+        var nameUserInActivity =
+            activity.findViewById<TextView>(R.id.textViewNameforActivityMain)
+        nameUserInActivity.text = name
+
+        var circleImage =
+            activity.findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
+        circleImage.setVisibility(View.VISIBLE)
     }
-    else{circleImage.setBackgroundResource(R.drawable.user)}
-
-
 }
 
 fun CircleImageView.downloadSetImage(url:String)
@@ -126,21 +124,23 @@ fun ImageView.downloadSetImage(url: String)
     }
 
 }
+
+
 fun hideSearchForSettings(activity: Activity)
 {
-    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
+    val searchEditActivity=activity.findViewById<EditText>(R.id.SearchRecept)
     searchEditActivity.setVisibility(View.INVISIBLE)
 
-    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+    val searchButtonActivity=activity.findViewById<ImageView>(R.id.SearchReceptButton)
     searchButtonActivity.setVisibility(View.INVISIBLE)
 }
 
 fun showSearchForSettings(activity: Activity)
 {
-    val searchEditActivity=activity!!.findViewById<EditText>(R.id.SearchRecept)
+    val searchEditActivity=activity.findViewById<EditText>(R.id.SearchRecept)
     searchEditActivity.setVisibility(View.VISIBLE)
 
-    val searchButtonActivity=activity!!.findViewById<ImageView>(R.id.SearchReceptButton)
+    val searchButtonActivity=activity.findViewById<ImageView>(R.id.SearchReceptButton)
     searchButtonActivity.setVisibility(View.VISIBLE)
 }
 

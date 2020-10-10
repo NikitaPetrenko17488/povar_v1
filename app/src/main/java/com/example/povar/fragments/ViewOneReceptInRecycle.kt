@@ -11,9 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.povar.R
 import com.example.povar.activity.MainActivity
-import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
-import com.example.povar.ui.downloadSetImage
-import com.example.povar.ui.showUserNameAdnImage
+import com.example.povar.ui.*
 
 
 class ViewOneReceptInRecycle : Fragment() {
@@ -21,6 +19,7 @@ class ViewOneReceptInRecycle : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -35,6 +34,8 @@ class ViewOneReceptInRecycle : Fragment() {
     override fun onStart() {
         super.onStart()
         Avotzapolnenie()
+        hideSearchForSettings(activity!!)
+        hideUserNameAdnImage(activity!!)
 
     }
 

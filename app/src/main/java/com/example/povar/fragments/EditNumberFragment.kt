@@ -26,6 +26,8 @@ class EditNumberFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        STORAGE.photo=""
+        STORAGE.counter_recept=0
 
     }
 

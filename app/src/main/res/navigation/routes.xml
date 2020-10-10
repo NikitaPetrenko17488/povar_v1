@@ -135,4 +135,9 @@
         android:name="com.example.povar.fragments.Kalorii"
         android:label="Калории"
         tools:layout="@layout/fragment_kalorii" />
+    <fragment
+        android:id="@+id/viewProfileUsersForAdmin"
+        android:name="com.example.povar.fragments.ViewProfileUsersForAdmin"
+        android:label="Профиль пользователя"
+        tools:layout="@layout/fragment_view_profile_users_for_admin" />
 </navigation>

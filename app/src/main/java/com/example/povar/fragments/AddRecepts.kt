@@ -56,6 +56,12 @@ class fragment2 : Fragment() {
 
 
                 REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMap)
+                ////////////////////////////////////////////////////////////////////////
+                val dateMapUser =
+                    mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+                STORAGE.counter_recept=STORAGE.counter_recept+1
+                dateMapUser[CHIELD_COUNTER_RECEPT]=STORAGE.counter_recept
+                REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID).updateChildren(dateMapUser)
 
                      replaceFragment(fragment2())
 

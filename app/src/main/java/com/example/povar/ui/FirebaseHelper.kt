@@ -10,12 +10,12 @@ lateinit var AUTH: FirebaseAuth
 lateinit var REF_DABATABSE_ROOT: DatabaseReference
 lateinit var REF_STORAGE_ROOT:StorageReference
 
-const val NODE_CALORII="calorii"
+
 const val NODE_USERS = "users"
 const val NODE_RECEPTS = "recepts"
 const val FOLDER_PROFILE_IMAGE= "profile_image"
 const val FOLDER_IMAGE_RECEPT="image_recept"
-const val FOLDER_IMAGE_CALORII="image_calorii"
+
 
 
 const val  CHIELD_RECEPT_INGRIDIENTS ="ingridients"
@@ -31,11 +31,10 @@ const val  CHIELD_USER_PASSWORD ="password"
 const val  CHIELD_USER_LOGIN="login"
 const val  CHIELD_USER_NAME="name"
 const val  CHIELD_PHOTO_USER_SRC="photoUrl"
+const val CHIELD_COUNTER_RECEPT="counter_recept"
 
 
-const val  CHIELD_CALORII_NAME ="name"
-const val  CHIELD_CALORII_CALORII ="kalorii"
-const val  CHIELD_CALORII_PHOTO_SRC="photoUrl"
+
 
 
 

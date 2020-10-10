@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
-import com.example.povar.ui.initFirebase
+import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 
 class AdminActivity: AppCompatActivity() {
 
@@ -21,6 +21,7 @@ class AdminActivity: AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain="Admin"
         // получаем navController
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.navFragment3) as NavHostFragment? ?: return

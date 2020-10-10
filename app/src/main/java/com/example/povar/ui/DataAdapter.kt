@@ -7,11 +7,13 @@ import com.example.povar.models.Calorii
 import com.example.povar.models.Recept
 import com.example.povar.models.User
 import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
+import com.example.povar.ui.STORAGE_USERS_FOR_ADMIN
 import kotlinx.android.synthetic.main.list_item_recept.view.*
 import kotlinx.android.synthetic.main.list_item_recept_all.view.*
+import kotlinx.android.synthetic.main.list_item_users.view.*
 
 
-class DataAdapter(private val list: MutableList<Recept>, private val click: Click)
+class DataAdapter(private val list: MutableList<Recept>, private val click:Click)
     : RecyclerView.Adapter<fragment5.MovieViewHolder>() {
 
 
@@ -44,7 +46,6 @@ class DataAdapter(private val list: MutableList<Recept>, private val click: Clic
         }
 
 
-
         holder.itemView.kek.setOnClickListener{
             STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
             STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
@@ -64,7 +65,7 @@ class DataAdapter(private val list: MutableList<Recept>, private val click: Clic
 
 
 
-class DataAdapterUsers(private val list: MutableList<User>)
+class DataAdapterUsers(private val list: MutableList<User>,private val ClickAdmin:ViewAdmin)
     : RecyclerView.Adapter<ViewUsersForAdmin.MovieViewHolder2>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewUsersForAdmin.MovieViewHolder2 {
         val inflater = LayoutInflater.from(parent.context)
@@ -72,6 +73,17 @@ class DataAdapterUsers(private val list: MutableList<User>)
     }
     override fun onBindViewHolder(holder: ViewUsersForAdmin.MovieViewHolder2, position: Int) {
         val movie2: User = list[position]
+
+        holder.itemView.buttonGlaz.setOnClickListener {
+            ClickAdmin.ViewUser()
+            STORAGE_USERS_FOR_ADMIN.ID=movie2.id
+            STORAGE_USERS_FOR_ADMIN.counter_recept=movie2.counter_recept
+            STORAGE_USERS_FOR_ADMIN.login=movie2.login
+            STORAGE_USERS_FOR_ADMIN.name=movie2.name
+            STORAGE_USERS_FOR_ADMIN.photo=movie2.photoUrl
+            STORAGE_USERS_FOR_ADMIN.password=movie2.password
+
+        }
         holder.bind(movie2)
     }
     override fun getItemCount(): Int = list.size
@@ -129,4 +141,52 @@ class DataAdapterCalorii(private val list: MutableList<Calorii>)
     }
     override fun getItemCount(): Int = list.size
 
+}
+
+class DataAdapterReceptsUserForAdmin(private val list: MutableList<Recept>, private val click: ViewProfileUsersForAdmin)
+    : RecyclerView.Adapter<ViewProfileUsersForAdmin.MovieViewHolderReceptsUserForAdmin>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewProfileUsersForAdmin.MovieViewHolderReceptsUserForAdmin {
+
+        val inflater = LayoutInflater.from(parent.context)
+        return ViewProfileUsersForAdmin.MovieViewHolderReceptsUserForAdmin(inflater, parent)
+    }
+    override fun onBindViewHolder(holder: ViewProfileUsersForAdmin.MovieViewHolderReceptsUserForAdmin, position: Int) {
+
+        val movie: Recept = list[position]
+        holder.bind(movie)
+
+        holder.itemView.editReceptItem.setOnClickListener{
+
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            click.EditReceptsUserForAdmin()
+
+        }
+
+        holder.itemView.deletteReceptItem.setOnClickListener{
+
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            click.DeletteReceptsUserForAdmin()
+
+        }
+
+
+        holder.itemView.kek.setOnClickListener{
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            click.ViewReceptsUserForAdmin()
+
+        }
+
+    }
+
+    override fun getItemCount(): Int=list.size
 }

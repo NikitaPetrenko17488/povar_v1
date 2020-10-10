@@ -14,6 +14,7 @@ import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
 import com.example.povar.ui.hideSearchForSettings
 import com.example.povar.ui.showSearchForSettings
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
@@ -48,7 +49,8 @@ class Settings : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        showSearchForSettings(activity!!)
+        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
+
     }
 }
 

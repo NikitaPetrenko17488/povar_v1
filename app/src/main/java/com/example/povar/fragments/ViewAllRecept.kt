@@ -36,6 +36,8 @@ class ViewAllRecept : Fragment(),ClickAll {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity!!.SettingsForActivity.setVisibility(View.VISIBLE)
+        showSearchForSettings(activity!!)
         Massiv.removeAll { true }
         counterAll=0
     }
@@ -48,6 +50,7 @@ class ViewAllRecept : Fragment(),ClickAll {
 
     override fun onStart() {
         super.onStart()
+        showSearchForSettings(activity!!)
         initRecepts()
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
     }
@@ -149,10 +152,7 @@ class ViewAllRecept : Fragment(),ClickAll {
 
                             var vxodStroki: String
                             vxodStroki = activity!!.SearchRecept.text.toString()
-                            Log.d(vxodStroki, "xuy")
-                            Log.d(recept.ingridients.toString(), "xuy2")
                             var indexIngridient: Boolean = recept.ingridients.contains(vxodStroki)
-                            Log.d(indexIngridient.toString(), "xuy3")
 
                             if (indexIngridient == true) {
                                 Massiv.add(recept)

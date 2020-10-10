@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ViewProfileUsersForAdmin">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ImageInProfileForAdmin"
+        android:layout_height="140dp"
+        android:layout_width="140dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/user"
+        />
+    <TextView
+        android:id="@+id/TextNameInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ImageInProfileForAdmin"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="Имя - "
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/NameInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ImageInProfileForAdmin"
+        app:layout_constraintStart_toEndOf="@id/TextNameInProfileForAdmim"
+        android:text="-"
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/TextLoginInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/TextNameInProfileForAdmim"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="Логин - "
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/LoginInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/TextNameInProfileForAdmim"
+        app:layout_constraintStart_toEndOf="@id/TextLoginInProfileForAdmim"
+        android:text="-"
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/TextPasswordInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/TextLoginInProfileForAdmim"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="Пароль - "
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/PasswordInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/TextLoginInProfileForAdmim"
+        app:layout_constraintStart_toEndOf="@id/TextPasswordInProfileForAdmim"
+        android:text="-"
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/TextCounterReceptInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/TextPasswordInProfileForAdmim"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="Кол-во рецептов - "
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/CounterReceptInProfileForAdmim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/TextPasswordInProfileForAdmim"
+        app:layout_constraintStart_toEndOf="@id/TextCounterReceptInProfileForAdmim"
+        android:text="-"
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/TextCounterRecept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Рецепты"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TextCounterReceptInProfileForAdmim" />
+    <TextView
+        android:id="@+id/ToastNoReceptsUserForAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TextCounterRecept" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReceptsUserForAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       app:layout_constraintTop_toBottomOf="@id/TextCounterRecept"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/list_item_recept_all"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

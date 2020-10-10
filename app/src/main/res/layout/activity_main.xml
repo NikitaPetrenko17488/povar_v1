@@ -10,6 +10,8 @@
 
 
 
+
+
     <Button
         android:id="@+id/SettingsForActivity"
         android:gravity="center"
@@ -76,6 +78,7 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         android:layout_marginTop="70dp"
+        android:layout_marginBottom="62dp"
         app:layout_constraintStart_toStartOf="parent"
         app:navGraph="@navigation/routes"
         tools:layout="@layout/fragment_view1"
@@ -199,5 +202,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

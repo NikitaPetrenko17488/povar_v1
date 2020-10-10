@@ -1,6 +1,7 @@
 package com.example.povar.fragments
 
 import DataAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
+import com.example.povar.activity.AdminActivity
+import com.example.povar.activity.MainActivity
 
 
 import com.example.povar.models.Recept
@@ -78,12 +81,19 @@ class fragment5 : Fragment(),Click {
         addMyRecept.setOnClickListener{replaceFragment(fragment2())}
         activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
 
+
+        RefreshMyRecept.setOnRefreshListener {
+            startActivity(Intent(activity, MainActivity::class.java))
+
+        }
+
     }
 
     override fun onStop() {
         super.onStop()
         Massiv.removeAll { true }
         counter=0
+
 
     }
 
@@ -122,22 +132,22 @@ class fragment5 : Fragment(),Click {
 
 
    fun create_recycle() {
-        //recicle_view_recept
-       if (Massiv.isEmpty()){
-           activity!!.ToastNoRecepts.text=" Нет рецептов "
-       }
-       else
-       {
-           if(activity!=null) {
-               activity!!.ToastNoRecepts.text = " "
-           }
-       }
-           if(recicle_view_recept!=null){
-                activity!!.recicle_view_recept.apply {
-                    layoutManager = LinearLayoutManager(activity)
-                    adapter = DataAdapter(Massiv, this@fragment5)
 
-                }
+
+
+           if (Massiv.isEmpty()) {
+               activity!!.ToastNoRecepts.text = " Нет рецептов "
+           } else {
+               if (activity != null) {
+                   activity!!.ToastNoRecepts.text = " "
+               }
+           }
+           if (recicle_view_recept != null) {
+               activity!!.recicle_view_recept.apply {
+                   layoutManager = LinearLayoutManager(activity)
+                   adapter = DataAdapter(Massiv, this@fragment5)
+
+               }
            }
 
 
@@ -205,6 +215,7 @@ class fragment5 : Fragment(),Click {
         if (STORAGE_FOR_RECYCLE_RECEPT.fragmentContext == "My") {
             counter = 0
             Massiv.removeAll { true }
+            var MassivUp:String
 
             REF_DABATABSE_ROOT.child(NODE_RECEPTS)
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -216,12 +227,15 @@ class fragment5 : Fragment(),Click {
                         for (snapshot: DataSnapshot in dataSnapshot.children) {
                             val recept = snapshot.getValue(Recept::class.java) ?: Recept()
 
+                            var receptIngridientsUp=recept.ingridients.toUpperCase()
                             var vxodStroki: String
-                            vxodStroki = activity!!.SearchRecept.text.toString()
+                            vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
 
-                            var indexIngridient: Boolean = recept.ingridients.contains(vxodStroki)
 
-                            if (recept.user_id == STORAGE.ID && indexIngridient == true) {
+                            var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
+
+
+                            if (recept.user_id == STORAGE.ID && indexIngridient == true ) {
                                 Massiv.add(recept)
                             } else if (vxodStroki.isEmpty()) {
 

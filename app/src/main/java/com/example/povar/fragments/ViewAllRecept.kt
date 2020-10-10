@@ -1,6 +1,7 @@
 package com.example.povar.fragments
 
 import DataAdapterAll
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
+import com.example.povar.activity.MainActivity
 import com.example.povar.models.Recept
 import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
@@ -57,6 +59,10 @@ class ViewAllRecept : Fragment(),ClickAll {
 
         initRecepts()
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
+
+        RefreshAllRecept.setOnRefreshListener {
+            startActivity(Intent(activity, MainActivity::class.java))
+        }
     }
 
     override fun onCreateView(

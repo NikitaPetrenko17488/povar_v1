@@ -1,6 +1,7 @@
 package com.example.povar.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.TextView
@@ -10,10 +11,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
-import com.example.povar.ui.*
+import com.example.povar.ui.STORAGE
+import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
+import com.example.povar.ui.downloadSetImage
+import com.example.povar.ui.initFirebase
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 
 class MainActivity :AppCompatActivity() {
@@ -41,6 +44,9 @@ class MainActivity :AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
+
+
+
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain="Main"
         var name_users= STORAGE.name
         var name =findViewById<TextView>(R.id.textViewNameforActivityMain)

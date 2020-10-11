@@ -10,7 +10,7 @@ companion object
     var photo=""
     var ID=""
     var counter_recept=0
-    var RefreshLayout=0
+    var Tema=false
 
 }
 

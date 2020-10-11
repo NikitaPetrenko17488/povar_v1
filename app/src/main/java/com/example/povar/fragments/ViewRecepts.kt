@@ -1,7 +1,9 @@
 package com.example.povar.fragments
 
 import DataAdapter
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -72,6 +74,7 @@ class fragment5 : Fragment(),Click {
     override fun onStart() {
         super.onStart()
 
+
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
@@ -109,7 +112,9 @@ class fragment5 : Fragment(),Click {
 
     }
 
-     class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+
+
+    class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
         private var mName: TextView? = null
          private var mPhoto: ImageView? = null
@@ -136,11 +141,11 @@ class fragment5 : Fragment(),Click {
 
 
            if (Massiv.isEmpty()) {
+               if(activity!=null)
                activity!!.ToastNoRecepts.text = " Нет рецептов "
            } else {
-               if (activity != null) {
-                   activity!!.ToastNoRecepts.text = " "
-               }
+               if(activity!=null)
+                  activity!!.ToastNoRecepts.text = " "
            }
            if (recicle_view_recept != null) {
                activity!!.recicle_view_recept.apply {
@@ -230,7 +235,6 @@ class fragment5 : Fragment(),Click {
                             var receptIngridientsUp=recept.ingridients.toUpperCase()
                             var vxodStroki: String
                             vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
-
 
                             var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
 

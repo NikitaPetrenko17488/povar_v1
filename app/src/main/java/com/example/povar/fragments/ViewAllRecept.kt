@@ -96,14 +96,14 @@ class ViewAllRecept : Fragment(),ClickAll {
         init {
 
             mName = itemView.findViewById(R.id.name_recept_All)
-           // mFormula = itemView.findViewById(R.id.formula_recept_All)
+
             mPhoto=itemView.findViewById(R.id.image_src_All)
 
         }
         fun bind(movie: Recept) {
 
             mName?.text = movie.name
-            //mFormula?.text = movie.ingridients
+
             mPhoto?.downloadSetImage(movie.photoUrl)
 
         }
@@ -161,8 +161,9 @@ class ViewAllRecept : Fragment(),ClickAll {
                             val recept = snapshot.getValue(Recept::class.java) ?: Recept()
 
                             var vxodStroki: String
-                            vxodStroki = activity!!.SearchRecept.text.toString()
-                            var indexIngridient: Boolean = recept.ingridients.contains(vxodStroki)
+                            var ReceptIngridientsUp=recept.ingridients.toUpperCase()
+                            vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
+                            var indexIngridient: Boolean = ReceptIngridientsUp.contains(vxodStroki)
 
                             if (indexIngridient == true) {
                                 Massiv.add(recept)

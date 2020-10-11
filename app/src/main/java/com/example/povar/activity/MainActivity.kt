@@ -32,7 +32,6 @@ class MainActivity :AppCompatActivity() {
         name.text=name_users
         initFirebase()
         circleImageViewForActivityMain.downloadSetImage(STORAGE.photo)
-        MyReceptClick()
         STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="My"
     }
 
@@ -41,18 +40,21 @@ class MainActivity :AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        MyReceptClick()
+    }
+
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
-
-
-
+        TemaPriRefresh()
+        MyReceptClick()
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain="Main"
         var name_users= STORAGE.name
         var name =findViewById<TextView>(R.id.textViewNameforActivityMain)
         name.text=name_users
-        var circleImage =findViewById<CircleImageView>(R.id.circleImageViewForActivityMain)
-       // circleImage.downloadSetImage(STORAGE.photo)
+
         // получаем navController
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.navFragment) as NavHostFragment? ?: return
@@ -147,6 +149,13 @@ class MainActivity :AppCompatActivity() {
         ViewLineDopFun.setBackgroundColor(R.color.black)
     }
 
+fun TemaPriRefresh(){
+    if(STORAGE.Tema==true){
+        LinearActivity.setBackgroundResource(R.color.DarkThema)
+        LinearActivityBottom.setBackgroundResource(R.color.DarkThema)
+        toolbar.setBackgroundResource(R.color.DarkThema)
+    }
 
+}
 
 }

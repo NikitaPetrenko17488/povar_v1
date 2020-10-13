@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.internal.Sleeper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_view1.*
+import kotlinx.android.synthetic.main.list_item_recept.*
 
 interface Click
 {
@@ -73,8 +74,6 @@ class fragment5 : Fragment(),Click {
 
     override fun onStart() {
         super.onStart()
-
-
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)

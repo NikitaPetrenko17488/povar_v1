@@ -72,6 +72,8 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.DarkThema)
             activity!!.toolbar.setBackgroundResource(R.color.DarkThema)
             STORAGE.Tema=isChecked
+            updateTemaInBase()
+
         }
         if(isChecked==false)
         {
@@ -80,9 +82,18 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.LinearActivity.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
             STORAGE.Tema=isChecked
+            updateTemaInBase()
 
         }
 
+
+    }
+
+    fun updateTemaInBase(){
+        val dateMap =
+            mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+        dateMap[CHIELD_TEMA] = STORAGE.Tema
+        REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID).updateChildren(dateMap)
 
     }
 }

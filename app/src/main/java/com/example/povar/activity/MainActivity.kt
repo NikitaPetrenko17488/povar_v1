@@ -17,6 +17,7 @@ import com.example.povar.ui.downloadSetImage
 import com.example.povar.ui.initFirebase
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_item_recept.*
 
 
 class MainActivity :AppCompatActivity() {
@@ -149,11 +150,19 @@ class MainActivity :AppCompatActivity() {
         ViewLineDopFun.setBackgroundColor(R.color.black)
     }
 
+
 fun TemaPriRefresh(){
     if(STORAGE.Tema==true){
         LinearActivity.setBackgroundResource(R.color.DarkThema)
         LinearActivityBottom.setBackgroundResource(R.color.DarkThema)
         toolbar.setBackgroundResource(R.color.DarkThema)
+
+
+    }
+    else{
+        LinearActivity.setBackgroundResource(R.color.LiteThema)
+        LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
+        toolbar.setBackgroundResource(R.color.LiteThema)
     }
 
 }

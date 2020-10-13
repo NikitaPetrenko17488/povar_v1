@@ -7,5 +7,6 @@ data class User(
     var password:String="",
     var photoUrl:String="",
     var admin:Int=0,
-    var counter_recept:Int=0
+    var counter_recept:Int=0,
+    var tema:Boolean=false
 )

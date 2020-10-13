@@ -78,18 +78,18 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
     }
     class MovieViewHolder2(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_users, parent, false)) {
-        private var mName: TextView? = null
+        //private var mName: TextView? = null
         private var mLogin: TextView? = null
         private var mPhoto: CircleImageView?= null
 
         init {
-            mName = itemView.findViewById(R.id.textViewNameForAdmin)
+            //mName = itemView.findViewById(R.id.textViewNameForAdmin)
             mLogin = itemView.findViewById(R.id.textViewLoginForAdmin)
             mPhoto=itemView.findViewById(R.id.imageViewUsersForAdmin)
 
         }
         fun bind(movie: User) {
-            mName?.text = movie.name
+           // mName?.text = movie.name
             mLogin?.text = movie.login
             mPhoto?.downloadSetImage(movie.photoUrl)
 
@@ -108,7 +108,8 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val user = snapshot.getValue(User::class.java) ?: User()
-                        Massiv_Users2.add(user)
+
+                            Massiv_Users2.add(user)
 
                         counter2++
 

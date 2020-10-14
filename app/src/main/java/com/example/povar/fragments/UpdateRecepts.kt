@@ -76,12 +76,10 @@ class fragment3 : Fragment() {
                 val dateMap =
                     mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
 
-                dateMap[CHIELD_RECEPT_ID]= STORAGE_FOR_RECYCLE_RECEPT.ID
+               // dateMap[CHIELD_RECEPT_ID]= STORAGE_FOR_RECYCLE_RECEPT.ID+STORAGE.ID
                 dateMap[CHIELD_RECEPT_NAME] = name
                 dateMap[CHIELD_RECEPT_INGRIDIENTS] = ingridients
                 dateMap[CHIELD_RECEPT_FORMULA] = formula
-
-
                 REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMap)
 
 

@@ -22,6 +22,7 @@ class AdminActivity: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain="Admin"
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="Admin"
         // получаем navController
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.navFragment3) as NavHostFragment? ?: return

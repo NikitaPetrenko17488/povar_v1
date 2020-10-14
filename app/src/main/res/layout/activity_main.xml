@@ -191,7 +191,17 @@
         app:layout_constraintStart_toEndOf="@+id/circleImageViewForActivityMain"
         app:layout_constraintTop_toTopOf="@id/circleImageViewForActivityMain" />
 
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/addRecept"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/LinearActivityBottom"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/add"
 
+    />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

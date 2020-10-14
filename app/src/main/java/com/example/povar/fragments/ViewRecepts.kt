@@ -77,10 +77,11 @@ class fragment5 : Fragment(),Click {
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
+        showAddButton(activity!!)
 
          initRecepts()
 
-        addMyRecept.setOnClickListener{replaceFragment(fragment2())}
+        activity!!.addRecept.setOnClickListener{findNavController().navigate(R.id.fragment2)}
         activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
 
 
@@ -95,6 +96,7 @@ class fragment5 : Fragment(),Click {
         super.onStop()
         Massiv.removeAll { true }
         counter=0
+        hideAddButton(activity!!)
 
 
     }

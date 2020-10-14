@@ -117,6 +117,7 @@ class DataAdapterAll(private val list: MutableList<Recept>, private val clickAll
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            STORAGE_FOR_RECYCLE_RECEPT.user_id=movie.user_id
             clickAll.viewRecycle()
         }
 

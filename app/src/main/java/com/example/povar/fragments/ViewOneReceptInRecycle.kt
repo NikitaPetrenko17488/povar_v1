@@ -101,6 +101,7 @@ class ViewOneReceptInRecycle : Fragment() {
                             {
                                 MassivStars.add(stars)
                                 STORAGE_STARS.TRUE=1
+
                             }
 
                             if(stars.name_recept==STORAGE_FOR_RECYCLE_RECEPT.name)
@@ -135,12 +136,17 @@ class ViewOneReceptInRecycle : Fragment() {
         avtozagrImageUpdateRecept.downloadSetImage(STORAGE_FOR_RECYCLE_RECEPT.photo)
 
 
-        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="My")
+        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="My"||STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="Admin")
         {
-            //TextOcenkaAll.setText("")
             TextOcenka.setText("")
             NullStars()
         }
+        if(STORAGE_FOR_RECYCLE_RECEPT.user_id==STORAGE.ID)
+        {
+            TextOcenka.setText("")
+            NullStars()
+        }
+
 
     }
 fun avtoZapalnenZvezd()
@@ -150,8 +156,6 @@ fun avtoZapalnenZvezd()
     var srdn=0
     if(MassivStarsAllsrdn.isNotEmpty()) {
         while (count< counerStarsAll) {
-            Log.d("xuys",srdn.toString())
-            Log.d("xuy2M", MassivStarsAllsrdn[count].ocenka.toString())
             srdn = srdn + MassivStarsAllsrdn[count].ocenka
             count++
         }
@@ -161,12 +165,16 @@ fun avtoZapalnenZvezd()
     if (activity!=null)
     activity!!.OcenkaAll.setText(srdn.toString())
 
-    if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="All")
+
+    if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="All"&& STORAGE_FOR_RECYCLE_RECEPT.user_id != STORAGE.ID)
      {
+         Log.d("xuy1", STORAGE_FOR_RECYCLE_RECEPT.user_id)
+         Log.d("xuy2",STORAGE.ID)
+
          if (activity!=null)
              activity!!.TextOcenka.setText("Ваша оценка:")
 
-        if (STORAGE_STARS.TRUE == 1) {
+        if (STORAGE_STARS.TRUE == 1 ) {
             NullStars()
 
 
@@ -240,6 +248,7 @@ fun avtoZapalnenZvezd()
                 activity!!.Star5.setBackgroundResource(R.drawable.star_gray)
         }
     }
+
 
 }
 

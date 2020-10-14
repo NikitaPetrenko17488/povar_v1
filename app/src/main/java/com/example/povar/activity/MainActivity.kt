@@ -1,7 +1,6 @@
 package com.example.povar.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.TextView
@@ -11,13 +10,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
-import com.example.povar.ui.STORAGE
-import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
-import com.example.povar.ui.downloadSetImage
-import com.example.povar.ui.initFirebase
-import de.hdodenhof.circleimageview.CircleImageView
+import com.example.povar.fragments.fragment5
+import com.example.povar.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.list_item_recept.*
 
 
 class MainActivity :AppCompatActivity() {
@@ -65,8 +60,14 @@ class MainActivity :AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
+
+
         navController.popBackStack()
         navController.navigate(R.id.fragment5)
+
+        circleImageViewForActivityMain.setOnClickListener {
+            navController.navigate(R.id.profileUsers)
+        }
 
         textViewNameforActivityMain.setOnClickListener{
 

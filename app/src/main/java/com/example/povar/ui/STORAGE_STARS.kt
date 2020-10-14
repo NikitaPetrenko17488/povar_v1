@@ -6,6 +6,7 @@ companion object
 {
     var TRUE=0
     var ocenka=0
+    var user =""
 
 
 }

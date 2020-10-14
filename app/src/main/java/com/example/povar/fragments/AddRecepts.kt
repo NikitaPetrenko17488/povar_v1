@@ -54,7 +54,7 @@ class fragment2 : Fragment() {
 
                 val dateMap =
                     mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
-                var ID=name
+                var ID=name+STORAGE.ID
                 dateMap[CHIELD_RECEPT_ID] = ID
                 dateMap[CHIELD_RECEPT_NAME] = name
                 dateMap[CHIELD_RECEPT_INGRIDIENTS]=ingridients

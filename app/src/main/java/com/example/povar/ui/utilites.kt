@@ -1,13 +1,15 @@
 package com.example.povar.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.povar.R
+import com.example.povar.fragments.fragment5
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +29,9 @@ fun AppCompatActivity.replaceActivity(activity:AppCompatActivity){
 }
 
 
+
+
+@SuppressLint("ResourceType")
 fun Fragment.replaceFragment(fragment: Fragment)
 {
     fragmentManager?.beginTransaction()
@@ -160,6 +165,14 @@ fun showSearch(activity: Activity)
         val searchButtonActivity = activity.findViewById<ImageView>(R.id.SearchReceptButton)
         searchButtonActivity.setVisibility(View.VISIBLE)
     }
+}
+fun showAddButton(activity: Activity)
+{
+    activity.addRecept.setVisibility(View.VISIBLE)
+}
+fun hideAddButton(activity: Activity)
+{
+    activity.addRecept.setVisibility(View.GONE)
 }
 
 

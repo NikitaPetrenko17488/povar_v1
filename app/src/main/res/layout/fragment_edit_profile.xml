@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Constraint_layout_edit_profile_users"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,7 @@
     >
 
     <TextView
-        android:id="@+id/NameTextInProfie"
+        android:id="@+id/NameTextInProfieEdit"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="26dp"
@@ -24,7 +25,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/LoginTextInProfie"
+        android:id="@+id/LoginTextInProfieEdit"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginLeft="26dp"
@@ -49,8 +50,8 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/LoginTextInProfie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/LoginTextInProfie"
-        app:layout_constraintTop_toTopOf="@id/LoginTextInProfie"
+        app:layout_constraintStart_toEndOf="@id/LoginTextInProfieEdit"
+        app:layout_constraintTop_toTopOf="@id/LoginTextInProfieEdit"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -64,8 +65,8 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/NameTextInProfie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/NameTextInProfie"
-        app:layout_constraintTop_toTopOf="@id/NameTextInProfie"/>
+        app:layout_constraintStart_toEndOf="@id/NameTextInProfieEdit"
+        app:layout_constraintTop_toTopOf="@id/NameTextInProfieEdit"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ImageViewProfileEdit"
@@ -79,8 +80,8 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:background="@drawable/megaoval"
         android:id="@+id/SaveProfile"
+        android:background="@drawable/megaoval"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

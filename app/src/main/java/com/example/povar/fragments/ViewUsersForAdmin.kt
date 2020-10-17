@@ -127,6 +127,7 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
 
     override fun ViewUser() {
 
+
         findNavController().navigate(R.id.viewProfileUsersForAdmin)
 
     }

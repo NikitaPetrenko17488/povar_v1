@@ -2,6 +2,7 @@ package com.example.povar.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
        hideSettings(activity!!)
+        hideAddButton(activity!!)
 
     }
 
@@ -46,7 +48,22 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
         hideSettings(activity!!)
+        hideAddButton(activity!!)
 
+        if (STORAGE.Tema==true)
+        {
+            ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+            Exit.setTextColor(Color.parseColor("#b2b2b2"))
+            Exit.background=null
+            switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
+        }
+        else
+        {
+            ConstraintSettings.setBackgroundResource(R.drawable.fon_na_fragment)
+            Exit.setTextColor(Color.parseColor("#000000"))
+            Exit.setBackgroundResource(R.drawable.megaoval)
+            switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
+        }
 
         switchTemnayaTema.setOnCheckedChangeListener(this)
 
@@ -64,7 +81,6 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCheckedChanged(Component: CompoundButton?, isChecked: Boolean) {
 
-        //Component!!.setChecked(STORAGE.Tema)
 
         if(isChecked==true) {
 
@@ -72,7 +88,11 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.DarkThema)
             activity!!.toolbar.setBackgroundResource(R.color.DarkThema)
             STORAGE.Tema=isChecked
+            activity!!.ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
             updateTemaInBase()
+            Exit.setTextColor(Color.parseColor("#b2b2b2"))
+            Exit.background=null
+            switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
 
         }
         if(isChecked==false)
@@ -81,6 +101,10 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.toolbar.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivity.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
+            activity!!.ConstraintSettings.setBackgroundResource(R.drawable.fon_na_fragment)
+            Exit.setBackgroundResource(R.drawable.megaoval)
+            Exit.setTextColor(Color.parseColor("#000000"))
+            switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
             STORAGE.Tema=isChecked
             updateTemaInBase()
 

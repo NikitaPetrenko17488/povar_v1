@@ -50,6 +50,15 @@ fun Fragment.replaceFragment2(fragment: Fragment)
         )?.commit()
 
 }
+fun Fragment.replaceFragment3(fragment: Fragment)
+{
+    fragmentManager?.beginTransaction()
+        ?.addToBackStack(null)
+        ?.replace(R.id.navFragment3,
+            fragment
+        )?.commit()
+
+}
 
 
 
@@ -168,10 +177,12 @@ fun showSearch(activity: Activity)
 }
 fun showAddButton(activity: Activity)
 {
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main")
     activity.addRecept.setVisibility(View.VISIBLE)
 }
 fun hideAddButton(activity: Activity)
 {
+    if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main")
     activity.addRecept.setVisibility(View.GONE)
 }
 

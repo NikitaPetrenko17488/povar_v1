@@ -2,6 +2,7 @@ package com.example.povar.fragments
 
 import DataAdapterAll
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +41,7 @@ class ViewAllRecept : Fragment(),ClickAll {
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
 
         Massiv.removeAll { true }
         counterAll=0
@@ -56,7 +59,16 @@ class ViewAllRecept : Fragment(),ClickAll {
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
 
+        if(STORAGE.Tema==true)
+        {
+            Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+        }
+        else
+        {
+            Constraint_layout_all_view.setBackgroundResource(R.drawable.fon_na_fragment)
+        }
         initRecepts()
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
 
@@ -90,17 +102,27 @@ class ViewAllRecept : Fragment(),ClickAll {
     class MovieViewHolderAll(inflater: LayoutInflater, parent: ViewGroup) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept_all, parent, false)) {
         private var mName: TextView? = null
-        private var mFormula: TextView? = null
+        private var mConstraint: ConstraintLayout? = null
         private var mPhoto: ImageView? = null
 
+
         init {
-
+            mConstraint=itemView.findViewById(R.id.Constraint_layout_all)
             mName = itemView.findViewById(R.id.name_recept_All)
-
             mPhoto=itemView.findViewById(R.id.image_src_All)
+
 
         }
         fun bind(movie: Recept) {
+
+            if(STORAGE.Tema==true)
+            { mName?.setTextColor(Color.parseColor("#b2b2b2"))
+
+            }
+            else
+            { mName?.setTextColor(Color.parseColor("#000000"))
+                }
+
 
             mName?.text = movie.name
 

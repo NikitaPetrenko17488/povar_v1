@@ -3,12 +3,14 @@ package com.example.povar.fragments
 import DataAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -56,6 +58,7 @@ class fragment5 : Fragment(),Click {
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
+        showAddButton(activity!!)
 
         Massiv.removeAll { true }
         counter=0
@@ -80,7 +83,10 @@ class fragment5 : Fragment(),Click {
         showAddButton(activity!!)
 
          initRecepts()
-
+        if(STORAGE.Tema==true)
+            Constraint_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+        else
+            Constraint_view.setBackgroundResource(R.drawable.fon_na_fragment)
         activity!!.addRecept.setOnClickListener{findNavController().navigate(R.id.fragment2)}
         activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
 
@@ -96,7 +102,7 @@ class fragment5 : Fragment(),Click {
         super.onStop()
         Massiv.removeAll { true }
         counter=0
-        hideAddButton(activity!!)
+        //hideAddButton(activity!!)
 
 
     }
@@ -119,17 +125,33 @@ class fragment5 : Fragment(),Click {
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_recept, parent, false)) {
         private var mName: TextView? = null
          private var mPhoto: ImageView? = null
+        private var mEdit:Button?=null
+        private var mDellite:Button?=null
 
         init {
 
+            mEdit=itemView.findViewById(R.id.editReceptItem)
+            mDellite=itemView.findViewById(R.id.deletteReceptItem)
             mName = itemView.findViewById(R.id.name_recept)
             mPhoto=itemView.findViewById(R.id.image_src)
 
         }
+        @SuppressLint("ResourceAsColor")
         fun bind(movie: Recept) {
+            if(STORAGE.Tema==true) {
+                mName?.setTextColor(Color.parseColor("#b2b2b2"))
+                mEdit?.setBackgroundResource(R.drawable.edit_gray)
+                mDellite?.setBackgroundResource(R.drawable.delette_gray)
+
+            }
+            else
+            {
+                mName?.setTextColor(Color.parseColor("#000000"))
+                mEdit?.setBackgroundResource(R.drawable.edit)
+                mDellite?.setBackgroundResource(R.drawable.delette)
+            }
 
             mName?.text = movie.name
-            //mIngridients?.text = movie.ingridients
             mPhoto?.downloadSetImage(movie.photoUrl)
         }
 

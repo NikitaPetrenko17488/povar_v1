@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/Constraint_layout_all"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-
-    android:id="@+id/Constraint_layout_all"
     android:layout_alignParentRight="true"
     >
 
@@ -16,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="65dp"
-        android:background="@color/Grey"
+        android:background="@color/GreyWhite"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

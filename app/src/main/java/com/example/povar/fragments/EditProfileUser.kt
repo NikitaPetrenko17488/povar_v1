@@ -2,6 +2,7 @@ package com.example.povar.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,8 @@ import com.example.povar.ui.STORAGE.Companion.name
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import kotlinx.android.synthetic.main.fragment_profile_users.*
+import kotlinx.android.synthetic.main.fragment_view_one_recept_in_recycle.*
 
 
 class EditProfileUser : Fragment() {
@@ -28,6 +31,7 @@ class EditProfileUser : Fragment() {
         showSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
 
     }
 
@@ -45,6 +49,9 @@ class EditProfileUser : Fragment() {
         showSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
+
+        tema()
 
         var login =
             activity!!.findViewById<EditText>(R.id.LoginInProfileEdit)
@@ -143,5 +150,35 @@ class EditProfileUser : Fragment() {
             }
         }
 
+    }
+
+    private fun tema() {
+        if (STORAGE.Tema == true) {
+            Constraint_layout_edit_profile_users.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+            NameInProfileEdit.setTextColor(Color.parseColor("#b2b2b2"))
+            LoginInProfileEdit.setTextColor(Color.parseColor("#b2b2b2"))
+            NameTextInProfieEdit.setTextColor(Color.parseColor("#b2b2b2"))
+            LoginTextInProfieEdit.setTextColor(Color.parseColor("#b2b2b2"))
+
+            NameInProfileEdit.setHintTextColor(Color.parseColor("#b2b2b2"))
+            LoginInProfileEdit.setHintTextColor(Color.parseColor("#b2b2b2"))
+
+            SaveProfile.setTextColor(Color.parseColor("#b2b2b2"))
+            SaveProfile.background=null
+
+
+        } else {
+            Constraint_layout_edit_profile_users.setBackgroundResource(R.drawable.fon_na_fragment)
+            NameInProfileEdit.setTextColor(Color.parseColor("#000000"))
+            LoginInProfileEdit.setTextColor(Color.parseColor("#000000"))
+            NameTextInProfieEdit.setTextColor(Color.parseColor("#000000"))
+            LoginTextInProfieEdit.setTextColor(Color.parseColor("#000000"))
+
+            NameInProfileEdit.setHintTextColor(Color.parseColor("#000000"))
+            LoginInProfileEdit.setHintTextColor(Color.parseColor("#000000"))
+
+            SaveProfile.setTextColor(Color.parseColor("#000000"))
+            SaveProfile.setBackgroundResource(R.drawable.megaoval)
+        }
     }
 }

@@ -157,9 +157,17 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
     override fun DeletteReceptsUserForAdmin() {
         REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
             .removeValue { error, ref ->  }
+
+        val dateMapUser =
+            mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+        STORAGE_USERS_FOR_ADMIN.counter_recept=STORAGE_USERS_FOR_ADMIN.counter_recept-1
+        dateMapUser[CHIELD_COUNTER_RECEPT]=STORAGE_USERS_FOR_ADMIN.counter_recept
+
+        REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE_USERS_FOR_ADMIN.ID).updateChildren(dateMapUser)
+        replaceFragment3(ViewProfileUsersForAdmin())
         MassivReceptUserForAdmin.removeAll { true }
         counterReceptUserForAdmin=0
-        initBase()
+        //initBase()
     }
 
 }

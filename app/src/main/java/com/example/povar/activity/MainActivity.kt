@@ -1,6 +1,7 @@
 package com.example.povar.activity
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.TextView
@@ -159,11 +160,13 @@ fun TemaPriRefresh(){
         toolbar.setBackgroundResource(R.color.DarkThema)
 
 
+
     }
     else{
         LinearActivity.setBackgroundResource(R.color.LiteThema)
         LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
         toolbar.setBackgroundResource(R.color.LiteThema)
+
     }
 
 }

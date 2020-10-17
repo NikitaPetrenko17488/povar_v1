@@ -3,6 +3,7 @@ package com.example.povar.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_update.*
 
 
@@ -29,6 +31,7 @@ class fragment3 : Fragment() {
         hideSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
 
     }
 
@@ -39,6 +42,9 @@ class fragment3 : Fragment() {
         hideSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
+
+        tema()
 
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
         ImageUpdateRecept.setOnClickListener {
@@ -155,6 +161,34 @@ fun Avotzapolnenie()
             }
         }
 
+    }
+
+    private fun tema() {
+        if (STORAGE.Tema == true) {
+            Constraint_layout_update.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+            EditTextNameUpdate.setTextColor(Color.parseColor("#b2b2b2"))
+            EditTextIngridientUpdate.setTextColor(Color.parseColor("#b2b2b2"))
+            EditTextFormulaUpdate.setTextColor(Color.parseColor("#b2b2b2"))
+
+            EditTextNameUpdate.setHintTextColor(Color.parseColor("#b2b2b2"))
+            EditTextIngridientUpdate.setHintTextColor(Color.parseColor("#b2b2b2"))
+            EditTextFormulaUpdate.setHintTextColor(Color.parseColor("#b2b2b2"))
+
+            button_update.background = null
+            button_update.setTextColor(Color.parseColor("#b2b2b2"))
+        } else {
+            Constraint_layout_update.setBackgroundResource(R.drawable.fon_na_fragment)
+            EditTextNameUpdate.setTextColor(Color.parseColor("#000000"))
+            EditTextIngridientUpdate.setTextColor(Color.parseColor("#000000"))
+            EditTextFormulaUpdate.setTextColor(Color.parseColor("#000000"))
+
+            EditTextNameUpdate.setHintTextColor(Color.parseColor("#000000"))
+            EditTextIngridientUpdate.setHintTextColor(Color.parseColor("#000000"))
+            EditTextFormulaUpdate.setHintTextColor(Color.parseColor("#000000"))
+
+            button_update.setBackgroundResource(R.drawable.megaoval)
+            button_update.setTextColor(Color.parseColor("#000000"))
+        }
     }
 
 }

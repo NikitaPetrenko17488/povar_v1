@@ -1,21 +1,22 @@
 package com.example.povar.fragments
 
 import DataAdapterCalorii
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Calorii
-import com.example.povar.ui.hideSearch
-import com.example.povar.ui.showSettings
-import com.example.povar.ui.showUserNameAdnImage
+import com.example.povar.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_kalorii.*
+import kotlinx.android.synthetic.main.fragment_view_all_recept.*
 
 private val mNicolasCageMovies = listOf(
     Calorii("белый гриб", "34"),
@@ -49,6 +50,7 @@ class Kalorii : Fragment() {
         showSettings(activity!!)
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
+        hideAddButton(activity!!)
 
     }
 
@@ -66,7 +68,16 @@ class Kalorii : Fragment() {
         showSettings(activity!!)
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
+        hideAddButton(activity!!)
 
+        if(STORAGE.Tema==true)
+        {
+            Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+        }
+        else
+        {
+            Constraint_layout_calorii.setBackgroundResource(R.drawable.fon_na_fragment)
+        }
         create_recycle()
     }
 
@@ -79,19 +90,42 @@ class Kalorii : Fragment() {
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_kalorii, parent, false)) {
         private var mName: TextView? = null
         private var mCalorii: TextView? = null
-
+           private var mKkl:TextView?=null
 
         init {
 
             mName = itemView.findViewById(R.id.NazvanieKalorii)
             mCalorii = itemView.findViewById(R.id.KaloriiKalorii)
+              mKkl=itemView.findViewById(R.id.kkl100gr)
+
 
 
         }
         fun bind(movie: Calorii) {
 
-            mName?.text = movie.name.toString()
-            mCalorii?.text = movie.kalorii.toString()
+
+            if(STORAGE.Tema==true){
+
+                mName?.setTextColor(Color.parseColor("#b2b2b2"))
+                mCalorii?.setTextColor(Color.parseColor("#b2b2b2"))
+                mKkl?.setTextColor(Color.parseColor("#b2b2b2"))
+
+
+            }
+            else
+            {
+                mName?.setTextColor(Color.parseColor("#000000"))
+                mCalorii?.setTextColor(Color.parseColor("#000000"))
+                mKkl?.setTextColor(Color.parseColor("#000000"))
+
+
+            }
+
+
+            mName?.text = movie.name
+            mCalorii?.text = movie.kalorii
+
+
 
 
         }

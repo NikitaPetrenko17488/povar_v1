@@ -2,6 +2,8 @@ package com.example.povar.ui;
 
 import android.content.Context;
 
+import com.example.povar.R;
+
 public class convert {
 
 
@@ -12,4 +14,7 @@ public class convert {
     public static float pxFromDp(final Context context, final float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
     }
+
+
+
 }

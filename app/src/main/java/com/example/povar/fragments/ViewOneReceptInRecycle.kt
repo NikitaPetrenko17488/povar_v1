@@ -1,5 +1,6 @@
 package com.example.povar.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_view_one_recept_in_recycle.*
 
 var ocenka=0
@@ -36,6 +38,7 @@ class ViewOneReceptInRecycle : Fragment() {
         hideSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
 
     }
 
@@ -54,6 +57,9 @@ class ViewOneReceptInRecycle : Fragment() {
         hideSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
+        hideAddButton(activity!!)
+
+        tema()
 
         Star1.setOnClickListener { ocenka=1
             initBase()
@@ -278,6 +284,28 @@ fun NullStars(){
     if(activity!=null)
     activity!!.Star5.setImageDrawable(null)
 }
+
+    private fun tema() {
+        if (STORAGE.Tema == true) {
+            Constraint_layout_one_recept.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+            EditTextNameView.setTextColor(Color.parseColor("#b2b2b2"))
+            EditTextIngridientView.setTextColor(Color.parseColor("#b2b2b2"))
+            EditTextFormulaView.setTextColor(Color.parseColor("#b2b2b2"))
+
+            TextOcenkaAll.setTextColor(Color.parseColor("#b2b2b2"))
+            OcenkaAll.setTextColor(Color.parseColor("#b2b2b2"))
+            TextOcenka.setTextColor(Color.parseColor("#b2b2b2"))
+        } else {
+            Constraint_layout_one_recept.setBackgroundResource(R.drawable.fon_na_fragment)
+            EditTextNameView.setTextColor(Color.parseColor("#000000"))
+            EditTextIngridientView.setTextColor(Color.parseColor("#000000"))
+            EditTextFormulaView.setTextColor(Color.parseColor("#000000"))
+
+            TextOcenkaAll.setTextColor(Color.parseColor("#000000"))
+            OcenkaAll.setTextColor(Color.parseColor("#000000"))
+            TextOcenka.setTextColor(Color.parseColor("#000000"))
+        }
+    }
 
 }
 

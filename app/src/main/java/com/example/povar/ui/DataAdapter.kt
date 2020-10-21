@@ -195,3 +195,35 @@ class DataAdapterReceptsUserForAdmin(private val list: MutableList<Recept>, priv
 
     override fun getItemCount(): Int=list.size
 }
+
+class DataAdapterOffline(private val list: MutableList<Recept>, private val clickOff:ClickOffline)
+    : RecyclerView.Adapter<offline_avtonomnoe.MovieViewHolderOffline>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): offline_avtonomnoe.MovieViewHolderOffline {
+
+        val inflater = LayoutInflater.from(parent.context)
+        return offline_avtonomnoe.MovieViewHolderOffline(inflater, parent)
+    }
+    override fun onBindViewHolder(holder: offline_avtonomnoe.MovieViewHolderOffline, position: Int) {
+
+        val movie: Recept = list[position]
+        holder.bind(movie)
+
+
+        holder.itemView.Constraint_layout_all.setOnClickListener {
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            STORAGE_FOR_RECYCLE_RECEPT.user_id=movie.user_id
+
+            clickOff.ViewRecept()
+
+        }
+
+    }
+    override fun getItemCount(): Int = list.size
+
+}

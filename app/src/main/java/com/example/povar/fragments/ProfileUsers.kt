@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.ui.*
 import kotlinx.android.synthetic.main.fragment_profile_users.*
-import kotlinx.android.synthetic.main.fragment_view_one_recept_in_recycle.*
 
 
 class ProfileUsers : Fragment() {
@@ -97,7 +96,7 @@ class ProfileUsers : Fragment() {
 
 
         } else {
-            Constraint_layout_profile_users.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_layout_profile_users.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             NameTextInProfie.setTextColor(Color.parseColor("#000000"))
             NameInProfile.setTextColor(Color.parseColor("#000000"))
             LoginTextInProfie.setTextColor(Color.parseColor("#000000"))

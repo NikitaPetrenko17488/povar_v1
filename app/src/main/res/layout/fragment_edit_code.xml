@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/fon_na_fragment"
+    android:background="@drawable/background_fon_na_fragment_lite"
     tools:context=".fragments.EditCodeFragment"
     >
     <androidx.appcompat.widget.Toolbar
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:background="@null"
-        android:text="Регистрация"
+        android:text=" Регистрация "
         android:textColor="@color/Grey"
         android:textSize="17dp"
         android:textStyle="normal"
@@ -99,6 +99,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/autentificationCodePassword"
          />
+
+    <Button
+
+        android:id="@+id/StartOffline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:text=" Offline mode "
+        android:textColor="@color/Grey"
+        android:textSize="17dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StartRegistry"
+        />
 
 
 

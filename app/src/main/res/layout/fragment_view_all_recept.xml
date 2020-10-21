@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fon_na_fragment"
+    android:background="@drawable/background_fon_na_fragment_lite"
     tools:context=".fragments.ViewAllRecept"
     >
 

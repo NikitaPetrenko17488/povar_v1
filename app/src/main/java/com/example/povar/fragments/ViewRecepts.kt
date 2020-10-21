@@ -4,9 +4,7 @@ import DataAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
-import com.example.povar.activity.AdminActivity
 import com.example.povar.activity.MainActivity
 
 
@@ -27,10 +24,8 @@ import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.internal.Sleeper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_view1.*
-import kotlinx.android.synthetic.main.list_item_recept.*
 
 interface Click
 {
@@ -86,7 +81,7 @@ class fragment5 : Fragment(),Click {
         if(STORAGE.Tema==true)
             Constraint_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
         else
-            Constraint_view.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
         activity!!.addRecept.setOnClickListener{findNavController().navigate(R.id.fragment2)}
         activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
 

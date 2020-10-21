@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.Kalorii"
-    android:background="@drawable/fon_na_fragment">
+    android:background="@drawable/background_fon_na_fragment_lite">
 
     <ScrollView
         android:layout_height="match_parent"

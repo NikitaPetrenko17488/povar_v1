@@ -55,7 +55,6 @@ class fragment1 : Fragment() {
 
         fragmentLayout.button2.setOnClickListener{navController.navigate(R.id.fragment2)}
         fragmentLayout.button3.setOnClickListener{navController.navigate(R.id.fragment3)}
-        fragmentLayout.button4.setOnClickListener{navController.navigate(R.id.fragment4)}
         fragmentLayout.button1.setOnClickListener{navController.navigate(R.id.fragment5)}
 
         return fragmentLayout

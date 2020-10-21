@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import com.example.povar.R
 import com.example.povar.activity.AdminActivity
 import com.example.povar.activity.MainActivity
@@ -48,6 +49,8 @@ open class EditCodeFragment() : Fragment() {
         loadDataBase()
         godAutentification()
         startRegistry()
+        startOffline()
+
 
     }
     private fun loadDataBase() {
@@ -73,6 +76,12 @@ open class EditCodeFragment() : Fragment() {
 
     }
 
+    private fun startOffline()
+    {
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="Offline"
+        StartOffline.setOnClickListener {findNavController().navigate(R.id.offline_avtonomnoe) }
+    }
+
 //    fun ForTest()
 //    {
 //
@@ -83,7 +92,7 @@ open class EditCodeFragment() : Fragment() {
         var count = 0
 
         for (index in Massiv_Users.withIndex()) {
-            if (Massiv_Users[count].login.toString()==autentificationCodeLogin.text.toString() && Massiv_Users[count].password.toString()==autentificationCodePassword.text.toString() )
+            if (Massiv_Users[count].login==autentificationCodeLogin.text.toString() && Massiv_Users[count].password==autentificationCodePassword.text.toString() )
             {
                 boolLogin = 1
             }
@@ -120,20 +129,6 @@ open class EditCodeFragment() : Fragment() {
     }
         Massiv_Users.removeAll{true}
     }
-//                              TEEEEESSSSTTTTTT
-//        class MyRegistry:EditCodeFragment(){
-//
-//            fun Registry(login:String,OgidaemiyLogin:String):String{
-//                var auth:Boolean
-//                if (login.toString()==OgidaemiyLogin.toString()){
-//                   auth=true
-//                }
-//                else{ Log.d(" Неверный логин","0")
-//                auth=false
-//                }
-//
-//                return auth.toString()
-//            }
-//        }
+
 
 }

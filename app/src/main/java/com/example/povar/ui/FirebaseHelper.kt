@@ -36,7 +36,8 @@ const val  CHIELD_USER_LOGIN="login"
 const val  CHIELD_USER_NAME="name"
 const val  CHIELD_PHOTO_USER_SRC="photoUrl"
 const val  CHIELD_COUNTER_RECEPT="counter_recept"
-const val  CHIELD_TEMA="tema"
+const val  CHIELD_USER_TEMA="tema"
+const val CHIELD_USER_LANGUAGE="language"
 
 
 

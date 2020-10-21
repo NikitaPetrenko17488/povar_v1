@@ -2,14 +2,15 @@ package com.example.povar.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import com.example.povar.R
 import com.example.povar.activity.MainActivity
+import com.example.povar.models.Calorii
 import com.example.povar.models.User
 import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_edit_number.*
 
 
 
-class EditNumberFragment : Fragment() {
+open class EditNumberFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,6 +102,8 @@ class EditNumberFragment : Fragment() {
                             dateMap[CHIELD_USER_PASSWORD] = password
                             dateMap[CHIELD_USER_NAME] = name
                             dateMap[CHIELD_USER_ID]=ID
+                            dateMap[CHIELD_USER_TEMA]=false
+                            dateMap[CHIELD_USER_LANGUAGE]="Rus"
                             REF_DABATABSE_ROOT.child(NODE_USERS).child(ID)
                                 .updateChildren(dateMap)
                                 STORAGE.name=name
@@ -116,7 +119,39 @@ class EditNumberFragment : Fragment() {
 
         }
     }
+     val loginTest = listOf(
+        User("Admin"),
+        User("Admiral"),
+        User("admin"))
 
 
 
+
+
+
+
+//    class TEst:EditNumberFragment() {
+//        fun test(Edit_login: String): String {
+//
+//            var boolLogin: Int = 0
+//            var count = 0
+//            if (Edit_login.length < 4) {
+//                showToast("Логин должен содержать минимум 4 символа")   //1
+//            } else {
+//
+//
+//                                                                            ///2
+//                for (index in loginTest.withIndex()) {          //3
+//                    if (loginTest[count].toString() == Edit_login) {                //4
+//
+//                        boolLogin = 0
+//                    }
+//                    count++
+//                }
+//
+//            }                                                                   //5
+//            return boolLogin.toString()                                             //6
+//        }
+//
+//    }
 }

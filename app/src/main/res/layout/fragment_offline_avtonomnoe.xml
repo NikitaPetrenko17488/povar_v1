@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.offline_avtonomnoe"
+    android:background="@drawable/background_fon_na_fragment_lite"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarOffline"
+        app:titleTextColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Рецепты"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       />
+
+
+    <Button
+        android:id="@+id/ExitInOffline"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/megaoval"
+        android:text=" Авторизироваться "
+        android:textSize="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarOffline"
+        />
+
+    <EditText
+        android:id="@+id/SearchOffline"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edittextoval"
+        android:hint=" Поиск"
+        android:maxLines="1"
+        android:gravity="center"
+        android:layout_marginStart="180dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="@id/ExitInOffline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ExitInOffline" />
+
+
+    <ImageView
+        android:id="@+id/SearchReceptOfflineButton"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="3dp"
+        android:layout_height="33dp"
+        android:layout_width="33dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="@id/SearchOffline"
+        app:layout_constraintTop_toTopOf="@id/SearchOffline"
+        android:src="@drawable/serarch"
+        />
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rvAllOffline"
+        android:layout_marginTop="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/list_item_recept_all"
+
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

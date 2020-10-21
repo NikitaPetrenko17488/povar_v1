@@ -8,11 +8,6 @@
     app:startDestination="@id/editCodeFragment">
 
     <fragment
-        android:id="@+id/fragment1"
-        android:name="com.example.povar.fragments.fragment1"
-        android:label="@string/nazvanie_froma1"
-        tools:layout="@layout/fragment_start"/>
-    <fragment
         android:id="@+id/fragment2"
         android:name="com.example.povar.fragments.fragment2"
         android:label="@string/nazvanie_forma2"
@@ -23,11 +18,6 @@
         android:label="@string/nazvanie_froma3"
         tools:layout="@layout/fragment_update" />
     <fragment
-        android:id="@+id/fragment4"
-        android:name="com.example.povar.fragments.fragment4"
-        android:label="@string/nazvanie_forma4"
-        tools:layout="@layout/fragment_delete" />
-    <fragment
         android:id="@+id/fragment5"
         android:name="com.example.povar.fragments.fragment5"
         android:label="@string/nazvanie_forma5"
@@ -35,26 +25,32 @@
         <action
             android:id="@+id/action_fragment5_to_profileUsers"
             app:destination="@id/profileUsers"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
         <action
             android:id="@+id/action_fragment5_to_fragment3"
             app:destination="@id/fragment3"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_fragment5_to_fragment2"
-            app:destination="@id/fragment2" />
-        <action
-            android:id="@+id/action_fragment5_to_fragment4"
-            app:destination="@id/fragment4" />
+            app:destination="@id/fragment2"
+            app:enterAnim="@anim/from_right" />
         <action
             android:id="@+id/action_fragment5_to_viewOneReceptInRecycle"
-            app:destination="@id/viewOneReceptInRecycle" />
+            app:destination="@id/viewOneReceptInRecycle"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_fragment5_to_settings"
+            app:destination="@id/settings"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/editNumberFragment"
@@ -77,10 +73,10 @@
         <action
             android:id="@+id/action_editCodeFragment_to_editNumberFragment"
             app:destination="@id/editNumberFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_editCodeFragment_to_viewUsersForAdmin"
             app:destination="@id/viewUsersForAdmin"
@@ -88,6 +84,10 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_editCodeFragment_to_fragment5"
+            app:destination="@id/fragment5"
+            app:enterAnim="@anim/from_right" />
     </fragment>
     <fragment
         android:id="@+id/viewUsersForAdmin"
@@ -101,7 +101,11 @@
         tools:layout="@layout/fragment_profile_users" >
         <action
             android:id="@+id/action_profileUsers_to_editProfileUser"
-            app:destination="@id/editProfileUser" />
+            app:destination="@id/editProfileUser"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/editProfileUser"
@@ -124,7 +128,11 @@
         android:id="@+id/viewOneReceptInRecycle"
         android:name="com.example.povar.fragments.ViewOneReceptInRecycle"
         android:label="Рецепт"
-        tools:layout="@layout/fragment_view_one_recept_in_recycle" />
+        tools:layout="@layout/fragment_view_one_recept_in_recycle" >
+        <action
+            android:id="@+id/action_viewOneReceptInRecycle_to_fragment5"
+            app:destination="@id/fragment5" />
+    </fragment>
     <fragment
         android:id="@+id/settings"
         android:name="com.example.povar.fragments.Settings"
@@ -140,4 +148,9 @@
         android:name="com.example.povar.fragments.ViewProfileUsersForAdmin"
         android:label="Профиль пользователя"
         tools:layout="@layout/fragment_view_profile_users_for_admin" />
+    <fragment
+        android:id="@+id/offline_avtonomnoe"
+        android:name="com.example.povar.fragments.offline_avtonomnoe"
+        android:label="fragment_offline_avtonomnoe"
+        tools:layout="@layout/fragment_offline_avtonomnoe" />
 </navigation>

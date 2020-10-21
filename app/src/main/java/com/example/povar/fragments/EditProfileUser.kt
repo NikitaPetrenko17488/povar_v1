@@ -17,8 +17,6 @@ import com.example.povar.ui.STORAGE.Companion.name
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
-import kotlinx.android.synthetic.main.fragment_profile_users.*
-import kotlinx.android.synthetic.main.fragment_view_one_recept_in_recycle.*
 
 
 class EditProfileUser : Fragment() {
@@ -168,7 +166,7 @@ class EditProfileUser : Fragment() {
 
 
         } else {
-            Constraint_layout_edit_profile_users.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_layout_edit_profile_users.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             NameInProfileEdit.setTextColor(Color.parseColor("#000000"))
             LoginInProfileEdit.setTextColor(Color.parseColor("#000000"))
             NameTextInProfieEdit.setTextColor(Color.parseColor("#000000"))

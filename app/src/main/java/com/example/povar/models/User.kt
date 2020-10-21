@@ -8,5 +8,6 @@ data class User(
     var photoUrl:String="",
     var admin:Int=0,
     var counter_recept:Int=0,
-    var tema:Boolean=false
+    var tema:Boolean=false,
+    var language:String=""
 )

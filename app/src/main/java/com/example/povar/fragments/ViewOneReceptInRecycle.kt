@@ -10,14 +10,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.povar.R
-import com.example.povar.models.Recept
 import com.example.povar.models.Stars
 import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_update.*
 import kotlinx.android.synthetic.main.fragment_view_one_recept_in_recycle.*
 
 var ocenka=0
@@ -60,24 +57,34 @@ class ViewOneReceptInRecycle : Fragment() {
         hideAddButton(activity!!)
 
         tema()
+        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext!="Offline") {
+            Star1.setOnClickListener {
+                ocenka = 1
+                initBase()
+                replaceFragment(ViewOneReceptInRecycle())
+            }
+            Star2.setOnClickListener {
+                ocenka = 2
+                initBase()
+                replaceFragment(ViewOneReceptInRecycle())
+            }
+            Star3.setOnClickListener {
+                ocenka = 3
+                initBase()
+                replaceFragment(ViewOneReceptInRecycle())
+            }
+            Star4.setOnClickListener {
+                ocenka = 4
+                initBase()
+                replaceFragment(ViewOneReceptInRecycle())
+            }
+            Star5.setOnClickListener {
+                ocenka = 5
+                initBase()
+                replaceFragment(ViewOneReceptInRecycle())
+            }
 
-        Star1.setOnClickListener { ocenka=1
-            initBase()
-            replaceFragment(ViewOneReceptInRecycle())}
-        Star2.setOnClickListener { ocenka=2
-            initBase()
-            replaceFragment(ViewOneReceptInRecycle())}
-        Star3.setOnClickListener { ocenka=3
-            initBase()
-            replaceFragment(ViewOneReceptInRecycle())}
-        Star4.setOnClickListener { ocenka=4
-            initBase()
-            replaceFragment(ViewOneReceptInRecycle())}
-        Star5.setOnClickListener { ocenka=5
-            initBase()
-            replaceFragment(ViewOneReceptInRecycle())}
-
-
+        }
 
     }
 
@@ -148,6 +155,12 @@ class ViewOneReceptInRecycle : Fragment() {
             NullStars()
         }
         if(STORAGE_FOR_RECYCLE_RECEPT.user_id==STORAGE.ID)
+        {
+            TextOcenka.setText("")
+            NullStars()
+        }
+
+        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="Offline")
         {
             TextOcenka.setText("")
             NullStars()
@@ -261,14 +274,14 @@ fun avtoZapalnenZvezd()
 
 
 
-    fun initBase()
-    {
-        val dateMap =
-            mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
-        dateMap[CHIELD_STARS_NAME_RECEPT] = STORAGE_FOR_RECYCLE_RECEPT.name
-        dateMap[CHIELD_STARS_NAME_USER]=STORAGE.ID
-        dateMap[CHIELD_STARS_OCENKA]= ocenka
-        REF_DABATABSE_ROOT.child(NODE_STARS).child(STORAGE.ID+STORAGE_FOR_RECYCLE_RECEPT.name).updateChildren(dateMap)
+    fun initBase() {
+            val dateMap =
+                mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+            dateMap[CHIELD_STARS_NAME_RECEPT] = STORAGE_FOR_RECYCLE_RECEPT.name
+            dateMap[CHIELD_STARS_NAME_USER] = STORAGE.ID
+            dateMap[CHIELD_STARS_OCENKA] = ocenka
+            REF_DABATABSE_ROOT.child(NODE_STARS).child(STORAGE.ID + STORAGE_FOR_RECYCLE_RECEPT.name)
+                .updateChildren(dateMap)
 
     }
 
@@ -296,7 +309,7 @@ fun NullStars(){
             OcenkaAll.setTextColor(Color.parseColor("#b2b2b2"))
             TextOcenka.setTextColor(Color.parseColor("#b2b2b2"))
         } else {
-            Constraint_layout_one_recept.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_layout_one_recept.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             EditTextNameView.setTextColor(Color.parseColor("#000000"))
             EditTextIngridientView.setTextColor(Color.parseColor("#000000"))
             EditTextFormulaView.setTextColor(Color.parseColor("#000000"))

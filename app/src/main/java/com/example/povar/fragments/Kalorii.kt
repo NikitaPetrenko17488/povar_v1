@@ -8,15 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Calorii
 import com.example.povar.ui.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_kalorii.*
-import kotlinx.android.synthetic.main.fragment_view_all_recept.*
 
 private val mNicolasCageMovies = listOf(
     Calorii("белый гриб", "34"),
@@ -76,7 +73,7 @@ class Kalorii : Fragment() {
         }
         else
         {
-            Constraint_layout_calorii.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
         }
         create_recycle()
     }

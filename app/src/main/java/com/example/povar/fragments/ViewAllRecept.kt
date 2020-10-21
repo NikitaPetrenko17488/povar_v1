@@ -67,7 +67,7 @@ class ViewAllRecept : Fragment(),ClickAll {
         }
         else
         {
-            Constraint_layout_all_view.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
         }
         initRecepts()
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }

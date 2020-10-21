@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
 import com.example.povar.fragments.fragment5
@@ -19,9 +21,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity :AppCompatActivity() {
 
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_view1)
+
 
         setContentView(R.layout.activity_main)
         var name_users= STORAGE.name
@@ -31,6 +35,7 @@ class MainActivity :AppCompatActivity() {
         circleImageViewForActivityMain.downloadSetImage(STORAGE.photo)
         STORAGE_FOR_RECYCLE_RECEPT.fragmentContext="My"
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -63,7 +68,7 @@ class MainActivity :AppCompatActivity() {
 
 
 
-        navController.popBackStack()
+       navController.popBackStack()
         navController.navigate(R.id.fragment5)
 
         circleImageViewForActivityMain.setOnClickListener {
@@ -104,14 +109,6 @@ class MainActivity :AppCompatActivity() {
 
 
     }
-
-
-
-
-
-
-
-
 
 
 

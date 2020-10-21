@@ -8,16 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
 import com.example.povar.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_settings.*
-import kotlinx.android.synthetic.main.fragment_view1.*
 
 
 class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
@@ -56,19 +52,24 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
             Exit.background=null
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
+            LanguageText.setTextColor(Color.parseColor("#b2b2b2"))
         }
         else
         {
-            ConstraintSettings.setBackgroundResource(R.drawable.fon_na_fragment)
+            ConstraintSettings.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             Exit.setTextColor(Color.parseColor("#000000"))
             Exit.setBackgroundResource(R.drawable.megaoval)
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
+            LanguageText.setTextColor(Color.parseColor("#000000"))
         }
 
         switchTemnayaTema.setOnCheckedChangeListener(this)
 
         Exit.setOnClickListener{
 
+            STORAGE.Tema=false
+            STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=""
+            STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=""
             startActivity(Intent(activity, RegistryActivity::class.java))
         }
     }
@@ -93,6 +94,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
             Exit.background=null
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
+            LanguageText.setTextColor(Color.parseColor("#b2b2b2"))
 
         }
         if(isChecked==false)
@@ -101,10 +103,11 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.toolbar.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivity.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
-            activity!!.ConstraintSettings.setBackgroundResource(R.drawable.fon_na_fragment)
+            activity!!.ConstraintSettings.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             Exit.setBackgroundResource(R.drawable.megaoval)
             Exit.setTextColor(Color.parseColor("#000000"))
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
+            LanguageText.setTextColor(Color.parseColor("#000000"))
             STORAGE.Tema=isChecked
             updateTemaInBase()
 
@@ -116,7 +119,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
     fun updateTemaInBase(){
         val dateMap =
             mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
-        dateMap[CHIELD_TEMA] = STORAGE.Tema
+        dateMap[CHIELD_USER_TEMA] = STORAGE.Tema
         REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID).updateChildren(dateMap)
 
     }

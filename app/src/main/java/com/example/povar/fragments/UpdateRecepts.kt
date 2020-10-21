@@ -17,17 +17,17 @@ import com.example.povar.R
 import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
 import com.theartofdev.edmodo.cropper.CropImage
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_update.*
 
 
 class fragment3 : Fragment() {
 
+    var Mat=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Mat=false
         hideSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
@@ -37,8 +37,9 @@ class fragment3 : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        Avotzapolnenie()
+        Mat=false
 
+        Avotzapolnenie()
         hideSettings(activity!!)
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
@@ -72,28 +73,36 @@ class fragment3 : Fragment() {
                 Toast.makeText(activity, "Введите рецепт блюда", Toast.LENGTH_SHORT).show()
             } else {
 
-                val name =
-                    EditTextNameUpdate.text.toString() //запись в перемнную из ЕдитТекст
-                val ingridients =
-                    EditTextIngridientUpdate.text.toString() //запись в перемнную из ЕдитТекст
-                val formula =
-                    EditTextFormulaUpdate.text.toString()// запись в перемнную из ЕдитТекст
-
-                val dateMap =
-                    mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
-
-               // dateMap[CHIELD_RECEPT_ID]= STORAGE_FOR_RECYCLE_RECEPT.ID+STORAGE.ID
-                dateMap[CHIELD_RECEPT_NAME] = name
-                dateMap[CHIELD_RECEPT_INGRIDIENTS] = ingridients
-                dateMap[CHIELD_RECEPT_FORMULA] = formula
-                REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMap)
-
-
-                if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
-                    replaceFragment(fragment5())
+                ProverkaMat()
+                if(Mat==true)
+                {
+                    showToast("Удалите запрещенные слова!")
                 }
+                else {
+                    val name =
+                        EditTextNameUpdate.text.toString() //запись в перемнную из ЕдитТекст
+                    val ingridients =
+                        EditTextIngridientUpdate.text.toString() //запись в перемнную из ЕдитТекст
+                    val formula =
+                        EditTextFormulaUpdate.text.toString()// запись в перемнную из ЕдитТекст
 
-                Toast.makeText(activity, "Блюдо успешно обновлено..", Toast.LENGTH_SHORT).show()
+                    val dateMap =
+                        mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+
+                    // dateMap[CHIELD_RECEPT_ID]= STORAGE_FOR_RECYCLE_RECEPT.ID+STORAGE.ID
+                    dateMap[CHIELD_RECEPT_NAME] = name
+                    dateMap[CHIELD_RECEPT_INGRIDIENTS] = ingridients
+                    dateMap[CHIELD_RECEPT_FORMULA] = formula
+                    REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
+                        .updateChildren(dateMap)
+
+
+                    if (STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain == "Main") {
+                        replaceFragment(fragment5())
+                    }
+
+                    Toast.makeText(activity, "Блюдо успешно обновлено..", Toast.LENGTH_SHORT).show()
+                }
             }
 
         }
@@ -127,6 +136,7 @@ fun Avotzapolnenie()
 
     override fun onStop() {
         super.onStop()
+        Mat=false
 
     }
 
@@ -163,6 +173,29 @@ fun Avotzapolnenie()
 
     }
 
+
+    fun ProverkaMat()
+    {
+        Mat=false
+        var nameUp:String=EditTextNameUpdate.text.toString().toUpperCase()
+        var ingridientsUP:String=EditTextIngridientUpdate.text.toString().toUpperCase()
+        var formulaUP:String=EditTextFormulaUpdate.text.toString().toUpperCase()
+
+        var arrString:Array<String> = arrayOf("бля","хуй","пизда","ебал","говно","ебал","ебать","лох","долбаеб","хуесос","пидорас","пидор","блять","хуйня","нахуй")
+
+        var i=0
+        while(i<15) {
+            var MatStringUp = arrString[i].toUpperCase()
+
+            if (nameUp.contains(MatStringUp) || ingridientsUP.contains(MatStringUp) || formulaUP.contains(MatStringUp))
+                Mat = true
+            i++
+
+        }
+
+    }
+
+
     private fun tema() {
         if (STORAGE.Tema == true) {
             Constraint_layout_update.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
@@ -177,7 +210,7 @@ fun Avotzapolnenie()
             button_update.background = null
             button_update.setTextColor(Color.parseColor("#b2b2b2"))
         } else {
-            Constraint_layout_update.setBackgroundResource(R.drawable.fon_na_fragment)
+            Constraint_layout_update.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             EditTextNameUpdate.setTextColor(Color.parseColor("#000000"))
             EditTextIngridientUpdate.setTextColor(Color.parseColor("#000000"))
             EditTextFormulaUpdate.setTextColor(Color.parseColor("#000000"))

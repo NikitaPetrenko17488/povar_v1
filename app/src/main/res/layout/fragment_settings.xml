@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Settings"
     android:id="@+id/ConstraintSettings"
-    android:background="@drawable/fon_na_fragment">
+    android:background="@drawable/background_fon_na_fragment_lite">
 
     <Button
 
@@ -31,6 +31,20 @@
         android:layout_marginStart="16dp"
         android:textSize="20dp"
         android:text="Темная тема "
-         />
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+    <TextView
+        android:id="@+id/LanguageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Язык - "
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/switchTemnayaTema"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

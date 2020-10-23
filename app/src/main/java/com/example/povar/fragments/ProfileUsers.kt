@@ -91,7 +91,7 @@ class ProfileUsers : Fragment() {
             LoginInProfile.setTextColor(Color.parseColor("#b2b2b2"))
             count_recept_for_user.setTextColor(Color.parseColor("#b2b2b2"))
             count_recept_for_user_4islo.setTextColor(Color.parseColor("#b2b2b2"))
-            EditProfile.background=null
+            EditProfile.setBackgroundResource(R.drawable.megaoval_anim_dark)
             EditProfile.setTextColor(Color.parseColor("#b2b2b2"))
 
 
@@ -103,7 +103,7 @@ class ProfileUsers : Fragment() {
             LoginInProfile.setTextColor(Color.parseColor("#000000"))
             count_recept_for_user.setTextColor(Color.parseColor("#000000"))
             count_recept_for_user_4islo.setTextColor(Color.parseColor("#000000"))
-            EditProfile.setBackgroundResource(R.drawable.megaoval)
+            EditProfile.setBackgroundResource(R.drawable.megaoval_anim)
             EditProfile.setTextColor(Color.parseColor("#000000"))
         }
     }

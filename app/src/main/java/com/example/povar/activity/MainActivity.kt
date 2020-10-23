@@ -1,31 +1,36 @@
 package com.example.povar.activity
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
-import com.example.povar.fragments.fragment5
+
+import com.example.povar.models.Recept
 import com.example.povar.ui.*
+import com.example.povar.ui.db.MyDbManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
+private var MassivOffReload = mutableListOf<Recept>()
+var counterOffReload:Int =0
 
 class MainActivity :AppCompatActivity() {
 
+    val myDbManager = MyDbManager(this)
 
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_view1)
-
+        MassivOffReload.removeAll { true }
+        counterOffReload =0
 
         setContentView(R.layout.activity_main)
         var name_users= STORAGE.name
@@ -50,6 +55,12 @@ class MainActivity :AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
+        MassivOffReload.removeAll { true }
+        counterOffReload =0
+
+        deleteOfflineBase()
+        initRecepts()
+
         TemaPriRefresh()
         MyReceptClick()
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain="Main"
@@ -167,5 +178,43 @@ fun TemaPriRefresh(){
     }
 
 }
+
+    private fun initOfflineBase() {
+        myDbManager.insertToDb(
+            MassivOffReload[counterOffReload].name,
+            MassivOffReload[counterOffReload].ingridients,
+            MassivOffReload[counterOffReload].formula)
+    }
+
+    fun deleteOfflineBase(){
+
+        myDbManager.openDb()
+        myDbManager.deleteDb()
+
+    }
+
+    private fun initRecepts( ) {
+
+        REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (snapshot: DataSnapshot in dataSnapshot.children) {
+                        val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+
+                        MassivOffReload.add(recept)
+                        initOfflineBase()
+                        counterOffReload++
+
+
+                    }
+
+                }
+
+            })
+
+    }
 
 }

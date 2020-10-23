@@ -137,7 +137,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:background="@drawable/megaoval"
+        android:background="@drawable/megaoval_anim"
         android:id="@+id/RegistryEnd"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"

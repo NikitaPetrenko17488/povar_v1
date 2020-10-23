@@ -1,5 +1,4 @@
 package com.example.povar.fragments
-
 import DataAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -72,6 +71,8 @@ class fragment5 : Fragment(),Click {
 
     override fun onStart() {
         super.onStart()
+
+        //deleteOfflineBase()
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
@@ -238,7 +239,6 @@ class fragment5 : Fragment(),Click {
         if (STORAGE_FOR_RECYCLE_RECEPT.fragmentContext == "My") {
             counter = 0
             Massiv.removeAll { true }
-            var MassivUp:String
 
             REF_DABATABSE_ROOT.child(NODE_RECEPTS)
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -271,6 +271,8 @@ class fragment5 : Fragment(),Click {
 
                             if (counter > 0)
                                 create_recycle()
+
+
                         }
 
                     }
@@ -278,5 +280,7 @@ class fragment5 : Fragment(),Click {
                 })
         }
     }
+
+
 
 }

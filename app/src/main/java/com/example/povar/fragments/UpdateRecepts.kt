@@ -207,7 +207,7 @@ fun Avotzapolnenie()
             EditTextIngridientUpdate.setHintTextColor(Color.parseColor("#b2b2b2"))
             EditTextFormulaUpdate.setHintTextColor(Color.parseColor("#b2b2b2"))
 
-            button_update.background = null
+            button_update.setBackgroundResource(R.drawable.megaoval_anim_dark)
             button_update.setTextColor(Color.parseColor("#b2b2b2"))
         } else {
             Constraint_layout_update.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
@@ -219,7 +219,7 @@ fun Avotzapolnenie()
             EditTextIngridientUpdate.setHintTextColor(Color.parseColor("#000000"))
             EditTextFormulaUpdate.setHintTextColor(Color.parseColor("#000000"))
 
-            button_update.setBackgroundResource(R.drawable.megaoval)
+            button_update.setBackgroundResource(R.drawable.megaoval_anim)
             button_update.setTextColor(Color.parseColor("#000000"))
         }
     }

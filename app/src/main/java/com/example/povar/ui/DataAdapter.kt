@@ -11,6 +11,7 @@ import com.example.povar.ui.STORAGE_USERS_FOR_ADMIN
 import kotlinx.android.synthetic.main.list_item_recept.view.*
 import kotlinx.android.synthetic.main.list_item_recept_all.view.*
 import kotlinx.android.synthetic.main.list_item_users.view.*
+import java.io.Serializable
 
 
 class DataAdapter(private val list: MutableList<Recept>, private val click:Click)

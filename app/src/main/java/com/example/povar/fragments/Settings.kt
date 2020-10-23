@@ -50,7 +50,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         {
             ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
-            Exit.background=null
+            Exit.setBackgroundResource(R.drawable.megaoval_anim_dark)
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
             LanguageText.setTextColor(Color.parseColor("#b2b2b2"))
         }
@@ -58,7 +58,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         {
             ConstraintSettings.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
             Exit.setTextColor(Color.parseColor("#000000"))
-            Exit.setBackgroundResource(R.drawable.megaoval)
+            Exit.setBackgroundResource(R.drawable.megaoval_anim)
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
             LanguageText.setTextColor(Color.parseColor("#000000"))
         }
@@ -92,7 +92,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
             updateTemaInBase()
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
-            Exit.background=null
+            Exit.setBackgroundResource(R.drawable.megaoval_anim_dark)
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
             LanguageText.setTextColor(Color.parseColor("#b2b2b2"))
 
@@ -104,7 +104,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             activity!!.LinearActivity.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
             activity!!.ConstraintSettings.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
-            Exit.setBackgroundResource(R.drawable.megaoval)
+            Exit.setBackgroundResource(R.drawable.megaoval_anim)
             Exit.setTextColor(Color.parseColor("#000000"))
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
             LanguageText.setTextColor(Color.parseColor("#000000"))

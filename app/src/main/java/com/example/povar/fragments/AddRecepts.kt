@@ -143,7 +143,7 @@ private fun tema()
         EditTextIngridientAdd.setHintTextColor(Color.parseColor("#b2b2b2"))
         EditTextFormulaAdd.setHintTextColor(Color.parseColor("#b2b2b2"))
 
-        button_add.background=null
+        button_add.setBackgroundResource(R.drawable.megaoval_anim_dark)
         button_add.setTextColor(Color.parseColor("#b2b2b2"))
     }
     else
@@ -157,7 +157,7 @@ private fun tema()
         EditTextIngridientAdd.setHintTextColor(Color.parseColor("#000000"))
         EditTextFormulaAdd.setHintTextColor(Color.parseColor("#000000"))
 
-        button_add.setBackgroundResource(R.drawable.megaoval)
+        button_add.setBackgroundResource(R.drawable.megaoval_anim)
         button_add.setTextColor(Color.parseColor("#000000"))
     }
 

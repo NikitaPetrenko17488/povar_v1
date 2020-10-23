@@ -17,6 +17,7 @@ import com.example.povar.ui.STORAGE.Companion.name
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import kotlinx.android.synthetic.main.list_item_recept.*
 
 
 class EditProfileUser : Fragment() {
@@ -48,6 +49,7 @@ class EditProfileUser : Fragment() {
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
         hideAddButton(activity!!)
+
 
         tema()
 
@@ -162,7 +164,7 @@ class EditProfileUser : Fragment() {
             LoginInProfileEdit.setHintTextColor(Color.parseColor("#b2b2b2"))
 
             SaveProfile.setTextColor(Color.parseColor("#b2b2b2"))
-            SaveProfile.background=null
+            SaveProfile.setBackgroundResource(R.drawable.megaoval_anim_dark)
 
 
         } else {
@@ -176,7 +178,7 @@ class EditProfileUser : Fragment() {
             LoginInProfileEdit.setHintTextColor(Color.parseColor("#000000"))
 
             SaveProfile.setTextColor(Color.parseColor("#000000"))
-            SaveProfile.setBackgroundResource(R.drawable.megaoval)
+            SaveProfile.setBackgroundResource(R.drawable.megaoval_anim)
         }
     }
 }

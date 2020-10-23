@@ -49,10 +49,10 @@
             <Button
                 android:id="@+id/EditProfile"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/megaoval"
+                android:layout_height="35dp"
+                android:background="@drawable/megaoval_anim"
                 android:text=" Редактировать "
-                android:textSize="20dp"
+                android:textSize="17dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="16dp"

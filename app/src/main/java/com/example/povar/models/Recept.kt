@@ -1,6 +1,8 @@
 package com.example.povar.models
 
-data class Recept (
+
+
+ data class Recept(
     val id:String ="",
     var name:String ="",
     var formula:String="",

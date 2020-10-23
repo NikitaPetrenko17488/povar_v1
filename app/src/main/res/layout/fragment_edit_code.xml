@@ -88,32 +88,34 @@
 
         android:id="@+id/StartRegistry"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:background="@null"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/megaoval_anim"
         android:text=" Регистрация "
         android:textColor="@color/Grey"
         android:textSize="17dp"
         android:textStyle="normal"
+        android:layout_marginEnd="160dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/autentificationCodePassword"
+        app:layout_constraintTop_toBottomOf="@+id/autentificationCodePassword"
          />
 
     <Button
 
         android:id="@+id/StartOffline"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@null"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/megaoval_anim"
         android:text=" Offline mode "
         android:textColor="@color/Grey"
         android:textSize="17dp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/StartRegistry"
+        app:layout_constraintEnd_toEndOf="parent"
+       android:layout_marginStart="160dp"
+        app:layout_constraintTop_toBottomOf="@id/autentificationCodePassword"
         />
 
 

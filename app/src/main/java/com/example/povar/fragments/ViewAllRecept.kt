@@ -73,7 +73,8 @@ class ViewAllRecept : Fragment(),ClickAll {
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
 
         RefreshAllRecept.setOnRefreshListener {
-            startActivity(Intent(activity, MainActivity::class.java))
+
+            replaceFragment(ViewAllRecept())
         }
     }
 

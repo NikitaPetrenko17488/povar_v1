@@ -1,7 +1,9 @@
 package com.example.povar.fragments
 
 import DataAdapterOffline
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Recept
-import com.example.povar.ui.NODE_RECEPTS
-import com.example.povar.ui.REF_DABATABSE_ROOT
+import com.example.povar.ui.*
 import com.example.povar.ui.db.MyDbManager
-import com.example.povar.ui.downloadSetImage
-import com.example.povar.ui.showToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -26,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_offline_avtonomnoe.*
 
 var MassivOffline2=ArrayList<Recept>()
 private var MassivOffline = mutableListOf<Recept>()
+var MassivOfflineSearch= mutableListOf<Recept>()
 var counterOffline =0
 
 
@@ -95,6 +95,7 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
     }
 
     fun create_recycleOffline() {
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContextTwo="Internet"
             rvAllOffline.apply {
                 if (rvAllOffline != null) {
                     layoutManager = LinearLayoutManager(activity)
@@ -104,10 +105,20 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
     }
 
     fun create_recycleOffline2(){
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContextTwo="NoInternet"
         rvAllOffline.apply {
             if (rvAllOffline != null) {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = DataAdapterOffline(MassivOffline2, this@offline_avtonomnoe)
+            }
+        }
+    }
+    fun create_recycleOfflineSearch(){
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContextTwo="NoInternet"
+        rvAllOffline.apply {
+            if (rvAllOffline != null) {
+                layoutManager = LinearLayoutManager(activity)
+                adapter = DataAdapterOffline(MassivOfflineSearch, this@offline_avtonomnoe)
             }
         }
     }
@@ -181,44 +192,67 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
 
     }
 
-   private fun search(){
+   @SuppressLint("DefaultLocale")
+   private fun search() {
 
 
-       MassivOffline.removeAll{true}
-       counterOffline=0
+       if (MassivOffline.isNotEmpty())
+       {
+           MassivOffline.removeAll { true }
+           counterOffline = 0
 
-        REF_DABATABSE_ROOT.child(NODE_RECEPTS)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(error: DatabaseError) {
-                    showToast("Нет подключения к базе..")
-                }
+           REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+               .addListenerForSingleValueEvent(object : ValueEventListener {
+                   override fun onCancelled(error: DatabaseError) {
+                       showToast("Нет подключения к базе..")
+                   }
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (snapshot: DataSnapshot in dataSnapshot.children) {
-                        val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+                   override fun onDataChange(dataSnapshot: DataSnapshot) {
+                       for (snapshot: DataSnapshot in dataSnapshot.children) {
+                           val recept = snapshot.getValue(Recept::class.java) ?: Recept()
 
-                        var receptIngridientsUp=recept.ingridients.toUpperCase()
-                        var vxodStroki: String
-                        vxodStroki = activity!!.SearchOffline.text.toString().toUpperCase()
+                           var receptIngridientsUp = recept.ingridients.toUpperCase()
+                           var vxodStroki= activity!!.SearchOffline.text.toString().toUpperCase()
 
-                        var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
+                           var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
 
 
-                        if ( indexIngridient == true ) {
-                            MassivOffline.add(recept)
+                           if (indexIngridient == true) {
+                               MassivOffline.add(recept)
 
-                        }
-                        counter++
+                           }
+                           counter++
 
-                        if (counter > 0)
-                            create_recycleOffline()
+                           if (counter > 0)
+                               create_recycleOffline()
 
-                    }
+                       }
 
-                }
+                   }
 
-            })
-    }
+               })
+       }
+       else
+       {
+           MassivOfflineSearch.removeAll { true }
+         var vxodStroki=activity!!.SearchOffline.text.toString().toUpperCase()
+
+
+
+           for ((index, element) in MassivOffline2.withIndex()){
+               var endMassivOffline= MassivOffline2[index].ingridients.toUpperCase()
+              if(endMassivOffline.contains(vxodStroki))
+              {
+                  MassivOfflineSearch.add(Recept("", MassivOffline2[index].name,MassivOffline2[index].ingridients,
+                      MassivOffline2[index].formula,"",""))
+
+              }
+           }
+           create_recycleOfflineSearch()
+
+       }
+   }
+
 
 
 }

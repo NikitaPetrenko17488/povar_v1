@@ -57,7 +57,7 @@ class ViewOneReceptInRecycle : Fragment() {
         hideAddButton(activity!!)
 
         tema()
-        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext!="Offline") {
+        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext!="Offline" && STORAGE_FOR_RECYCLE_RECEPT.user_id!=STORAGE.ID) {
             Star1.setOnClickListener {
                 ocenka = 1
                 initBase()
@@ -165,6 +165,14 @@ class ViewOneReceptInRecycle : Fragment() {
             TextOcenka.setText("")
             NullStars()
         }
+        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContextTwo=="NoInternet")
+        {
+            TextOcenkaAll.setText("")
+        }
+        if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContextTwo=="Internet")
+        {
+            TextOcenkaAll.setText("Средняя оценка: ")
+        }
 
 
     }
@@ -172,7 +180,7 @@ fun avtoZapalnenZvezd()
 {
 
     var count=0
-    var srdn=0
+    var srdn=0F
     if(MassivStarsAllsrdn.isNotEmpty()) {
         while (count< counerStarsAll) {
             srdn = srdn + MassivStarsAllsrdn[count].ocenka

@@ -1,12 +1,18 @@
 package com.example.povar.fragments
 import DataAdapter
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Color.argb
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window.FEATURE_NO_TITLE
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,6 +30,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_alert_delete_dark.view.*
+import kotlinx.android.synthetic.main.dialog_alert_delete_lite.view.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 
 interface Click
@@ -48,6 +56,8 @@ class fragment5 : Fragment(),Click {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         showSettings(activity!!)
         showSearch(activity!!)
@@ -88,9 +98,17 @@ class fragment5 : Fragment(),Click {
 
 
         RefreshMyRecept.setOnRefreshListener {
-            startActivity(Intent(activity, MainActivity::class.java))
+
+            replaceFragment(fragment5())
+            if (activity!=null)
+            activity!!.circleImageViewForActivityMain.downloadSetImage(STORAGE.photo)
 
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
 
     }
 
@@ -207,14 +225,60 @@ class fragment5 : Fragment(),Click {
 
 
 
-
     override fun updateRecycle() {
        replaceFragment(fragment3())
 
 
     }
 
+
+
+
     override fun deletteRecycle() {
+
+
+        val builder=AlertDialog.Builder(activity)
+        if(STORAGE.Tema==true){
+
+            val mDialogView = LayoutInflater.from (activity) .inflate (R.layout.dialog_alert_delete_dark, null )
+
+
+                builder.setView(mDialogView)
+            val exitAndShow=builder.show()
+            mDialogView.buttonOtmenaAlertDialogDark.setOnClickListener {
+                exitAndShow.dismiss()
+            }
+            mDialogView.buttonDeleteAlertDialogDark.setOnClickListener {
+                deleteReceptForRecyclerForAlertDialog()
+                exitAndShow.dismiss()
+
+            }
+        }
+        if(STORAGE.Tema==false){
+            val mDialogView = LayoutInflater.from (activity) .inflate (R.layout.dialog_alert_delete_lite, null )
+            builder.setView(mDialogView)
+            val exitAndShow=builder.show()
+            mDialogView.buttonOtmenaAlertDialogLite.setOnClickListener{
+                exitAndShow.dismiss()
+            }
+            mDialogView.buttonDeleteAlertDialogLite.setOnClickListener {
+
+                deleteReceptForRecyclerForAlertDialog()
+                exitAndShow.dismiss()
+            }
+        }
+
+
+    }
+
+    override fun viewRecycle() {
+        findNavController().navigate(R.id.viewOneReceptInRecycle)
+
+
+    }
+
+    private fun deleteReceptForRecyclerForAlertDialog()
+    {
         REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
             .removeValue { error, ref ->  }
 
@@ -227,13 +291,6 @@ class fragment5 : Fragment(),Click {
 
         replaceFragment(fragment5())
     }
-
-    override fun viewRecycle() {
-        findNavController().navigate(R.id.viewOneReceptInRecycle)
-
-
-    }
-
 
   private  fun SearchMyRecept() {
         if (STORAGE_FOR_RECYCLE_RECEPT.fragmentContext == "My") {

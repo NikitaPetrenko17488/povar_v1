@@ -118,7 +118,6 @@ class fragment3 : Fragment() {
     }
 fun Avotzapolnenie()
 {
-    Log.d(STORAGE_FOR_RECYCLE_RECEPT.name,"xuy")
 
     var avtozagrNameUpdateRecept=
         activity!!.findViewById<EditText>(R.id.EditTextNameUpdate)

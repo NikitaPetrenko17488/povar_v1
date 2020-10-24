@@ -1,6 +1,8 @@
 package com.example.povar.fragments
 
 import DataAdapterUsers
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +23,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.dialog_alert_delete_dark.view.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 import kotlinx.android.synthetic.main.view_users_for_admin.*
 
@@ -133,11 +136,28 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
     }
 
     override fun DeletteUser() {
-        REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE_USERS_FOR_ADMIN.ID)
-            .removeValue { error, ref ->  }
-        Massiv_Users2.removeAll { true }
-        counter2=0
-        initUsers()
+
+
+        val builder=AlertDialog.Builder(activity)
+           builder.setTitle("Удалить пользователя?")
+
+        builder.setNeutralButton("Отмена"){dialogOtmena, i ->
+
+            showToast("Отмена")
+        }
+        builder.setNegativeButton("Удалить"){dialogDelete, i ->
+
+            REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE_USERS_FOR_ADMIN.ID)
+                .removeValue { error, ref ->  }
+            Massiv_Users2.removeAll { true }
+            counter2=0
+
+                initUsers()
+        }
+        builder.show()
+
+
     }
+
 
 }

@@ -92,7 +92,7 @@ class fragment2 : Fragment() {
                     REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID)
                         .updateChildren(dateMapUser)
 
-                    replaceFragment(fragment2())
+                    replaceFragment(fragment5())
 
                     Toast.makeText(activity, "Блюдо успешно добавлено..", Toast.LENGTH_SHORT).show()
                 }

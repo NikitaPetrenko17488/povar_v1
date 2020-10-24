@@ -12,6 +12,7 @@ class STORAGE_FOR_RECYCLE_RECEPT {
         var user_id=""
         var fragmentContext=""
         var FlagActivityAdminOrMain=""
+        var fragmentContextTwo=""
 
     }
 }

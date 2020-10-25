@@ -28,6 +28,9 @@ const val  CHIELD_RECEPT_NAME ="name"
 const val  CHIELD_RECEPT_FORMULA="formula"
 const val  CHIELD_PHOTO_RECEPT_SRC="photoUrl"
 const val  CHIELD_RECEPT_USER_ID="user_id"
+const val   CHIELD_RECEPT_ANGFORMULA="formula_eng"
+const val   CHIELD_RECEPT_ANGINGRIDIENS="ingridients_eng"
+const val   CHIELD_RECEPT_ANGNAME="name_eng"
 
 
 const val  CHIELD_USER_ID ="id"

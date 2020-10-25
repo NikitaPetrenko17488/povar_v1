@@ -241,9 +241,10 @@ class fragment5 : Fragment(),Click {
         if(STORAGE.Tema==true){
 
             val mDialogView = LayoutInflater.from (activity) .inflate (R.layout.dialog_alert_delete_dark, null )
-
-
                 builder.setView(mDialogView)
+
+            deleteForAlertDialogLanguageDark(mDialogView)
+
             val exitAndShow=builder.show()
             mDialogView.buttonOtmenaAlertDialogDark.setOnClickListener {
                 exitAndShow.dismiss()
@@ -257,6 +258,7 @@ class fragment5 : Fragment(),Click {
         if(STORAGE.Tema==false){
             val mDialogView = LayoutInflater.from (activity) .inflate (R.layout.dialog_alert_delete_lite, null )
             builder.setView(mDialogView)
+            deleteForAlertDialogLanguageLite(mDialogView)
             val exitAndShow=builder.show()
             mDialogView.buttonOtmenaAlertDialogLite.setOnClickListener{
                 exitAndShow.dismiss()
@@ -276,7 +278,36 @@ class fragment5 : Fragment(),Click {
 
 
     }
-
+    private fun deleteForAlertDialogLanguageLite(mDialogView:View)
+    {
+        if(STORAGE.Language=="Rus")
+        {
+            mDialogView.textDeleteDialogAlertLite.setText(" Удалить рецепт? ")
+            mDialogView.buttonDeleteAlertDialogLite.setText(" Удалить ")
+            mDialogView.buttonOtmenaAlertDialogLite.setText(" Отмена ")
+        }
+        else
+        {
+            mDialogView.textDeleteDialogAlertLite.setText(" Delete recipe? ")
+            mDialogView.buttonDeleteAlertDialogDark.setText(" Delete ")
+            mDialogView.buttonOtmenaAlertDialogDark.setText(" Cancel ")
+        }
+    }
+    private fun deleteForAlertDialogLanguageDark(mDialogView:View)
+    {
+        if(STORAGE.Language=="Rus")
+        {
+            mDialogView.TextDeleteDialogAlert.setText(" Удалить рецепт? ")
+            mDialogView.buttonDeleteAlertDialogDark.setText(" Удалить ")
+            mDialogView.buttonOtmenaAlertDialogDark.setText(" Отмена ")
+        }
+        else
+        {
+            mDialogView.TextDeleteDialogAlert.setText(" Delete recipe? ")
+            mDialogView.buttonDeleteAlertDialogDark.setText(" Delete ")
+            mDialogView.buttonOtmenaAlertDialogDark.setText(" Cancel ")
+        }
+    }
     private fun deleteReceptForRecyclerForAlertDialog()
     {
         REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)

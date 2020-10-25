@@ -153,4 +153,14 @@
         android:name="com.example.povar.fragments.offline_avtonomnoe"
         android:label="fragment_offline_avtonomnoe"
         tools:layout="@layout/fragment_offline_avtonomnoe" />
+    <fragment
+        android:id="@+id/translater"
+        android:name="com.example.povar.fragments.Translater"
+        android:label="Переводчик"
+        tools:layout="@layout/fragment_translater" />
+    <fragment
+        android:id="@+id/translateRecept"
+        android:name="com.example.povar.fragments.TranslateRecept"
+        android:label="Перевети рецепт"
+        tools:layout="@layout/fragment_translate_recept" />
 </navigation>

@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.povar.R
+import com.example.povar.ui.STORAGE
 import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 
 class AdminActivity: AppCompatActivity() {
@@ -33,6 +34,10 @@ class AdminActivity: AppCompatActivity() {
         toolbar.setupWithNavController(navController, appBarConfiguration)
 
         navController.popBackStack()
-        navController.navigate(R.id.viewUsersForAdmin)
+
+        if(STORAGE.admin==1)
+            navController.navigate(R.id.viewUsersForAdmin)
+        if(STORAGE.translater==1)
+            navController.navigate(R.id.translater)
     }
 }

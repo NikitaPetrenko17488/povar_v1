@@ -244,7 +244,7 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
               if(endMassivOffline.contains(vxodStroki))
               {
                   MassivOfflineSearch.add(Recept("", MassivOffline2[index].name,MassivOffline2[index].ingridients,
-                      MassivOffline2[index].formula,"",""))
+                      MassivOffline2[index].formula,"","",""))
 
               }
            }

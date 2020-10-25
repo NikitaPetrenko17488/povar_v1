@@ -55,7 +55,6 @@ class ViewOneReceptInRecycle : Fragment() {
         hideSearch(activity!!)
         hideUserNameAdnImage(activity!!)
         hideAddButton(activity!!)
-
         tema()
         if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext!="Offline" && STORAGE_FOR_RECYCLE_RECEPT.user_id!=STORAGE.ID) {
             Star1.setOnClickListener {
@@ -135,6 +134,11 @@ class ViewOneReceptInRecycle : Fragment() {
 
     fun Avotzapolnenie() {
 
+        if(STORAGE.Language=="Rus")
+            TextOcenkaAll.setText("Средняя оценка: ")
+        else
+            TextOcenkaAll.setText("Average rating: ")
+
         var avtozagrNameViewRecept =
             activity!!.findViewById<TextView>(R.id.EditTextNameView)
         avtozagrNameViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.name)
@@ -171,7 +175,10 @@ class ViewOneReceptInRecycle : Fragment() {
         }
         if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContextTwo=="Internet")
         {
-            TextOcenkaAll.setText("Средняя оценка: ")
+            if(STORAGE.Language=="Rus")
+                TextOcenkaAll.setText("Средняя оценка: ")
+            else
+                TextOcenkaAll.setText("Average rating: ")
         }
 
 
@@ -195,11 +202,12 @@ fun avtoZapalnenZvezd()
 
     if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="All"&& STORAGE_FOR_RECYCLE_RECEPT.user_id != STORAGE.ID)
      {
-         Log.d("xuy1", STORAGE_FOR_RECYCLE_RECEPT.user_id)
-         Log.d("xuy2",STORAGE.ID)
 
          if (activity!=null)
-             activity!!.TextOcenka.setText("Ваша оценка:")
+             if(STORAGE.Language=="Rus")
+             activity!!.TextOcenka.setText("Ваша оценка: ")
+         else
+                 activity!!.TextOcenka.setText("Your mark: ")
 
         if (STORAGE_STARS.TRUE == 1 ) {
             NullStars()
@@ -327,6 +335,7 @@ fun NullStars(){
             TextOcenka.setTextColor(Color.parseColor("#000000"))
         }
     }
+
 
 }
 

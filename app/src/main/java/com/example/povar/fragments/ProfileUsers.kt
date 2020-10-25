@@ -47,6 +47,7 @@ class ProfileUsers : Fragment() {
         hideUserNameAdnImage(activity!!)
         hideAddButton(activity!!)
         tema()
+        language()
 
         name=STORAGE.name
         login=STORAGE.login
@@ -75,6 +76,8 @@ class ProfileUsers : Fragment() {
         if(STORAGE.counter_recept.toString().isNotEmpty()){counter_recept.text=STORAGE.counter_recept.toString()}
 
     }
+
+
 
     override fun onStop() {
         super.onStop()
@@ -105,6 +108,21 @@ class ProfileUsers : Fragment() {
             count_recept_for_user_4islo.setTextColor(Color.parseColor("#000000"))
             EditProfile.setBackgroundResource(R.drawable.megaoval_anim)
             EditProfile.setTextColor(Color.parseColor("#000000"))
+        }
+    }
+    private fun language() {
+        if(STORAGE.Language=="Eng") {
+            NameTextInProfie.setText("Name - ")
+            LoginTextInProfie.setText("Login - ")
+            count_recept_for_user.setText("Number of recipes: ")
+            EditProfile.setText(" Redact ")
+        }
+        else
+        {
+            NameTextInProfie.setText("Имя - ")
+            LoginTextInProfie.setText("Логин - ")
+            count_recept_for_user.setText("Кол-во рецептов: ")
+            EditProfile.setText(" Редактировать ")
         }
     }
 }

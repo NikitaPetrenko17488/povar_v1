@@ -38,9 +38,11 @@ class fragment2 : Fragment() {
         hideAddButton(activity!!)
 
         tema()
-
+        language()
         button_add.setOnClickListener { addRecept() }  // если клик по кнопке вызвать метод
     }
+
+
 
     override fun onStop() {
         super.onStop()
@@ -50,19 +52,28 @@ class fragment2 : Fragment() {
     private fun addRecept() {
 
         if (EditTextNameAdd.text.toString().isEmpty()) {  // если пусто в названии блюда, то
-            Toast.makeText(activity, "Введите название бюда", Toast.LENGTH_SHORT).show()
+           if(STORAGE.Language=="Rus")
+                showToast("Введите название блюда")
+            else
+               showToast("Enter the name of the dish")
 
         } else {
             if (EditTextFormulaAdd.text.toString().isEmpty()) // если пусто в  рецепте блюда, то
             {
-                Toast.makeText(activity, "Введите рецепт блюда", Toast.LENGTH_SHORT).show()
+                if(STORAGE.Language=="Rus")
+                    showToast("Введите рецепт блюда")
+                else
+                    showToast("Enter your recipe")
             } else {
 
               ProverkaMat()
 
                 if(Mat==true)
                 {
-                    showToast("Удалите запрещенные слова!")
+                    if(STORAGE.Language=="Rus")
+                        showToast("Удалите запрещенные слова!")
+                    else
+                        showToast("Remove the forbidden words!")
                 }
                 else {
 
@@ -94,7 +105,10 @@ class fragment2 : Fragment() {
 
                     replaceFragment(fragment5())
 
-                    Toast.makeText(activity, "Блюдо успешно добавлено..", Toast.LENGTH_SHORT).show()
+                    if (STORAGE.Language=="Rus")
+                        showToast("Блюдо успешно добавлено ...")
+                    else
+                        showToast("Food added successfully ...")
                 }
             }
 
@@ -162,6 +176,20 @@ private fun tema()
     }
 
 }
+    private fun language() {
+        if(STORAGE.Language=="Eng") {
+            EditTextNameAdd.setHint(" Dish name ")
+            EditTextIngridientAdd.setHint(" Ingredients ")
+            EditTextFormulaAdd.setHint(" Recipe ")
+            button_add.setText(" Add ")
+        }
+        else{
+            EditTextNameAdd.setHint(" Название блюда ")
+            EditTextIngridientAdd.setHint(" Ингридиенты ")
+            EditTextFormulaAdd.setHint(" Рецепт ")
+            button_add.setText(" Добавить ")
+        }
+    }
 }
 
 

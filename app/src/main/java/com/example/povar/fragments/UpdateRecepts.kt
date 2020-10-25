@@ -46,6 +46,7 @@ class fragment3 : Fragment() {
         hideAddButton(activity!!)
 
         tema()
+        language()
 
         button_update.setOnClickListener { updateRecept() }  // если клик по кнопке вызвать метод
         ImageUpdateRecept.setOnClickListener {
@@ -65,18 +66,29 @@ class fragment3 : Fragment() {
 
 
         if (EditTextNameUpdate.text.toString().isEmpty()) {  // если пусто в названии блюда, то
-            Toast.makeText(activity, "Введите название бюда", Toast.LENGTH_SHORT).show()
+
+            if(STORAGE.Language=="Rus")
+                showToast("Введите название блюда")
+            else
+                showToast("Enter the name of the dish")
 
         } else {
             if (EditTextFormulaUpdate.text.toString().isEmpty()) // если пусто в  рецепте блюда, то
             {
-                Toast.makeText(activity, "Введите рецепт блюда", Toast.LENGTH_SHORT).show()
+                if(STORAGE.Language=="Rus")
+                    showToast("Введите рецепт блюда")
+                else
+                    showToast("Enter your recipe")
+
             } else {
 
                 ProverkaMat()
                 if(Mat==true)
                 {
-                    showToast("Удалите запрещенные слова!")
+                    if(STORAGE.Language=="Rus")
+                        showToast("Удалите запрещенные слова!")
+                    else
+                        showToast("Remove the forbidden words!")
                 }
                 else {
                     val name =
@@ -100,8 +112,10 @@ class fragment3 : Fragment() {
                     if (STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain == "Main") {
                         replaceFragment(fragment5())
                     }
-
-                    Toast.makeText(activity, "Блюдо успешно обновлено..", Toast.LENGTH_SHORT).show()
+                        if(STORAGE.Language=="Rus")
+                            showToast("Блюдо увпешно обновлено ...")
+                        else
+                            showToast("The dish has been hastily updated ...")
                 }
             }
 
@@ -220,6 +234,21 @@ fun Avotzapolnenie()
 
             button_update.setBackgroundResource(R.drawable.megaoval_anim)
             button_update.setTextColor(Color.parseColor("#000000"))
+        }
+    }
+
+    private fun language() {
+        if(STORAGE.Language=="Eng") {
+            EditTextNameUpdate.setHint(" Dish name ")
+            EditTextIngridientUpdate.setHint(" Ingredients ")
+            EditTextFormulaUpdate.setHint(" Recipe ")
+            button_update.setText(" Edit ")
+        }
+        else{
+            EditTextNameUpdate.setHint(" Название блюда ")
+            EditTextIngridientUpdate.setHint(" Ингридиенты ")
+            EditTextFormulaUpdate.setHint(" Рецепт ")
+            button_add.setText(" Изменить ")
         }
     }
 

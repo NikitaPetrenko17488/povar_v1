@@ -52,6 +52,7 @@ class EditProfileUser : Fragment() {
 
 
         tema()
+        language()
 
         var login =
             activity!!.findViewById<EditText>(R.id.LoginInProfileEdit)
@@ -180,5 +181,21 @@ class EditProfileUser : Fragment() {
             SaveProfile.setTextColor(Color.parseColor("#000000"))
             SaveProfile.setBackgroundResource(R.drawable.megaoval_anim)
         }
+    }
+    private fun language()
+    {
+        if(STORAGE.Language=="Eng")
+        {
+            NameTextInProfieEdit.setText("Name - ")
+            LoginTextInProfieEdit.setText("Login - ")
+            SaveProfile.setText(" Save ")
+        }
+        else
+        {
+            NameTextInProfieEdit.setText("Имя - ")
+            LoginTextInProfieEdit.setText("Логин - ")
+            SaveProfile.setText(" Сохранить ")
+        }
+
     }
 }

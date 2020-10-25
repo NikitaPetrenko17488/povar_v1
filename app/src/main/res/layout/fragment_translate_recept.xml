@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.TranslateRecept">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" >
+
+
+            <TextView
+                android:id="@+id/TextFormulaTranslate"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:hint="Рецепт"
+                app:layout_constraintTop_toBottomOf="@id/TextIngridientTranslate" />
+
+
+
+
+
+            <TextView
+                android:id="@+id/TextIngridientTranslate"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="20dp"
+                android:hint="Ингридиенты"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextNameTranslate" />
+
+            <TextView
+                android:id="@+id/TextNameTranslate"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:hint="Название блюда"
+                android:maxLines="1"
+                android:textSize="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ImageViewTranslate" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ImageViewTranslate"
+                android:layout_marginTop="26dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/recept"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+
+
+
+            <EditText
+                android:id="@+id/EditTranslateName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/TextFormulaTranslate"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Name"
+                android:gravity="center"
+
+                />
+
+            <EditText
+                android:id="@+id/EditTranslateIngridient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/EditTranslateName"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Ingridients"
+                android:gravity="center"
+
+                />
+
+            <EditText
+                android:id="@+id/EditTranslateFormula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/EditTranslateIngridient"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Recept"
+                android:gravity="center"
+
+                />
+
+            <Button
+                android:id="@+id/ButtonAddTranslate"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/megaoval_anim"
+                android:text=" Добавить перевод "
+                app:layout_constraintTop_toBottomOf="@id/EditTranslateFormula"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</FrameLayout>

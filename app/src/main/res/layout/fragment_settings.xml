@@ -32,17 +32,19 @@
         android:textSize="20dp"
         android:text="Темная тема "
         tools:ignore="UseSwitchCompatOrMaterialXml" />
-    <TextView
-        android:id="@+id/LanguageText"
+    <Button
+        android:id="@+id/Language"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Язык - "
-        android:textSize="20dp"
+        android:layout_height="35dp"
+        android:text=" Выберите язык (RU) "
+        android:textSize="15dp"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/switchTemnayaTema"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:background="@drawable/megaoval_anim"
         />
 
 

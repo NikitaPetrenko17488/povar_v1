@@ -40,19 +40,88 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
+        lang()
         switchTemnayaTema?.isChecked = STORAGE.Tema
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
         hideSettings(activity!!)
         hideAddButton(activity!!)
+        initTema()
+        switchTemnayaTema.setOnCheckedChangeListener(this)
 
+        Exit.setOnClickListener{
+            exit()
+        }
+        Language.setOnClickListener {
+            langSmena()
+        }
+
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+    }
+
+
+
+    fun langSmena()
+    {
+        if(STORAGE.Language=="Rus") {
+            STORAGE.Language = "Eng"
+            showToast("English language")
+        }
+        else
+        { STORAGE.Language="Rus"
+                lang()
+                showToast("Русский язык")
+            }
+        lang()
+    }
+    fun lang()
+    {
+
+        if(STORAGE.Language=="Eng") {
+            switchTemnayaTema.setText("Dark Them ")
+            Language.setText(" Choose language (Eng) ")
+            Exit.setText(" Exit ")
+            activity!!.myRecept.setText(" My recepts ")
+            activity!!.AllRecept.setText(" All recepts ")
+            activity!!.dopFunc.setText(" Calories ")
+           activity!!.SearchRecept.setHint(" Search ")
+
+
+
+        }
+        else
+        {
+            switchTemnayaTema.setText("Темная тема ")
+            Language.setText(" Выберите язык (Rus) ")
+            Exit.setText(" Выход ")
+            activity!!.myRecept.setText(" Мои рецепты ")
+            activity!!.AllRecept.setText(" Все рецепты ")
+            activity!!.dopFunc.setText(" Калории ")
+            activity!!.SearchRecept.setHint(" Поиск ")
+
+        }
+    }
+    fun exit(){
+        STORAGE.Tema=false
+        STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=""
+        STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=""
+        startActivity(Intent(activity, RegistryActivity::class.java))
+    }
+    fun initTema()
+    {
         if (STORAGE.Tema==true)
         {
             ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
             Exit.setBackgroundResource(R.drawable.megaoval_anim_dark)
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
-            LanguageText.setTextColor(Color.parseColor("#b2b2b2"))
+            Language.setTextColor(Color.parseColor("#b2b2b2"))
+            Language.setBackgroundResource(R.drawable.megaoval_anim_dark)
         }
         else
         {
@@ -60,23 +129,9 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             Exit.setTextColor(Color.parseColor("#000000"))
             Exit.setBackgroundResource(R.drawable.megaoval_anim)
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
-            LanguageText.setTextColor(Color.parseColor("#000000"))
+            Language.setTextColor(Color.parseColor("#000000"))
+            Language.setBackgroundResource(R.drawable.megaoval_anim)
         }
-
-        switchTemnayaTema.setOnCheckedChangeListener(this)
-
-        Exit.setOnClickListener{
-
-            STORAGE.Tema=false
-            STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=""
-            STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=""
-            startActivity(Intent(activity, RegistryActivity::class.java))
-        }
-    }
-
-    override fun onStop() {
-        super.onStop()
-
     }
 
     @SuppressLint("ResourceAsColor", "ResourceType")
@@ -94,7 +149,8 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
             Exit.setBackgroundResource(R.drawable.megaoval_anim_dark)
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
-            LanguageText.setTextColor(Color.parseColor("#b2b2b2"))
+            Language.setTextColor(Color.parseColor("#b2b2b2"))
+            Language.setBackgroundResource(R.drawable.megaoval_anim_dark)
 
         }
         if(isChecked==false)
@@ -107,13 +163,11 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             Exit.setBackgroundResource(R.drawable.megaoval_anim)
             Exit.setTextColor(Color.parseColor("#000000"))
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
-            LanguageText.setTextColor(Color.parseColor("#000000"))
+            Language.setTextColor(Color.parseColor("#000000"))
+            Language.setBackgroundResource(R.drawable.megaoval_anim)
             STORAGE.Tema=isChecked
             updateTemaInBase()
-
         }
-
-
     }
 
     fun updateTemaInBase(){

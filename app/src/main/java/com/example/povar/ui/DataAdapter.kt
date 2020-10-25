@@ -10,6 +10,7 @@ import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 import com.example.povar.ui.STORAGE_USERS_FOR_ADMIN
 import kotlinx.android.synthetic.main.list_item_recept.view.*
 import kotlinx.android.synthetic.main.list_item_recept_all.view.*
+import kotlinx.android.synthetic.main.list_item_recept_translate.view.*
 import kotlinx.android.synthetic.main.list_item_users.view.*
 import java.io.Serializable
 
@@ -221,6 +222,38 @@ class DataAdapterOffline(private val list: MutableList<Recept>, private val clic
             STORAGE_FOR_RECYCLE_RECEPT.user_id=movie.user_id
 
             clickOff.ViewRecept()
+
+        }
+
+    }
+    override fun getItemCount(): Int = list.size
+
+}
+
+
+class DataAdapterTranslate(private val list: MutableList<Recept>, private val clickOff:ClickTranslate)
+    : RecyclerView.Adapter<Translater.TranslateReceptHolder>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Translater.TranslateReceptHolder {
+
+        val inflater = LayoutInflater.from(parent.context)
+        return Translater.TranslateReceptHolder(inflater, parent)
+    }
+    override fun onBindViewHolder(holder: Translater.TranslateReceptHolder, position: Int) {
+
+        val movie: Recept = list[position]
+        holder.bind(movie)
+
+
+        holder.itemView.Constraint_layout_translate.setOnClickListener {
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+
+            clickOff.TranslateRecycle()
 
         }
 

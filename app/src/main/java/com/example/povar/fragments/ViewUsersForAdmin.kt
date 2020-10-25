@@ -66,7 +66,9 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
     override fun onStart() {
         super.onStart()
         initUsers()
-        ExitForAdmin.setOnClickListener { startActivity(Intent(activity, RegistryActivity::class.java)) }
+        ExitForAdmin.setOnClickListener {
+            STORAGE.admin=0
+            startActivity(Intent(activity, RegistryActivity::class.java)) }
     }
 
     fun create_recycle() {

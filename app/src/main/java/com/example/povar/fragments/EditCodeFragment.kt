@@ -114,9 +114,15 @@ open class EditCodeFragment() : Fragment() {
 
            if (Massiv_Users[count].admin==1)/////////////////////
            {
+               STORAGE.admin=1
                startActivity(Intent(activity, AdminActivity::class.java))
            }
-            else if (Massiv_Users[count].admin==0)//////////////////
+            else if (Massiv_Users[count].translater==1)
+           {
+               STORAGE.translater=1
+               startActivity(Intent(activity, AdminActivity::class.java))
+           }
+            else
             {
                 startActivity(Intent(activity, MainActivity::class.java))
 

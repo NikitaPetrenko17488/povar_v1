@@ -11,6 +11,9 @@ companion object
     var ID=""
     var counter_recept=0
     var Tema=false
+    var Language="Rus"
+    var translater=0
+    var admin=0
 
 }
 

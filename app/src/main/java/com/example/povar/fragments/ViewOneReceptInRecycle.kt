@@ -15,6 +15,7 @@ import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_view_one_recept_in_recycle.*
 
 var ocenka=0
@@ -56,6 +57,7 @@ class ViewOneReceptInRecycle : Fragment() {
         hideUserNameAdnImage(activity!!)
         hideAddButton(activity!!)
         tema()
+        language()
         if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext!="Offline" && STORAGE_FOR_RECYCLE_RECEPT.user_id!=STORAGE.ID) {
             Star1.setOnClickListener {
                 ocenka = 1
@@ -141,16 +143,24 @@ class ViewOneReceptInRecycle : Fragment() {
 
         var avtozagrNameViewRecept =
             activity!!.findViewById<TextView>(R.id.EditTextNameView)
-        avtozagrNameViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.name)
         var avtozagrIngridientsViewRecept =
             activity!!.findViewById<TextView>(R.id.EditTextIngridientView)
-        avtozagrIngridientsViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridients)
         var avtozagrFormulaViewRecept =
             activity!!.findViewById<TextView>(R.id.EditTextFormulaView)
-        avtozagrFormulaViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
         var avtozagrImageUpdateRecept =
             activity!!.findViewById<ImageView>(R.id.ImageViewRecept)
         avtozagrImageUpdateRecept.downloadSetImage(STORAGE_FOR_RECYCLE_RECEPT.photo)
+        if(STORAGE.Language=="Rus") {
+            avtozagrNameViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.name)
+            avtozagrIngridientsViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridients)
+            avtozagrFormulaViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
+        }
+        else
+        {
+            avtozagrNameViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.nameEng)
+            avtozagrIngridientsViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng)
+            avtozagrFormulaViewRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formulaEng)
+        }
 
 
         if(STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="My"||STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=="Admin")
@@ -334,6 +344,14 @@ fun NullStars(){
             OcenkaAll.setTextColor(Color.parseColor("#000000"))
             TextOcenka.setTextColor(Color.parseColor("#000000"))
         }
+    }
+
+    private fun language(){
+        if(STORAGE.Language=="Rus")
+        activity!!.toolbar.setTitle("Рецепт")
+        else
+        activity!!.toolbar.setTitle("Recipe ")
+
     }
 
 

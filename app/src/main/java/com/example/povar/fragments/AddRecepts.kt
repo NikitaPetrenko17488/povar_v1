@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.povar.R
 import com.example.povar.ui.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.list_item_recept.*
 
@@ -86,6 +87,8 @@ class fragment2 : Fragment() {
 
                     val dateMap =
                         mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+                    val dateMapEng =
+                        mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
                     var ID = name + STORAGE.ID
                     dateMap[CHIELD_RECEPT_ID] = ID
                     dateMap[CHIELD_RECEPT_NAME] = name
@@ -93,8 +96,16 @@ class fragment2 : Fragment() {
                     dateMap[CHIELD_RECEPT_FORMULA] = formula
                     dateMap[CHIELD_RECEPT_USER_ID] = STORAGE.ID
 
+                    dateMapEng[CHIELD_RECEPT_ID] = ID
+                    dateMapEng[CHIELD_RECEPT_ANGNAME] =name
+                    dateMapEng[CHIELD_RECEPT_ANGINGRIDIENS] = ingridients
+                    dateMapEng[CHIELD_RECEPT_ANGFORMULA] = formula
+                    dateMapEng[CHIELD_RECEPT_USER_ID] = STORAGE.ID
 
-                    REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMap)
+                    if(STORAGE.Language=="Rus")
+                        REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMap)
+                    else
+                        REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMapEng)
                     ////////////////////////////////////////////////////////////////////////
                     val dateMapUser =
                         mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
@@ -178,12 +189,14 @@ private fun tema()
 }
     private fun language() {
         if(STORAGE.Language=="Eng") {
+            activity!!.toolbar.setTitle("Add recipe")
             EditTextNameAdd.setHint(" Dish name ")
             EditTextIngridientAdd.setHint(" Ingredients ")
             EditTextFormulaAdd.setHint(" Recipe ")
             button_add.setText(" Add ")
         }
         else{
+            activity!!.toolbar.setTitle("Добавить рецепт")
             EditTextNameAdd.setHint(" Название блюда ")
             EditTextIngridientAdd.setHint(" Ингридиенты ")
             EditTextFormulaAdd.setHint(" Рецепт ")

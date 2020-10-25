@@ -83,21 +83,21 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
     {
 
         if(STORAGE.Language=="Eng") {
+            activity!!.toolbar.setTitle("Settings")
             switchTemnayaTema.setText("Dark Them ")
-            Language.setText(" Choose language (Eng) ")
+            Language.setText("  Choose language (Rus)  ")
             Exit.setText(" Exit ")
             activity!!.myRecept.setText(" My recepts ")
             activity!!.AllRecept.setText(" All recepts ")
             activity!!.dopFunc.setText(" Calories ")
            activity!!.SearchRecept.setHint(" Search ")
 
-
-
         }
         else
         {
+            activity!!.toolbar.setTitle("Настройки")
             switchTemnayaTema.setText("Темная тема ")
-            Language.setText(" Выберите язык (Rus) ")
+            Language.setText("  Сменить язык (Eng)  ")
             Exit.setText(" Выход ")
             activity!!.myRecept.setText(" Мои рецепты ")
             activity!!.AllRecept.setText(" Все рецепты ")
@@ -108,6 +108,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
     }
     fun exit(){
         STORAGE.Tema=false
+        STORAGE.Language="Rus"
         STORAGE_FOR_RECYCLE_RECEPT.fragmentContext=""
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=""
         startActivity(Intent(activity, RegistryActivity::class.java))

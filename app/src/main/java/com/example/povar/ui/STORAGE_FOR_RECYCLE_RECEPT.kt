@@ -13,6 +13,9 @@ class STORAGE_FOR_RECYCLE_RECEPT {
         var fragmentContext=""
         var FlagActivityAdminOrMain=""
         var fragmentContextTwo=""
+        var nameEng=""
+        var ingridientsEng=""
+        var formulaEng=""
 
     }
 }

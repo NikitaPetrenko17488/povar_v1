@@ -13,31 +13,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Calorii
 import com.example.povar.ui.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_kalorii.*
 
 private val mNicolasCageMovies = listOf(
-    Calorii("белый гриб", "34"),
-    Calorii("бекон", "500"),
-    Calorii("говядина", "250"),
-    Calorii("горох", "320"),
-    Calorii("индейка", "189"),
-    Calorii("кукурузная крупа", "320"),
-    Calorii("курица", "214"),
-    Calorii("колбаса варенная", "223"),
-    Calorii("колбаса сырокопченая", "450"),
-    Calorii("каша гречневая", "120"),
-    Calorii("манная крупа", "333"),
-    Calorii("мюсли", "400"),
-    Calorii("свинина", "144"),
-    Calorii("фасоль", "350"),
-    Calorii("ячменная каша", "400"),
+    Calorii("белый гриб", "White mushroom","34"),
+    Calorii("бекон", "Bacon","500"),
+    Calorii("говядина", "Beef","250"),
+    Calorii("горох", "Peas","320"),
+    Calorii("индейка","Turkey","189"),
+    Calorii("кукурузная крупа", "Corn grits","320"),
+    Calorii("курица", "Chiken","214"),
+    Calorii("колбаса варенная", "Boiled sausage","223"),
+    Calorii("колбаса сырокопченая", "Raw smoked sausage","450"),
+    Calorii("каша гречневая", "Buckwheat porridge","120"),
+    Calorii("лук","Bow" ,"40"),
+    Calorii("манная крупа","Semolina", "333"),
+    Calorii("мюсли", "Muesli","400"),
+    Calorii("морковь", "Carrot","35"),
+    Calorii("огурец", "Cucumber","16"),
+    Calorii("помидор","Tomato", "18"),
+    Calorii("перец", "Pepper","40"),
+    Calorii("свинина", "Pork","144"),
+    Calorii("фасоль", "Beans","350"),
+    Calorii("ячменная каша","Barley porridge", "400")
 
-    Calorii("огурец", "16"),
-    Calorii("помидор", "18"),
-    Calorii("перец", "40"),
-    Calorii("лук", "40"),
-    Calorii("морковь", "35")
-)
+    )
 class Kalorii : Fragment() {
 
 
@@ -61,20 +63,14 @@ class Kalorii : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
+        tema()
+        language()
         showSettings(activity!!)
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
         hideAddButton(activity!!)
 
-        if(STORAGE.Tema==true)
-        {
-            Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
-        }
-        else
-        {
-            Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
-        }
+
         create_recycle()
     }
 
@@ -87,13 +83,13 @@ class Kalorii : Fragment() {
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_kalorii, parent, false)) {
         private var mName: TextView? = null
         private var mCalorii: TextView? = null
-           private var mKkl:TextView?=null
+        private var mKkl:TextView?=null
 
         init {
 
             mName = itemView.findViewById(R.id.NazvanieKalorii)
             mCalorii = itemView.findViewById(R.id.KaloriiKalorii)
-              mKkl=itemView.findViewById(R.id.kkl100gr)
+            mKkl=itemView.findViewById(R.id.kkl100gr)
 
 
 
@@ -118,12 +114,15 @@ class Kalorii : Fragment() {
 
             }
 
-
-            mName?.text = movie.name
             mCalorii?.text = movie.kalorii
-
-
-
+            if(STORAGE.Language=="Rus") {
+                mName?.text = movie.name
+                mKkl?.text = "ккал"
+            }
+            else {
+                mName?.text = movie.nameEng
+                mKkl?.text = "kcal"
+            }
 
         }
 
@@ -140,4 +139,22 @@ class Kalorii : Fragment() {
         }
 
     }
+
+    private fun tema(){
+        if(STORAGE.Tema==true)
+        {
+            Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+        }
+        else
+        {
+            Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
+        }
+    }
+    private fun language(){
+        if(STORAGE.Language=="Eng")
+            activity!!.toolbar.setTitle("Calories")
+        else
+            activity!!.toolbar.setTitle("Калории")
+    }
+
 }

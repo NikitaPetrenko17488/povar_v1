@@ -17,6 +17,7 @@ import com.example.povar.R
 import com.example.povar.activity.MainActivity
 import com.example.povar.ui.*
 import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_update.*
 
@@ -98,15 +99,23 @@ class fragment3 : Fragment() {
                     val formula =
                         EditTextFormulaUpdate.text.toString()// запись в перемнную из ЕдитТекст
 
-                    val dateMap =
-                        mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+                    val dateMap = mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
+                    val dateMapEng = mutableMapOf<String, Any>() //создаем мапу , что бы разом передать в бд
 
                     // dateMap[CHIELD_RECEPT_ID]= STORAGE_FOR_RECYCLE_RECEPT.ID+STORAGE.ID
                     dateMap[CHIELD_RECEPT_NAME] = name
                     dateMap[CHIELD_RECEPT_INGRIDIENTS] = ingridients
                     dateMap[CHIELD_RECEPT_FORMULA] = formula
-                    REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID)
-                        .updateChildren(dateMap)
+
+                    dateMapEng[CHIELD_RECEPT_ANGNAME] =name
+                    dateMapEng[CHIELD_RECEPT_ANGINGRIDIENS] = ingridients
+                    dateMapEng[CHIELD_RECEPT_ANGFORMULA] = formula
+
+                    if(STORAGE.Language=="Rus")
+                        REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMap)
+                    else
+                        REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMapEng)
+
 
 
                     if (STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain == "Main") {
@@ -135,16 +144,27 @@ fun Avotzapolnenie()
 
     var avtozagrNameUpdateRecept=
         activity!!.findViewById<EditText>(R.id.EditTextNameUpdate)
-    avtozagrNameUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.name)
     var avtozagrIngridientsUpdateRecept=
         activity!!.findViewById<EditText>(R.id.EditTextIngridientUpdate)
-    avtozagrIngridientsUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridients)
     var avtozagrFormulaUpdateRecept=
         activity!!.findViewById<EditText>(R.id.EditTextFormulaUpdate)
-    avtozagrFormulaUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
     var avtozagrImageUpdateRecept=
         activity!!.findViewById<ImageView>(R.id.ImageUpdateRecept)
     avtozagrImageUpdateRecept.downloadSetImage(STORAGE_FOR_RECYCLE_RECEPT.photo)
+
+    if(STORAGE.Language=="Rus") {
+        avtozagrNameUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.name)
+        avtozagrIngridientsUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridients)
+        avtozagrFormulaUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formula)
+    }
+    else
+    {
+        avtozagrNameUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.nameEng)
+        avtozagrIngridientsUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng)
+        avtozagrFormulaUpdateRecept.setText(STORAGE_FOR_RECYCLE_RECEPT.formulaEng)
+    }
+
+
 }
 
     override fun onStop() {
@@ -239,16 +259,18 @@ fun Avotzapolnenie()
 
     private fun language() {
         if(STORAGE.Language=="Eng") {
+            activity!!.toolbar.setTitle("Edit recipe")
             EditTextNameUpdate.setHint(" Dish name ")
             EditTextIngridientUpdate.setHint(" Ingredients ")
             EditTextFormulaUpdate.setHint(" Recipe ")
             button_update.setText(" Edit ")
         }
         else{
+            activity!!.toolbar.setTitle("Редактировать рецепт")
             EditTextNameUpdate.setHint(" Название блюда ")
             EditTextIngridientUpdate.setHint(" Ингридиенты ")
             EditTextFormulaUpdate.setHint(" Рецепт ")
-            button_add.setText(" Изменить ")
+            button_update.setText(" Изменить ")
         }
     }
 

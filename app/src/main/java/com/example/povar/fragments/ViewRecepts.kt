@@ -87,13 +87,13 @@ class fragment5 : Fragment(),Click {
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
         showAddButton(activity!!)
+        language()
+        initRecepts()
+        tema()
 
-         initRecepts()
-        if(STORAGE.Tema==true)
-            Constraint_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
-        else
-            Constraint_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
-        activity!!.addRecept.setOnClickListener{findNavController().navigate(R.id.fragment2)}
+        activity!!.addRecept.setOnClickListener{
+            addReceptReplace() }
+
         activity!!.SearchReceptButton.setOnClickListener { SearchMyRecept() }
 
 
@@ -107,6 +107,8 @@ class fragment5 : Fragment(),Click {
 
     }
 
+
+
     override fun onResume() {
         super.onResume()
 
@@ -118,7 +120,6 @@ class fragment5 : Fragment(),Click {
         counter=0
         //hideAddButton(activity!!)
 
-
     }
 
 
@@ -128,9 +129,6 @@ class fragment5 : Fragment(),Click {
 
         Massiv.removeAll { true }
         counter=0
-
-
-
     }
 
 
@@ -164,11 +162,13 @@ class fragment5 : Fragment(),Click {
                 mEdit?.setBackgroundResource(R.drawable.edit)
                 mDellite?.setBackgroundResource(R.drawable.delette)
             }
+                if(STORAGE.Language=="Rus")
+                    mName?.text = movie.name
+                else
+                    mName?.text=movie.name_eng
 
-            mName?.text = movie.name
             mPhoto?.downloadSetImage(movie.photoUrl)
         }
-
 
     }
 
@@ -208,8 +208,15 @@ class fragment5 : Fragment(),Click {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-                        if(recept.user_id==STORAGE.ID) {
-                            Massiv.add(recept)
+                        if(STORAGE.Language=="Rus") {
+                            if (recept.user_id == STORAGE.ID) {
+                                Massiv.add(recept)
+                            }
+                        }
+                        else {
+                            if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
+                                Massiv.add(recept)
+                            }
                         }
                         counter++
 
@@ -228,9 +235,7 @@ class fragment5 : Fragment(),Click {
     override fun updateRecycle() {
        replaceFragment(fragment3())
 
-
     }
-
 
 
 
@@ -277,6 +282,41 @@ class fragment5 : Fragment(),Click {
         findNavController().navigate(R.id.viewOneReceptInRecycle)
 
 
+    }
+    private fun addReceptReplace()
+    {
+        if(STORAGE.Language=="Rus")
+            findNavController().navigate(R.id.fragment2)
+        else
+        {
+            val builder=AlertDialog.Builder(activity)
+            builder.setTitle("It is forbidden to add in English, sorry..")
+
+            builder.setNegativeButton("to accept"){dialogOtmena, i ->
+
+                showToast("Cancel")
+            }
+            builder.show()
+        }
+
+    }
+
+    private fun tema(){
+        if(STORAGE.Tema==true) {
+            ToastNoRecepts.setTextColor(Color.parseColor("#b2b2b2"))
+            Constraint_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+        }
+        else {
+            ToastNoRecepts.setTextColor(Color.parseColor("#000000"))
+            Constraint_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
+        }
+    }
+
+    private fun language() {
+      if(STORAGE.Language=="Rus")
+          activity!!.toolbar.setTitle("Мои рецепты")
+        else
+          activity!!.toolbar.setTitle("My Recipes")
     }
     private fun deleteForAlertDialogLanguageLite(mDialogView:View)
     {
@@ -337,8 +377,13 @@ class fragment5 : Fragment(),Click {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         for (snapshot: DataSnapshot in dataSnapshot.children) {
                             val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+                                var receptIngridientsUp=""
+                            if(STORAGE.Language=="Rus") {
+                                 receptIngridientsUp = recept.ingridients.toUpperCase()
+                            }
+                            else{
+                                 receptIngridientsUp = recept.ingridients_eng.toUpperCase()}
 
-                            var receptIngridientsUp=recept.ingridients.toUpperCase()
                             var vxodStroki: String
                             vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
 

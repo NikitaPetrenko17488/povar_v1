@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.ui.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile_users.*
 
 
@@ -112,6 +113,7 @@ class ProfileUsers : Fragment() {
     }
     private fun language() {
         if(STORAGE.Language=="Eng") {
+            activity!!.toolbar.setTitle("Profile")
             NameTextInProfie.setText("Name - ")
             LoginTextInProfie.setText("Login - ")
             count_recept_for_user.setText("Number of recipes: ")
@@ -119,6 +121,7 @@ class ProfileUsers : Fragment() {
         }
         else
         {
+            activity!!.toolbar.setTitle("Профиль")
             NameTextInProfie.setText("Имя - ")
             LoginTextInProfie.setText("Логин - ")
             count_recept_for_user.setText("Кол-во рецептов: ")

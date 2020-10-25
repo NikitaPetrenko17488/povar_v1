@@ -60,15 +60,9 @@ class ViewAllRecept : Fragment(),ClickAll {
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
         hideAddButton(activity!!)
+        language()
+        tema()
 
-        if(STORAGE.Tema==true)
-        {
-            Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
-        }
-        else
-        {
-            Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
-        }
         initRecepts()
         activity!!.SearchReceptButton.setOnClickListener { SearchAllRecept() }
 
@@ -124,8 +118,10 @@ class ViewAllRecept : Fragment(),ClickAll {
             { mName?.setTextColor(Color.parseColor("#000000"))
                 }
 
-
-            mName?.text = movie.name
+            if(STORAGE.Language=="Rus")
+                 mName?.text = movie.name
+            else
+                mName?.text = movie.name_eng
 
             mPhoto?.downloadSetImage(movie.photoUrl)
 
@@ -145,8 +141,12 @@ class ViewAllRecept : Fragment(),ClickAll {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-
+                            if(STORAGE.Language=="Rus")
                             Massiv.add(recept)
+                            else{
+                                if(recept.name_eng.isNotEmpty())
+                                Massiv.add(recept)
+                            }
 
                         counterAll++
 
@@ -159,6 +159,23 @@ class ViewAllRecept : Fragment(),ClickAll {
             })
 
 
+    }
+    private fun tema(){
+        if(STORAGE.Tema==true)
+        {
+            Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
+        }
+        else
+        {
+            Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
+        }
+    }
+
+    private fun language(){
+        if(STORAGE.Language=="Rus")
+             activity!!.toolbar.setTitle("Все рецепты")
+        else
+             activity!!.toolbar.setTitle("All Recipes")
     }
 
     override fun viewRecycle() {
@@ -184,7 +201,13 @@ class ViewAllRecept : Fragment(),ClickAll {
                             val recept = snapshot.getValue(Recept::class.java) ?: Recept()
 
                             var vxodStroki: String
-                            var ReceptIngridientsUp=recept.ingridients.toUpperCase()
+
+                            var ReceptIngridientsUp=""
+                            if(STORAGE.Language=="Rus")
+                             ReceptIngridientsUp=recept.ingridients.toUpperCase()
+                            else                                                            ////Проверка на Англ или русский поиск
+                                ReceptIngridientsUp=recept.ingridients_eng.toUpperCase()
+
                             vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
                             var indexIngridient: Boolean = ReceptIngridientsUp.contains(vxodStroki)
 

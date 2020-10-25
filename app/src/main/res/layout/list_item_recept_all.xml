@@ -25,10 +25,10 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_src_All"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/recept"
+        android:src="@drawable/products"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/name_recept_All"
         app:layout_constraintTop_toTopOf="@id/name_recept_All"

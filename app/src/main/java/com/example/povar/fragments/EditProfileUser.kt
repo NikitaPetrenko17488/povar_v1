@@ -16,6 +16,7 @@ import com.example.povar.ui.*
 import com.example.povar.ui.STORAGE.Companion.name
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.list_item_recept.*
 
@@ -186,12 +187,14 @@ class EditProfileUser : Fragment() {
     {
         if(STORAGE.Language=="Eng")
         {
+            activity!!.toolbar.setTitle("Edit profile")
             NameTextInProfieEdit.setText("Name - ")
             LoginTextInProfieEdit.setText("Login - ")
             SaveProfile.setText(" Save ")
         }
         else
         {
+            activity!!.toolbar.setTitle("Редактировать профиль")
             NameTextInProfieEdit.setText("Имя - ")
             LoginTextInProfieEdit.setText("Логин - ")
             SaveProfile.setText(" Сохранить ")

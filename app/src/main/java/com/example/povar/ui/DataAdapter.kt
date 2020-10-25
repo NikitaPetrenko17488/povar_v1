@@ -36,6 +36,9 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            STORAGE_FOR_RECYCLE_RECEPT.nameEng=movie.name_eng
+            STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng=movie.ingridients_eng
+            STORAGE_FOR_RECYCLE_RECEPT.formulaEng=movie.formula_eng
             click.updateRecycle()
 
         }
@@ -54,6 +57,9 @@ class DataAdapter(private val list: MutableList<Recept>, private val click:Click
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            STORAGE_FOR_RECYCLE_RECEPT.nameEng=movie.name_eng
+            STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng=movie.ingridients_eng
+            STORAGE_FOR_RECYCLE_RECEPT.formulaEng=movie.formula_eng
             click.viewRecycle()
 
         }
@@ -120,6 +126,9 @@ class DataAdapterAll(private val list: MutableList<Recept>, private val clickAll
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
             STORAGE_FOR_RECYCLE_RECEPT.user_id=movie.user_id
+            STORAGE_FOR_RECYCLE_RECEPT.nameEng=movie.name_eng
+            STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng=movie.ingridients_eng
+            STORAGE_FOR_RECYCLE_RECEPT.formulaEng=movie.formula_eng
             clickAll.viewRecycle()
         }
 

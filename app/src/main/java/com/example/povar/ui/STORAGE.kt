@@ -14,6 +14,7 @@ companion object
     var Language="Rus"
     var translater=0
     var admin=0
+    var Recycle=0
 
 }
 

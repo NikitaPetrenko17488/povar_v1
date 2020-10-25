@@ -107,6 +107,8 @@ class Translater : Fragment(),ClickTranslate {
                 }
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    MassivReceptTranslate.removeAll { true }
+                    counterTranslate=0
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
                         if(recept.formula_eng.isEmpty()) {

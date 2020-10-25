@@ -258,19 +258,20 @@ fun Avotzapolnenie()
     }
 
     private fun language() {
-        if(STORAGE.Language=="Eng") {
-            activity!!.toolbar.setTitle("Edit recipe")
-            EditTextNameUpdate.setHint(" Dish name ")
-            EditTextIngridientUpdate.setHint(" Ingredients ")
-            EditTextFormulaUpdate.setHint(" Recipe ")
-            button_update.setText(" Edit ")
-        }
-        else{
-            activity!!.toolbar.setTitle("Редактировать рецепт")
-            EditTextNameUpdate.setHint(" Название блюда ")
-            EditTextIngridientUpdate.setHint(" Ингридиенты ")
-            EditTextFormulaUpdate.setHint(" Рецепт ")
-            button_update.setText(" Изменить ")
+        if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+            if (STORAGE.Language == "Eng") {
+                activity!!.toolbar.setTitle("Edit recipe")
+                EditTextNameUpdate.setHint(" Dish name ")
+                EditTextIngridientUpdate.setHint(" Ingredients ")
+                EditTextFormulaUpdate.setHint(" Recipe ")
+                button_update.setText(" Edit ")
+            } else {
+                activity!!.toolbar.setTitle("Редактировать рецепт")
+                EditTextNameUpdate.setHint(" Название блюда ")
+                EditTextIngridientUpdate.setHint(" Ингридиенты ")
+                EditTextFormulaUpdate.setHint(" Рецепт ")
+                button_update.setText(" Изменить ")
+            }
         }
     }
 

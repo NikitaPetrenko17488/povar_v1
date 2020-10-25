@@ -2,6 +2,7 @@ package com.example.povar.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.povar.R
 import com.example.povar.fragments.offline_avtonomnoe

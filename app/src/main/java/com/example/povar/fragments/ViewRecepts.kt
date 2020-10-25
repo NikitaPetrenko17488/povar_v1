@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.graphics.Color.argb
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,9 +46,8 @@ interface Click
 }
 
 
-private var Massiv = mutableListOf<Recept>()
-  var counter:Int =0
-
+    private var Massiv = mutableListOf<Recept>()
+    var counter:Int =0
 
 
 class fragment5 : Fragment(),Click {
@@ -56,8 +56,6 @@ class fragment5 : Fragment(),Click {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
 
         showSettings(activity!!)
         showSearch(activity!!)
@@ -112,7 +110,10 @@ class fragment5 : Fragment(),Click {
     override fun onResume() {
         super.onResume()
 
+
+
     }
+
 
     override fun onStop() {
         super.onStop()
@@ -126,7 +127,6 @@ class fragment5 : Fragment(),Click {
 
     override fun onPause() {
         super.onPause()
-
         Massiv.removeAll { true }
         counter=0
     }
@@ -176,21 +176,20 @@ class fragment5 : Fragment(),Click {
    fun create_recycle() {
 
 
+            if (Massiv.isEmpty()) {
+                if (activity != null)
+                    activity!!.ToastNoRecepts.text = " Нет рецептов "
+            } else {
+                if (activity != null)
+                    activity!!.ToastNoRecepts.text = " "
+            }
+            if (recicle_view_recept != null) {
+                activity!!.recicle_view_recept.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = DataAdapter(Massiv, this@fragment5)
 
-           if (Massiv.isEmpty()) {
-               if(activity!=null)
-               activity!!.ToastNoRecepts.text = " Нет рецептов "
-           } else {
-               if(activity!=null)
-                  activity!!.ToastNoRecepts.text = " "
-           }
-           if (recicle_view_recept != null) {
-               activity!!.recicle_view_recept.apply {
-                   layoutManager = LinearLayoutManager(activity)
-                   adapter = DataAdapter(Massiv, this@fragment5)
-
-               }
-           }
+                }
+            }
 
 
 
@@ -199,34 +198,36 @@ class fragment5 : Fragment(),Click {
 
     private fun initRecepts( ) {
 
-        REF_DABATABSE_ROOT.child(NODE_RECEPTS)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(error: DatabaseError) {
-                    showToast("Нет подключения к базе..")
-                }
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (snapshot: DataSnapshot in dataSnapshot.children) {
-                        val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-                        if(STORAGE.Language=="Rus") {
-                            if (recept.user_id == STORAGE.ID) {
-                                Massiv.add(recept)
-                            }
-                        }
-                        else {
-                            if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
-                                Massiv.add(recept)
-                            }
-                        }
-                        counter++
-
-                        if (counter>0)
-                            create_recycle()
+            REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
+                        showToast("Нет подключения к базе..")
                     }
 
-                }
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        Massiv.removeAll { true }
+                        counter=0
+                        for (snapshot: DataSnapshot in dataSnapshot.children) {
+                            val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+                            if (STORAGE.Language == "Rus") {
+                                if (recept.user_id == STORAGE.ID) {
+                                    Massiv.add(recept)
+                                }
+                            } else {
+                                if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
+                                    Massiv.add(recept)
+                                }
+                            }
+                            counter++
 
-            })
+                            if (counter > 0)
+                                create_recycle()
+                        }
+
+                    }
+
+                })
 
     }
 

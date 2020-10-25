@@ -347,10 +347,12 @@ fun NullStars(){
     }
 
     private fun language(){
-        if(STORAGE.Language=="Rus")
-        activity!!.toolbar.setTitle("Рецепт")
-        else
-        activity!!.toolbar.setTitle("Recipe ")
+        if(STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=="Main") {
+            if (STORAGE.Language == "Rus")
+                activity!!.toolbar.setTitle("Рецепт")
+            else
+                activity!!.toolbar.setTitle("Recipe ")
+        }
 
     }
 

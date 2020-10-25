@@ -3,6 +3,7 @@ package com.example.povar.activity
 import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -55,12 +56,11 @@ class MainActivity :AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
+        deleteOfflineBase()
         MassivOffReload.removeAll { true }
         counterOffReload =0
 
-        deleteOfflineBase()
         initRecepts()
-
         TemaPriRefresh()
         MyReceptClick()
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain="Main"

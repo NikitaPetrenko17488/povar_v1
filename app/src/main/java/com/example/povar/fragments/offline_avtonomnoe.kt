@@ -134,6 +134,7 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
    fun arg(arg:Bundle){
 
        val kek: ArrayList<Recept> = arg["List"] as ArrayList<Recept>
+       //Log.d("xuy",kek.toString())
 
        MassivOffline2=kek
 

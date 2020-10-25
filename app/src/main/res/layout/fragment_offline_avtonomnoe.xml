@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.offline_avtonomnoe"
     android:background="@drawable/background_fon_na_fragment_lite"
+
     >
 
     <androidx.appcompat.widget.Toolbar

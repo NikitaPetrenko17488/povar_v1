@@ -111,6 +111,8 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
                 }
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Massiv_Users2.removeAll { true }
+                    counter2=0
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val user = snapshot.getValue(User::class.java) ?: User()
 

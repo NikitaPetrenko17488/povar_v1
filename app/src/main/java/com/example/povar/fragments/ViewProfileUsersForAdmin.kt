@@ -129,6 +129,8 @@ class ViewProfileUsersForAdmin : Fragment(),ReceptsUserForAdmin {
                 }
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    MassivReceptUserForAdmin.removeAll { true }
+                    counterReceptUserForAdmin=0
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
                         if(recept.user_id== STORAGE_USERS_FOR_ADMIN.ID) {

@@ -163,4 +163,9 @@
         android:name="com.example.povar.fragments.TranslateRecept"
         android:label="Перевети рецепт"
         tools:layout="@layout/fragment_translate_recept" />
+    <fragment
+        android:id="@+id/calkulatorKalorii"
+        android:name="com.example.povar.fragments.CalkulatorKalorii"
+        android:label="fragment_calkulator_kalorii"
+        tools:layout="@layout/fragment_calkulator_kalorii" />
 </navigation>

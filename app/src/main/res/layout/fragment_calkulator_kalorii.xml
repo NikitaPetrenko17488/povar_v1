@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.CalkulatorKalorii">
+
+<LinearLayout
+    android:id="@+id/linearCalculator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_marginBottom="25dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCalkulatorKalorii"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/list_calculator_kalorii"
+        app:layout_constraintBottom_toTopOf="@id/TextSumm"
+        tools:ignore="NotSibling" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/linearCalculator"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:id="@+id/TextNameIngridientsAbstract"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:text="Название ингридиента : "
+        />
+    <EditText
+        android:id="@+id/EditNameIngridientsAbstract"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:hint="Название"
+        app:layout_constraintTop_toTopOf="@id/TextNameIngridientsAbstract"
+        app:layout_constraintBottom_toBottomOf="@id/TextNameIngridientsAbstract"
+        app:layout_constraintStart_toEndOf="@id/TextNameIngridientsAbstract"
+        android:layout_marginStart="16dp"
+        />
+
+    <TextView
+        android:id="@+id/TextKaloriiGrammAbstract"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/TextNameIngridientsAbstract"
+        android:textSize="15dp"
+        android:text="Ккал : "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+
+        />
+    <EditText
+        android:id="@+id/EditKaloriiGrammAbstract"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        app:layout_constraintTop_toTopOf="@id/TextKaloriiGrammAbstract"
+        app:layout_constraintBottom_toBottomOf="@id/TextKaloriiGrammAbstract"
+        app:layout_constraintStart_toEndOf="@id/TextKaloriiGrammAbstract"
+        android:layout_marginStart="8dp"
+        android:hint="000 Ккл"
+        />
+
+    <TextView
+        android:id="@+id/TextGrammAbstract"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@id/TextKaloriiGrammAbstract"
+        app:layout_constraintBottom_toBottomOf="@id/TextKaloriiGrammAbstract"
+        app:layout_constraintStart_toEndOf="@id/EditKaloriiGrammAbstract"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:text="Кол-во грамм: "
+        />
+    <EditText
+        android:id="@+id/EditGrammAbstract"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="@id/TextGrammAbstract"
+        app:layout_constraintStart_toEndOf="@id/TextGrammAbstract"
+        android:hint="000 грамм"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_marginStart="1dp"
+        />
+
+    <ImageView
+        android:id="@+id/addSlotCalkulatorKaloriiAbstract"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@id/EditGrammAbstract"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/add"
+
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/TextSumm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Всего: "
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:id="@+id/Summ"
+        android:textColor="@color/black"
+        android:layout_marginStart="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/TextSumm"
+        app:layout_constraintStart_toEndOf="@id/TextSumm"
+        app:layout_constraintBottom_toBottomOf="@id/TextSumm"
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

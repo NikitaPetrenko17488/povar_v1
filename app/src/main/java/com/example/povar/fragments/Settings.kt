@@ -84,11 +84,11 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
 
         if(STORAGE.Language=="Eng") {
             activity!!.toolbar.setTitle("Settings")
-            switchTemnayaTema.setText("Dark Them ")
+            switchTemnayaTema.setText("Dark Theme ")
             Language.setText("  Choose language (Rus)  ")
             Exit.setText(" Exit ")
-            activity!!.myRecept.setText(" My recepts ")
-            activity!!.AllRecept.setText(" All recepts ")
+            activity!!.myRecept.setText(" My recipes ")
+            activity!!.AllRecept.setText(" All recipes ")
             activity!!.dopFunc.setText(" Calories ")
            activity!!.SearchRecept.setHint(" Search ")
 

@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_alert_delete_dark.view.*
 import kotlinx.android.synthetic.main.dialog_alert_delete_lite.view.*
+import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 
 interface Click
@@ -60,8 +61,7 @@ class fragment5 : Fragment(),Click {
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
-        showAddButton(activity!!)
-
+        init()
         Massiv.removeAll { true }
         counter=0
 
@@ -84,7 +84,7 @@ class fragment5 : Fragment(),Click {
         showSettings(activity!!)
         showSearch(activity!!)
         showUserNameAdnImage(activity!!)
-        showAddButton(activity!!)
+        init()
         language()
         initRecepts()
         tema()
@@ -104,6 +104,7 @@ class fragment5 : Fragment(),Click {
         }
 
     }
+
 
 
 
@@ -301,8 +302,14 @@ class fragment5 : Fragment(),Click {
         }
 
     }
-
+    private fun init() {
+        showAddButton(activity!!)
+        activity!!.addRecept.setBackgroundResource(R.drawable.add)
+    }
     private fun tema(){
+
+
+
         if(STORAGE.Tema==true) {
             ToastNoRecepts.setTextColor(Color.parseColor("#b2b2b2"))
             Constraint_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
@@ -323,12 +330,14 @@ class fragment5 : Fragment(),Click {
     {
         if(STORAGE.Language=="Rus")
         {
+            ToastNoRecepts.setText("Нет рецептов")
             mDialogView.textDeleteDialogAlertLite.setText(" Удалить рецепт? ")
             mDialogView.buttonDeleteAlertDialogLite.setText(" Удалить ")
             mDialogView.buttonOtmenaAlertDialogLite.setText(" Отмена ")
         }
         else
         {
+            ToastNoRecepts.setText("No recipes")
             mDialogView.textDeleteDialogAlertLite.setText(" Delete recipe? ")
             mDialogView.buttonDeleteAlertDialogDark.setText(" Delete ")
             mDialogView.buttonOtmenaAlertDialogDark.setText(" Cancel ")

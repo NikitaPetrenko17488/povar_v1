@@ -1,18 +1,21 @@
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.fragments.*
+import com.example.povar.models.CalculatorKalorii
 import com.example.povar.models.Calorii
 
 import com.example.povar.models.Recept
 import com.example.povar.models.User
+import com.example.povar.ui.STORAGE_CALKULATOR
 import com.example.povar.ui.STORAGE_FOR_RECYCLE_RECEPT
 import com.example.povar.ui.STORAGE_USERS_FOR_ADMIN
+import kotlinx.android.synthetic.main.list_calculator_kalorii.view.*
 import kotlinx.android.synthetic.main.list_item_recept.view.*
 import kotlinx.android.synthetic.main.list_item_recept_all.view.*
 import kotlinx.android.synthetic.main.list_item_recept_translate.view.*
 import kotlinx.android.synthetic.main.list_item_users.view.*
-import java.io.Serializable
 
 
 class DataAdapter(private val list: MutableList<Recept>, private val click:Click)
@@ -265,6 +268,25 @@ class DataAdapterTranslate(private val list: MutableList<Recept>, private val cl
             clickOff.TranslateRecycle()
 
         }
+
+    }
+    override fun getItemCount(): Int = list.size
+
+}
+class DataAdapterCalkulatorKalorii(private val list: MutableList<CalculatorKalorii>)
+    : RecyclerView.Adapter<CalkulatorKalorii.ViewHolderCalkulatorCalorii>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalkulatorKalorii.ViewHolderCalkulatorCalorii {
+
+        val inflater = LayoutInflater.from(parent.context)
+        return CalkulatorKalorii.ViewHolderCalkulatorCalorii(inflater, parent)
+    }
+    override fun onBindViewHolder(holder: CalkulatorKalorii.ViewHolderCalkulatorCalorii, position: Int) {
+
+        val movie: CalculatorKalorii = list[position]
+        holder.bind(movie)
+
 
     }
     override fun getItemCount(): Int = list.size

@@ -8,16 +8,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.models.Calorii
 import com.example.povar.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_kalorii.*
 
-private val mNicolasCageMovies = listOf(
+private val MassivCalorii = listOf(
     Calorii("белый гриб", "White mushroom","34"),
     Calorii("бекон", "Bacon","500"),
     Calorii("говядина", "Beef","250"),
@@ -45,11 +47,10 @@ class Kalorii : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        init()
         showSettings(activity!!)
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
-        hideAddButton(activity!!)
 
     }
 
@@ -63,12 +64,16 @@ class Kalorii : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        init()
         tema()
         language()
         showSettings(activity!!)
         showUserNameAdnImage(activity!!)
         hideSearch(activity!!)
-        hideAddButton(activity!!)
+        activity!!.addRecept.setOnClickListener {
+            findNavController().navigate(R.id.calkulatorKalorii)
+        }
+
 
 
         create_recycle()
@@ -117,11 +122,11 @@ class Kalorii : Fragment() {
             mCalorii?.text = movie.kalorii
             if(STORAGE.Language=="Rus") {
                 mName?.text = movie.name
-                mKkl?.text = "ккал"
+                mKkl?.text = "ккал/100гр"
             }
             else {
                 mName?.text = movie.nameEng
-                mKkl?.text = "kcal"
+                mKkl?.text = "kcal/100gr"
             }
 
         }
@@ -134,19 +139,27 @@ class Kalorii : Fragment() {
 
         recyclerCalorii.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = DataAdapterCalorii(mNicolasCageMovies as MutableList<Calorii>)
+            adapter = DataAdapterCalorii(MassivCalorii as MutableList<Calorii>)
 
         }
 
     }
 
+
+    private fun init(){
+        showAddButton(activity!!)
+
+    }
     private fun tema(){
+
         if(STORAGE.Tema==true)
         {
+            activity!!.addRecept.setBackgroundResource(R.drawable.kalkulator_dark)
             Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
         }
         else
         {
+            activity!!.addRecept.setBackgroundResource(R.drawable.kalkulator)
             Constraint_layout_calorii.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
         }
     }

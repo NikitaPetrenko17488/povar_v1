@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.TranslateRecept">
-
+    tools:context=".fragments.TranslateReceptAng"
+    android:background="@drawable/background_fon_na_fragment_lite"
+    >
 
 
     <ScrollView
@@ -29,7 +30,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:hint="Рецепт"
                 app:layout_constraintTop_toBottomOf="@id/TextIngridientTranslate" />
-
 
 
 

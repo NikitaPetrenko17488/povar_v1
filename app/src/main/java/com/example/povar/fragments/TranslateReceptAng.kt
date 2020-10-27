@@ -6,13 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.povar.R
 import com.example.povar.ui.*
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_translate_recept.*
 
 
-class TranslateRecept : Fragment() {
+class TranslateReceptAng : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +66,8 @@ class TranslateRecept : Fragment() {
                     REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(STORAGE_FOR_RECYCLE_RECEPT.ID).updateChildren(dateMap)
                     ////////////////////////////////////////////////////////////////////////
 
-                   replaceFragment3(Translater())
+                    findNavController().navigate(R.id.translater)
+                        // replaceFragment3(Translater())
 
                     showToast("Блюдо переведено")
                 }

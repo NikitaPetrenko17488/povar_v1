@@ -4,6 +4,7 @@ import DataAdapterTranslate
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -56,18 +57,32 @@ class Translater : Fragment(),ClickTranslate {
 
     override fun onStart() {
         super.onStart()
+        STORAGE.contextTranslater="Rus"
         MassivReceptTranslate.removeAll { true }
         counterTranslate=0
-
-
+        rus_eng.setTypeface(Typeface.DEFAULT_BOLD)
+        eng_rus.setTypeface(Typeface.DEFAULT)
+        initRecepts()
         ExitForTranslater.setOnClickListener {
              startActivity(Intent(activity, RegistryActivity::class.java))
             STORAGE.translater=0
+            STORAGE.contextTranslater=""
         }
 
-        initRecepts()
+       eng_rus.setOnClickListener {
+           STORAGE.contextTranslater="Eng"
+           eng_rus.setTypeface(Typeface.DEFAULT_BOLD)
+           rus_eng.setTypeface(Typeface.DEFAULT)
+           initRusRecepts()
+       }
 
+        rus_eng.setOnClickListener {
 
+            STORAGE.contextTranslater="Rus"
+            eng_rus.setTypeface(Typeface.DEFAULT)
+            rus_eng.setTypeface(Typeface.DEFAULT_BOLD)
+            initRecepts()
+        }
 
 
     }
@@ -80,7 +95,7 @@ class Translater : Fragment(),ClickTranslate {
 
         if (MassivReceptTranslate.isEmpty()) {
             if(activity!=null)
-                activity!!.ToastNoTranslate.text = " Пока что нечего переводить "
+                activity!!.ToastNoTranslate.text = " Все переведено "
         } else {
             if(activity!=null)
                 activity!!.ToastNoTranslate.text = " "
@@ -97,9 +112,39 @@ class Translater : Fragment(),ClickTranslate {
 
     }
 
+    private fun initRusRecepts(){
+        counterTranslate=0
+        MassivReceptTranslate.removeAll { true }
+        REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    showToast("Нет подключения к базе..")
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    MassivReceptTranslate.removeAll { true }
+                    counterTranslate=0
+                    for (snapshot: DataSnapshot in dataSnapshot.children) {
+                        val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+                        if(recept.formula.isEmpty()) {
+                            MassivReceptTranslate.add(recept)
+                        }
+                        counterTranslate++
+
+                        if (counterTranslate>0)
+                            create_recycleTranslate()
+                    }
+
+                }
+
+            })
+
+    }
+
 
     private fun initRecepts( ) {
-
+        counterTranslate=0
+        MassivReceptTranslate.removeAll { true }
         REF_DABATABSE_ROOT.child(NODE_RECEPTS)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
@@ -140,9 +185,12 @@ class Translater : Fragment(),ClickTranslate {
         @SuppressLint("ResourceAsColor")
         fun bind(movie: Recept) {
 
-
-            mName?.text = movie.name
             mPhoto?.downloadSetImage(movie.photoUrl)
+            if(STORAGE.contextTranslater=="Rus")
+                mName?.text = movie.name
+            else
+                mName?.text=movie.name_eng
+
         }
 
 
@@ -150,6 +198,11 @@ class Translater : Fragment(),ClickTranslate {
 
     override fun TranslateRecycle() {
 
-        findNavController().navigate(R.id.translateRecept)
+        if(STORAGE.contextTranslater=="Rus")
+            findNavController().navigate(R.id.translateReceptEng)
+        else
+            findNavController().navigate(R.id.translaterReceptRus)
     }
+
+
 }

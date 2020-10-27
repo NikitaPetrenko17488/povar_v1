@@ -212,7 +212,7 @@ class fragment5 : Fragment(),Click {
                         for (snapshot: DataSnapshot in dataSnapshot.children) {
                             val recept = snapshot.getValue(Recept::class.java) ?: Recept()
                             if (STORAGE.Language == "Rus") {
-                                if (recept.user_id == STORAGE.ID) {
+                                if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()) {
                                     Massiv.add(recept)
                                 }
                             } else {
@@ -287,16 +287,22 @@ class fragment5 : Fragment(),Click {
     }
     private fun addReceptReplace()
     {
+
+
         if(STORAGE.Language=="Rus")
-            findNavController().navigate(R.id.fragment2)
+        {findNavController().navigate(R.id.fragment2)}
         else
         {
             val builder=AlertDialog.Builder(activity)
-            builder.setTitle("It is forbidden to add in English, sorry..")
+            builder.setTitle("in the English version, you need to add recipes in English")
 
-            builder.setNegativeButton("to accept"){dialogOtmena, i ->
+            builder.setNeutralButton("cansel"){dialogOtmena, i ->
 
                 showToast("Cancel")
+            }
+            builder.setPositiveButton("to accept"){dialogAccept,i->
+
+                findNavController().navigate(R.id.fragment2)
             }
             builder.show()
         }
@@ -400,14 +406,31 @@ class fragment5 : Fragment(),Click {
                             var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
 
 
-                            if (recept.user_id == STORAGE.ID && indexIngridient == true ) {
-                                Massiv.add(recept)
-                            } else if (vxodStroki.isEmpty()) {
-
-                                if (recept.user_id == STORAGE.ID) {
+                            if(STORAGE.Language=="Rus") {
+                                if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name.isNotEmpty()) {
                                     Massiv.add(recept)
+
+
+                                } else if (vxodStroki.isEmpty()) {
+
+                                    if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()) {
+                                        Massiv.add(recept)
+                                    }
                                 }
                             }
+
+                            if(STORAGE.Language=="Eng") {
+                                if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name_eng.isNotEmpty()) {
+                                    Massiv.add(recept)
+
+                                } else if (vxodStroki.isEmpty()) {
+
+                                    if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
+                                        Massiv.add(recept)
+                                    }
+                                }
+                            }
+
 
 
                             counter++

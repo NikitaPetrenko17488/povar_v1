@@ -151,7 +151,7 @@
     <fragment
         android:id="@+id/offline_avtonomnoe"
         android:name="com.example.povar.fragments.offline_avtonomnoe"
-        android:label="fragment_offline_avtonomnoe"
+        android:label="Оффлайн режим"
         tools:layout="@layout/fragment_offline_avtonomnoe" />
     <fragment
         android:id="@+id/translater"
@@ -159,13 +159,19 @@
         android:label="Переводчик"
         tools:layout="@layout/fragment_translater" />
     <fragment
-        android:id="@+id/translateRecept"
-        android:name="com.example.povar.fragments.TranslateRecept"
-        android:label="Перевети рецепт"
+        android:id="@+id/translateReceptEng"
+        android:name="com.example.povar.fragments.TranslateReceptAng"
+        android:label="Перевети на английский"
         tools:layout="@layout/fragment_translate_recept" />
     <fragment
         android:id="@+id/calkulatorKalorii"
         android:name="com.example.povar.fragments.CalkulatorKalorii"
-        android:label="fragment_calkulator_kalorii"
+        android:label="Калькулятор каллорий"
         tools:layout="@layout/fragment_calkulator_kalorii" />
+    <fragment
+        android:id="@+id/translaterReceptRus"
+        android:name="com.example.povar.fragments.TranslaterReceptRus"
+        android:label="Перевести на русский"
+        tools:layout="@layout/fragment_translater_recept_rus" />
+
 </navigation>

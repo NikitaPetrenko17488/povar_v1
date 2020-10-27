@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.Translater">
+    tools:context=".fragments.Translater"
+    android:background="@drawable/background_fon_na_fragment_lite"
+    >
 
 <ScrollView
 
@@ -24,11 +26,36 @@ tools:ignore="MissingConstraints">
         android:text="Выход"
         android:textSize="13dp"
         android:background="@drawable/megaoval"
+       app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="6dp"
+       android:layout_marginEnd="16dp"
+
+        />
+
+    <Button
+        android:id="@+id/eng_rus"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text=" С английского "
+        android:textSize="13dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rus_eng"
+        app:layout_constraintEnd_toStartOf="@id/ExitForTranslater"
+        android:background="@drawable/megaoval_anim"
+        android:layout_marginTop="6dp"
+        />
+    <Button
+        android:id="@+id/rus_eng"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text=" С русского "
+        android:textSize="13dp"
+        android:background="@drawable/megaoval_anim"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="6dp"
-        android:layout_marginStart="6dp"
-
+        android:layout_marginStart="16dp"
         />
 
     <androidx.recyclerview.widget.RecyclerView

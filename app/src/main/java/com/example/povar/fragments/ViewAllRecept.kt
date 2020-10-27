@@ -141,8 +141,10 @@ class ViewAllRecept : Fragment(),ClickAll {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-                            if(STORAGE.Language=="Rus")
-                            Massiv.add(recept)
+                            if(STORAGE.Language=="Rus") {
+                                if (recept.name.isNotEmpty())
+                                    Massiv.add(recept)
+                            }
                             else{
                                 if(recept.name_eng.isNotEmpty())
                                 Massiv.add(recept)
@@ -211,14 +213,26 @@ class ViewAllRecept : Fragment(),ClickAll {
                             vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
                             var indexIngridient: Boolean = ReceptIngridientsUp.contains(vxodStroki)
 
-                            if (indexIngridient == true) {
-                                Massiv.add(recept)
-                            } else if (vxodStroki.isEmpty()) {
-
+                            if(STORAGE.Language=="Rus") {
+                                if (indexIngridient == true) {
+                                    if (recept.name.isNotEmpty())
+                                        Massiv.add(recept)
+                                } else if (vxodStroki.isEmpty()) {
                                     Massiv.add(recept)
 
+                                }
                             }
+                            if(STORAGE.Language=="Eng")
+                            {
+                                if (indexIngridient == true) {
+                                    if (recept.name_eng.isNotEmpty())
+                                        Massiv.add(recept)
+                                } else if (vxodStroki.isEmpty()) {
+                                    Massiv.add(recept)
 
+                                }
+
+                            }
 
                             counter++
 

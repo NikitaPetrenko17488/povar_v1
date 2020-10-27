@@ -264,6 +264,9 @@ class DataAdapterTranslate(private val list: MutableList<Recept>, private val cl
             STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
             STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
             STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            STORAGE_FOR_RECYCLE_RECEPT.nameEng=movie.name_eng
+            STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng=movie.ingridients_eng
+            STORAGE_FOR_RECYCLE_RECEPT.formulaEng=movie.formula_eng
 
             clickOff.TranslateRecycle()
 

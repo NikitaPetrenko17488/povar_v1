@@ -23,14 +23,14 @@
         android:id="@+id/EditNameIngridients"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:hint="Название"
         app:layout_constraintTop_toTopOf="@id/TextNameIngridients"
         app:layout_constraintBottom_toBottomOf="@id/TextNameIngridients"
         app:layout_constraintStart_toEndOf="@id/TextNameIngridients"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="1dp"
         />
 
     <TextView
@@ -40,7 +40,7 @@
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/TextNameIngridients"
         android:textSize="15dp"
-        android:text="Ккал : "
+        android:text="Ккал/100гр : "
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,13 +51,13 @@
         android:id="@+id/EditKaloriiGramm"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:gravity="center"
+        android:gravity="start|center_vertical"
         android:textSize="15dp"
         android:textColor="@color/black"
        app:layout_constraintTop_toTopOf="@id/TextKaloriiGramm"
         app:layout_constraintBottom_toBottomOf="@id/TextKaloriiGramm"
        app:layout_constraintStart_toEndOf="@id/TextKaloriiGramm"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="1dp"
         android:hint="000 Ккл"
         />
 
@@ -68,12 +68,12 @@
         app:layout_constraintTop_toTopOf="@id/TextKaloriiGramm"
         app:layout_constraintBottom_toBottomOf="@id/TextKaloriiGramm"
         app:layout_constraintStart_toEndOf="@id/EditKaloriiGramm"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="@color/black"
-        android:text="Кол-во грамм: "
+        android:text="Грамм: "
         />
     <TextView
         android:id="@+id/EditGramm"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toEndOf="@id/TextGramm"
         android:hint="000 грамм"
         android:textSize="15dp"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
         android:textColor="@color/black"
         android:layout_marginStart="1dp"
         />

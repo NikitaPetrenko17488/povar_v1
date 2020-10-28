@@ -87,6 +87,7 @@
         android:layout_marginTop="25dp"
         android:text=" Сохранить "
         android:textSize="17dp"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/LoginInProfileEdit"

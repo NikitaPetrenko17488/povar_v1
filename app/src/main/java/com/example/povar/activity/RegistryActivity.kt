@@ -37,12 +37,10 @@ class RegistryActivity: AppCompatActivity() {
 
         myDbManager.openDb()
 
-//        myDbManager.insertToDb("БЛИНЫ","2 яйца, 0.5 л. молока, 200 г. пшеничной муки, 3 ст. ложки сахара, соль по вкусу, 2 ст. ложки растительного масла.","Взбить яйца до образования белой пены. Добавить сахар и соль, взбить до растворения сахара. Нагреть молоко, чтобы оно было тёпленьким, но не кипяток. Вмешать молоко в яйца, затем вмешать муку. Добавить 2 ст. ложки растительного масла, размешать. Можно жарить (лучше на раскалённой сковороде)! ")
-//        myDbManager.insertToDb("Борщ","Мясо, зажарка, соль, вода","Сделать зажарку, вскипятить воду и варить в ней пол часа мясо для нажористости, добавить к мясу и воде зажарку, посолить, готовить до гкйстой консистенции. ")
         val dataList=myDbManager.ReadDb()
         val bundle=Bundle()
         bundle.putSerializable("List",dataList)
-         offline_avtonomnoe.getNewInstance(bundle)
+        offline_avtonomnoe.getNewInstance(bundle)
         myDbManager.closeDb()
 
 

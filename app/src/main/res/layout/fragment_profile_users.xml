@@ -53,6 +53,7 @@
                 android:background="@drawable/megaoval_anim"
                 android:text=" Редактировать "
                 android:textSize="17dp"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="16dp"

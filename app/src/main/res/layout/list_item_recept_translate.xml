@@ -28,7 +28,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/recept"
+        android:src="@drawable/products"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/name_recept_translate"
         app:layout_constraintTop_toTopOf="@id/name_recept_translate"

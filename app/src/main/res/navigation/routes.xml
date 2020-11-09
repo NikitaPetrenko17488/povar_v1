@@ -172,5 +172,15 @@
         android:name="com.example.povar.fragments.TranslaterReceptRus"
         android:label="Перевести на русский"
         tools:layout="@layout/fragment_translater_recept_rus" />
+    <fragment
+        android:id="@+id/pushForAdminRecept"
+        android:name="com.example.povar.fragments.PushForAdminRecept"
+        android:label="Подтверждение рецептов"
+        tools:layout="@layout/fragment_push_for_admin_recept" />
+    <fragment
+        android:id="@+id/chekOneRecept"
+        android:name="com.example.povar.fragments.ChekOneRecept"
+        android:label="Подтверждение рецепта"
+        tools:layout="@layout/fragment_chek_one_recept" />
 
 </navigation>

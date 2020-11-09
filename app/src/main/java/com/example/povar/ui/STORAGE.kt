@@ -15,6 +15,7 @@ companion object
     var translater=0
     var admin=0
     var contextTranslater=""
+    var complexityUser="None"
 
 }
 

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ChekOneRecept"
+    android:background="@drawable/background_fon_na_fragment_lite"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" >
+
+
+            <TextView
+                android:id="@+id/EditTextFormulaChek"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:hint="Рецепт"
+                app:layout_constraintTop_toBottomOf="@id/EditTextIngridientChek" />
+
+
+
+            <TextView
+                android:id="@+id/EditTextIngridientChek"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="20dp"
+                android:hint="Ингридиенты"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/EditTextNameChek" />
+
+            <TextView
+                android:id="@+id/EditTextNameChek"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:hint="Название блюда"
+                android:maxLines="1"
+                android:textSize="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ImageViewReceptChek" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ImageViewReceptChek"
+                android:layout_marginTop="26dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/recept"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+
+
+            <TextView
+                android:id="@+id/TextSpinnerComplexity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/EditTextFormulaChek"
+                android:text="Сложность "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+
+                />
+            <Spinner
+                android:id="@+id/spinnerChek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/TextSpinnerComplexity"
+                app:layout_constraintBottom_toBottomOf="@id/TextSpinnerComplexity"
+               app:layout_constraintStart_toEndOf="@id/TextSpinnerComplexity"
+                android:entries="@array/complexity"
+                />
+
+            <Button
+                android:id="@+id/CanselChek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/TextSpinnerComplexity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:text=" Назад "
+                android:background="@drawable/megaoval_anim"
+                android:textAllCaps="false"
+                android:layout_marginTop="32dp"
+                />
+
+            <Button
+                android:id="@+id/AcceptChek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/TextSpinnerComplexity"
+               app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                android:text=" Принять рецепт "
+                android:background="@drawable/megaoval_anim"
+                android:textAllCaps="false"
+                android:layout_marginTop="32dp"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

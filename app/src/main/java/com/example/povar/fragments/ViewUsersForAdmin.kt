@@ -17,12 +17,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
+import com.example.povar.models.Recept
 import com.example.povar.models.User
 import com.example.povar.ui.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_admin.*
 import kotlinx.android.synthetic.main.dialog_alert_delete_dark.view.*
 import kotlinx.android.synthetic.main.fragment_view1.*
 import kotlinx.android.synthetic.main.view_users_for_admin.*
@@ -37,6 +39,7 @@ interface ViewAdmin
 }
 
 private var Massiv_Users2 = mutableListOf<User>()
+private var Massiv_Recepts = mutableListOf<Recept>()
 var counter2 =0
 
 class ViewUsersForAdmin : Fragment(),ViewAdmin {
@@ -65,11 +68,16 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
 
     override fun onStart() {
         super.onStart()
+        if(activity!=null)
+        activity!!.push.visibility=View.VISIBLE
         initUsers()
+        initRecepts()
         ExitForAdmin.setOnClickListener {
             STORAGE.admin=0
             startActivity(Intent(activity, RegistryActivity::class.java)) }
     }
+
+
 
     fun create_recycle() {
             if(recicle_view_users!=null){
@@ -132,6 +140,40 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
 
     }
 
+    private fun initRecepts() {
+
+
+        REF_DABATABSE_ROOT.child(NODE_RECEPTS)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    showToast("Нет подключения к базе..")
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    Massiv_Recepts.removeAll { true }
+                    for (snapshot: DataSnapshot in dataSnapshot.children) {
+                        val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+                        if(recept.chek==false)
+                        Massiv_Recepts.add(recept)
+
+                        if(Massiv_Recepts.isNotEmpty()) {
+                            if (activity != null)
+                                activity!!.push.setBackgroundResource(R.drawable.push_active)
+                            break
+                        }
+                        else
+                        {
+                            if (activity != null)
+                                activity!!.push.setBackgroundResource(R.drawable.push)
+                        }
+
+                    }
+
+                }
+
+            })
+    }
+
     override fun ViewUser() {
 
 
@@ -163,5 +205,7 @@ class ViewUsersForAdmin : Fragment(),ViewAdmin {
 
     }
 
+
+    
 
 }

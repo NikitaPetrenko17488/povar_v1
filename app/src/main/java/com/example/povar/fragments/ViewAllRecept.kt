@@ -84,6 +84,16 @@ class ViewAllRecept : Fragment(),ClickAll {
 
     fun create_recycleAll() {
 
+
+        if (Massiv.isEmpty()) {
+            if(STORAGE.Language=="Rus")
+                ToastNoReceptsAll.setText("Нет рецептов")
+            else
+                ToastNoReceptsAll.setText("No recipes")
+        }
+        else
+            ToastNoReceptsAll.setText("")
+
         recicle_view_receptAll.apply {
             if(recicle_view_receptAll!=null) {
                 layoutManager = LinearLayoutManager(activity)
@@ -141,19 +151,33 @@ class ViewAllRecept : Fragment(),ClickAll {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
+
+                        if(STORAGE.complexityUser=="None") {
+                            if (STORAGE.Language == "Rus") {
+                                if (recept.name.isNotEmpty() && recept.chek == true)
+                                    Massiv.add(recept)
+                            } else {
+                                if (recept.name_eng.isNotEmpty() && recept.chek == true)
+                                    Massiv.add(recept)
+                            }
+                        }
+                        else
+                        {
                             if(STORAGE.Language=="Rus") {
-                                if (recept.name.isNotEmpty())
+                                if (recept.name.isNotEmpty()&& recept.chek==true && recept.complexity==STORAGE.complexityUser)
                                     Massiv.add(recept)
                             }
                             else{
-                                if(recept.name_eng.isNotEmpty())
-                                Massiv.add(recept)
+                                if(recept.name_eng.isNotEmpty() && recept.chek==true&& recept.complexity==STORAGE.complexityUser)
+                                    Massiv.add(recept)
                             }
+                        }
 
                         counterAll++
 
                         if (counterAll>0)
                             create_recycleAll()
+
                     }
 
                 }
@@ -165,10 +189,12 @@ class ViewAllRecept : Fragment(),ClickAll {
     private fun tema(){
         if(STORAGE.Tema==true)
         {
+            ToastNoReceptsAll.setTextColor(Color.parseColor("#b2b2b2"))
             Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
         }
         else
         {
+            ToastNoReceptsAll.setTextColor(Color.parseColor("#000000"))
             Constraint_layout_all_view.setBackgroundResource(R.drawable.background_fon_na_fragment_lite)
         }
     }
@@ -213,32 +239,58 @@ class ViewAllRecept : Fragment(),ClickAll {
                             vxodStroki = activity!!.SearchRecept.text.toString().toUpperCase()
                             var indexIngridient: Boolean = ReceptIngridientsUp.contains(vxodStroki)
 
-                            if(STORAGE.Language=="Rus") {
-                                if (indexIngridient == true) {
-                                    if (recept.name.isNotEmpty())
+                            if(STORAGE.complexityUser=="None") {
+                                if (STORAGE.Language == "Rus" && recept.chek == true) {
+                                    if (indexIngridient == true) {
+                                        if (recept.name.isNotEmpty())
+                                            Massiv.add(recept)
+                                    } else if (vxodStroki.isEmpty()) {
                                         Massiv.add(recept)
-                                } else if (vxodStroki.isEmpty()) {
-                                    Massiv.add(recept)
+
+                                    }
+                                }
+                                if (STORAGE.Language == "Eng" && recept.chek == true) {
+                                    if (indexIngridient == true) {
+                                        if (recept.name_eng.isNotEmpty())
+                                            Massiv.add(recept)
+                                    } else if (vxodStroki.isEmpty()) {
+                                        Massiv.add(recept)
+
+                                    }
 
                                 }
                             }
-                            if(STORAGE.Language=="Eng")
-                            {
-                                if (indexIngridient == true) {
-                                    if (recept.name_eng.isNotEmpty())
+                            else{
+                                if (STORAGE.Language == "Rus" && recept.chek == true && recept.complexity==STORAGE.complexityUser) {
+                                    if (indexIngridient == true) {
+                                        if (recept.name.isNotEmpty())
+                                            Massiv.add(recept)
+                                    } else if (vxodStroki.isEmpty()) {
                                         Massiv.add(recept)
-                                } else if (vxodStroki.isEmpty()) {
-                                    Massiv.add(recept)
+
+                                    }
+                                }
+                                if (STORAGE.Language == "Eng" && recept.chek == true&& recept.complexity==STORAGE.complexityUser) {
+                                    if (indexIngridient == true) {
+                                        if (recept.name_eng.isNotEmpty())
+                                            Massiv.add(recept)
+                                    } else if (vxodStroki.isEmpty()) {
+                                        Massiv.add(recept)
+
+                                    }
 
                                 }
-
                             }
 
                             counter++
 
+
                             if (counter > 0)
                                 create_recycleAll()
+
+
                         }
+
 
                     }
 

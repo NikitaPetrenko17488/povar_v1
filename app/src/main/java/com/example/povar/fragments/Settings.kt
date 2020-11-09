@@ -4,10 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.povar.R
 import com.example.povar.activity.RegistryActivity
@@ -26,6 +30,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         hideSearch(activity!!)
        hideSettings(activity!!)
         hideAddButton(activity!!)
+
 
     }
 
@@ -55,8 +60,41 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         Language.setOnClickListener {
             langSmena()
         }
+        SpinnerComplexityUser.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                itemSelected: View, selectedItemPosition: Int, selectedId: Long
+            ) {
+                val choose = resources.getStringArray(R.array.complexity)
 
+                if(choose[selectedItemPosition]=="Не выбрано" ||choose[selectedItemPosition]=="None")
+                    STORAGE.complexityUser="None"
+                else if(choose[selectedItemPosition]=="Новичок" || choose[selectedItemPosition]=="Newbie")
+                    STORAGE.complexityUser="Новичок"
+                else if(choose[selectedItemPosition]=="Студент" || choose[selectedItemPosition]=="Student")
+                    STORAGE.complexityUser="Студент"
+                else if(choose[selectedItemPosition]=="Повар" || choose[selectedItemPosition]=="Cook")
+                    STORAGE.complexityUser="Повар"
+                else if(choose[selectedItemPosition]=="Шеф" || choose[selectedItemPosition]=="Chef")
+                    STORAGE.complexityUser="Шеф"
+            }
 
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        })
+        init()
+    }
+
+    private fun init() {
+        if(STORAGE.complexityUser=="None")
+            SpinnerComplexityUser.setSelection(0)
+        if(STORAGE.complexityUser=="Новичок")
+            SpinnerComplexityUser.setSelection(1)
+        if(STORAGE.complexityUser=="Студент")
+            SpinnerComplexityUser.setSelection(2)
+        if(STORAGE.complexityUser=="Повар")
+            SpinnerComplexityUser.setSelection(3)
+        if(STORAGE.complexityUser=="Шеф")
+            SpinnerComplexityUser.setSelection(4)
     }
 
     override fun onStop() {
@@ -81,12 +119,14 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
     }
     fun lang()
     {
-
+        temaSpinner()
+        init()
         if(STORAGE.Language=="Eng") {
             activity!!.toolbar.setTitle("Settings")
             switchTemnayaTema.setText("Dark Theme ")
             Language.setText("  Choose language (Rus)  ")
             Exit.setText(" Exit ")
+            TextSpinnerComplexityUser.setText(" Complexity of dishes ")
             activity!!.myRecept.setText(" My recipes ")
             activity!!.AllRecept.setText(" All recipes ")
             activity!!.dopFunc.setText(" Calories ")
@@ -99,6 +139,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             switchTemnayaTema.setText("Темная тема ")
             Language.setText("  Сменить язык (Eng)  ")
             Exit.setText(" Выход ")
+            TextSpinnerComplexityUser.setText(" Сложность блюд ")
             activity!!.myRecept.setText(" Мои рецепты ")
             activity!!.AllRecept.setText(" Все рецепты ")
             activity!!.dopFunc.setText(" Калории ")
@@ -113,8 +154,55 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         STORAGE_FOR_RECYCLE_RECEPT.FlagActivityAdminOrMain=""
         startActivity(Intent(activity, RegistryActivity::class.java))
     }
+    fun temaSpinner(){
+        if (STORAGE.Language =="Rus") {
+        if(STORAGE.Tema==true) {
+            var adapter = ArrayAdapter.createFromResource(
+                activity!!,
+                R.array.complexity,
+                R.layout.spinner_text_color_dark_droped
+            )
+            adapter.setDropDownViewResource(R.layout.spinner_text_color_dark)
+            SpinnerComplexityUser.adapter = adapter
+        }
+        else
+            {
+                    var adapter = ArrayAdapter.createFromResource(
+                        activity!!,
+                        R.array.complexity,
+                        R.layout.spinner_text_color_lite_droped
+                    )
+                    adapter.setDropDownViewResource(R.layout.spinner_text_color_lite)
+                    SpinnerComplexityUser.adapter = adapter
+            }
+        }
+        else{
+            if(STORAGE.Tema==true) {
+                var adapter = ArrayAdapter.createFromResource(
+                    activity!!,
+                    R.array.complexity_angl,
+                    R.layout.spinner_text_color_dark_droped
+                )
+                adapter.setDropDownViewResource(R.layout.spinner_text_color_dark)
+                SpinnerComplexityUser.adapter = adapter
+            }
+            else
+            {
+                var adapter = ArrayAdapter.createFromResource(
+                    activity!!,
+                    R.array.complexity_angl,
+                    R.layout.spinner_text_color_lite_droped
+                )
+                adapter.setDropDownViewResource(R.layout.spinner_text_color_lite)
+                SpinnerComplexityUser.adapter = adapter
+            }
+        }
+    }
+
     fun initTema()
     {
+
+
         if (STORAGE.Tema==true)
         {
             ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
@@ -123,6 +211,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
             Language.setTextColor(Color.parseColor("#b2b2b2"))
             Language.setBackgroundResource(R.drawable.megaoval_anim_dark)
+            TextSpinnerComplexityUser.setTextColor(Color.parseColor("#b2b2b2"))
         }
         else
         {
@@ -132,31 +221,36 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
             Language.setTextColor(Color.parseColor("#000000"))
             Language.setBackgroundResource(R.drawable.megaoval_anim)
+            TextSpinnerComplexityUser.setTextColor(Color.parseColor("#000000"))
         }
+        temaSpinner()
+        init()
     }
 
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun onCheckedChanged(Component: CompoundButton?, isChecked: Boolean) {
 
-
         if(isChecked==true) {
 
+            STORAGE.Tema=isChecked
+            updateTemaInBase()
             activity!!.LinearActivity.setBackgroundResource(R.color.DarkThema)
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.DarkThema)
             activity!!.toolbar.setBackgroundResource(R.color.DarkThema)
-            STORAGE.Tema=isChecked
             activity!!.ConstraintSettings.setBackgroundResource(R.drawable.background_fon_fragment_dark_them)
-            updateTemaInBase()
             Exit.setTextColor(Color.parseColor("#b2b2b2"))
             Exit.setBackgroundResource(R.drawable.megaoval_anim_dark)
             switchTemnayaTema.setTextColor(Color.parseColor("#b2b2b2"))
             Language.setTextColor(Color.parseColor("#b2b2b2"))
             Language.setBackgroundResource(R.drawable.megaoval_anim_dark)
+            TextSpinnerComplexityUser.setTextColor(Color.parseColor("#b2b2b2"))
+
 
         }
         if(isChecked==false)
         {
-
+            STORAGE.Tema=isChecked
+            updateTemaInBase()
             activity!!.toolbar.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivity.setBackgroundResource(R.color.LiteThema)
             activity!!.LinearActivityBottom.setBackgroundResource(R.color.LiteThema)
@@ -166,9 +260,11 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
             switchTemnayaTema.setTextColor(Color.parseColor("#000000"))
             Language.setTextColor(Color.parseColor("#000000"))
             Language.setBackgroundResource(R.drawable.megaoval_anim)
-            STORAGE.Tema=isChecked
-            updateTemaInBase()
+            TextSpinnerComplexityUser.setTextColor(Color.parseColor("#000000"))
+
         }
+        temaSpinner()
+        init()
     }
 
     fun updateTemaInBase(){
@@ -178,6 +274,7 @@ class Settings : Fragment(), CompoundButton.OnCheckedChangeListener {
         REF_DABATABSE_ROOT.child(NODE_USERS).child(STORAGE.ID).updateChildren(dateMap)
 
     }
+
 }
 
 

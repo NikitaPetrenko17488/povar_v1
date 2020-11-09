@@ -50,6 +50,31 @@
         android:background="@drawable/megaoval_anim"
         />
 
+    <TextView
+        android:id="@+id/TextSpinnerComplexityUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Language"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Сложность блюд: "
+        android:textSize="18dp"
+        android:textColor="@color/black"
+
+        />
+
+    <Spinner
+        android:layout_marginTop="5dp"
+        android:id="@+id/SpinnerComplexityUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/TextSpinnerComplexityUser"
+        app:layout_constraintStart_toEndOf="@id/TextSpinnerComplexityUser"
+        app:layout_constraintBottom_toBottomOf="@id/TextSpinnerComplexityUser"
+        android:entries="@array/complexity"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

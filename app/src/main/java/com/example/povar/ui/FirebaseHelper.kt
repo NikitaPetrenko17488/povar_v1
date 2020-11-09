@@ -31,6 +31,8 @@ const val  CHIELD_RECEPT_USER_ID="user_id"
 const val   CHIELD_RECEPT_ANGFORMULA="formula_eng"
 const val   CHIELD_RECEPT_ANGINGRIDIENS="ingridients_eng"
 const val   CHIELD_RECEPT_ANGNAME="name_eng"
+const val   CHIELD_RECEPT_CHEK="chek"
+const val   CHIELD_RECEPT_COMPLEXITY="complexity"
 
 
 const val  CHIELD_USER_ID ="id"

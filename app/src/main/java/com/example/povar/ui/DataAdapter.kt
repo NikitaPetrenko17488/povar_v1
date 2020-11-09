@@ -295,3 +295,37 @@ class DataAdapterCalkulatorKalorii(private val list: MutableList<CalculatorKalor
     override fun getItemCount(): Int = list.size
 
 }
+
+
+class DataAdapterChek(private val list: MutableList<Recept>, private val clickChek: ClickChek)
+    : RecyclerView.Adapter<PushForAdminRecept.MovieViewHolderChek>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PushForAdminRecept.MovieViewHolderChek {
+
+        val inflater = LayoutInflater.from(parent.context)
+        return PushForAdminRecept.MovieViewHolderChek(inflater, parent)
+    }
+    override fun onBindViewHolder(holder: PushForAdminRecept.MovieViewHolderChek, position: Int) {
+
+        val movie: Recept = list[position]
+        holder.bind(movie)
+
+
+        holder.itemView.Constraint_layout_all.setOnClickListener {
+            STORAGE_FOR_RECYCLE_RECEPT.name=movie.name
+            STORAGE_FOR_RECYCLE_RECEPT.formula=movie.formula
+            STORAGE_FOR_RECYCLE_RECEPT.ingridients=movie.ingridients
+            STORAGE_FOR_RECYCLE_RECEPT.photo=movie.photoUrl
+            STORAGE_FOR_RECYCLE_RECEPT.ID=movie.id
+            STORAGE_FOR_RECYCLE_RECEPT.user_id=movie.user_id
+            STORAGE_FOR_RECYCLE_RECEPT.nameEng=movie.name_eng
+            STORAGE_FOR_RECYCLE_RECEPT.ingridientsEng=movie.ingridients_eng
+            STORAGE_FOR_RECYCLE_RECEPT.formulaEng=movie.formula_eng
+            clickChek.viewRecycle()
+        }
+
+    }
+    override fun getItemCount(): Int = list.size
+
+}

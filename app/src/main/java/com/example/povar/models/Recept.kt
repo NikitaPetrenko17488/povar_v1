@@ -11,7 +11,11 @@ package com.example.povar.models
     var user_id:String="",
     var formula_eng:String="",
     var ingridients_eng: String="",
-    var name_eng: String=""
+    var name_eng: String="",
+    var chek:Boolean=false,
+    var complexity:String=""
+
+
 
 )
 

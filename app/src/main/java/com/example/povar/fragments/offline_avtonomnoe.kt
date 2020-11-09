@@ -177,12 +177,11 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-
+                        if(recept.chek==true)
                         MassivOffline.add(recept)
                         counterOffline++
 
                             create_recycleOffline()
-
 
                     }
 
@@ -218,7 +217,7 @@ class offline_avtonomnoe : Fragment(),ClickOffline {
                            var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
 
 
-                           if (indexIngridient == true) {
+                           if (indexIngridient == true && recept.chek==true) {
                                MassivOffline.add(recept)
 
                            }

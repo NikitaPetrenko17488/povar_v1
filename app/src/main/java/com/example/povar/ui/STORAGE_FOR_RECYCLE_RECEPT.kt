@@ -16,6 +16,8 @@ class STORAGE_FOR_RECYCLE_RECEPT {
         var nameEng=""
         var ingridientsEng=""
         var formulaEng=""
+        var chek=false
+        var complexity="None"
 
     }
 }

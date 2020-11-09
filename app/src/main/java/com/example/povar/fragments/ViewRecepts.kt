@@ -177,13 +177,22 @@ class fragment5 : Fragment(),Click {
    fun create_recycle() {
 
 
-            if (Massiv.isEmpty()) {
-                if (activity != null)
-                    activity!!.ToastNoRecepts.text = " Нет рецептов "
-            } else {
-                if (activity != null)
-                    activity!!.ToastNoRecepts.text = " "
-            }
+       if(Massiv.isEmpty())
+       {
+           if (STORAGE.Language == "Rus") {
+               if (activity != null)
+                   activity!!.ToastNoRecepts.text = " Нет рецептов "
+           } else {
+               if (activity != null)
+                   activity!!.ToastNoRecepts.text = "No recipes"
+           }
+       }
+           else{
+           if (activity != null)
+               activity!!.ToastNoRecepts.text = " "
+       }
+
+
             if (recicle_view_recept != null) {
                 activity!!.recicle_view_recept.apply {
                     layoutManager = LinearLayoutManager(activity)
@@ -211,14 +220,32 @@ class fragment5 : Fragment(),Click {
                         counter=0
                         for (snapshot: DataSnapshot in dataSnapshot.children) {
                             val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-                            if (STORAGE.Language == "Rus") {
-                                if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()) {
-                                    Massiv.add(recept)
+                            if(STORAGE.complexityUser=="None")/////////проверка на сложность рецепта
+                             {
+                                if (STORAGE.Language == "Rus") ////////проверка на язык
+                                {
+                                    if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()) {
+                                        Massiv.add(recept)
+                                    }
+                                } else {
+                                    if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
+                                        Massiv.add(recept)
+                                    }
                                 }
-                            } else {
-                                if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
-                                    Massiv.add(recept)
+                            }
+                            else
+                            {
+                                if (STORAGE.Language == "Rus") ////////проверка на язык
+                                {
+                                    if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()&& recept.complexity==STORAGE.complexityUser) {
+                                        Massiv.add(recept)
+                                    }
+                                } else {
+                                    if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()&& recept.complexity==STORAGE.complexityUser) {
+                                        Massiv.add(recept)
+                                    }
                                 }
+
                             }
                             counter++
 
@@ -406,32 +433,57 @@ class fragment5 : Fragment(),Click {
                             var indexIngridient: Boolean = receptIngridientsUp.contains(vxodStroki)
 
 
-                            if(STORAGE.Language=="Rus") {
-                                if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name.isNotEmpty()) {
-                                    Massiv.add(recept)
-
-
-                                } else if (vxodStroki.isEmpty()) {
-
-                                    if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()) {
+                            if(STORAGE.complexityUser=="None") {
+                                if (STORAGE.Language == "Rus") {
+                                    if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name.isNotEmpty()) {
                                         Massiv.add(recept)
+
+
+                                    } else if (vxodStroki.isEmpty()) {
+
+                                        if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()) {
+                                            Massiv.add(recept)
+                                        }
+                                    }
+                                }
+                                if (STORAGE.Language == "Eng") {
+                                    if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name_eng.isNotEmpty()) {
+                                        Massiv.add(recept)
+
+                                    } else if (vxodStroki.isEmpty()) {
+
+                                        if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
+                                            Massiv.add(recept)
+                                        }
                                     }
                                 }
                             }
-
-                            if(STORAGE.Language=="Eng") {
-                                if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name_eng.isNotEmpty()) {
-                                    Massiv.add(recept)
-
-                                } else if (vxodStroki.isEmpty()) {
-
-                                    if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()) {
+                            else
+                            {
+                                if (STORAGE.Language == "Rus") {
+                                    if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name.isNotEmpty()&& recept.complexity==STORAGE.complexityUser) {
                                         Massiv.add(recept)
+
+
+                                    } else if (vxodStroki.isEmpty()) {
+
+                                        if (recept.user_id == STORAGE.ID && recept.name.isNotEmpty()&& recept.complexity==STORAGE.complexityUser) {
+                                            Massiv.add(recept)
+                                        }
+                                    }
+                                }
+                                if (STORAGE.Language == "Eng") {
+                                    if (recept.user_id == STORAGE.ID && indexIngridient == true && recept.name_eng.isNotEmpty()&& recept.complexity==STORAGE.complexityUser) {
+                                        Massiv.add(recept)
+
+                                    } else if (vxodStroki.isEmpty()) {
+
+                                        if (recept.user_id == STORAGE.ID && recept.name_eng.isNotEmpty()&& recept.complexity==STORAGE.complexityUser) {
+                                            Massiv.add(recept)
+                                        }
                                     }
                                 }
                             }
-
-
 
                             counter++
 

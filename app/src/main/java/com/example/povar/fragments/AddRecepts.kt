@@ -95,12 +95,14 @@ class fragment2 : Fragment() {
                     dateMap[CHIELD_RECEPT_INGRIDIENTS] = ingridients
                     dateMap[CHIELD_RECEPT_FORMULA] = formula
                     dateMap[CHIELD_RECEPT_USER_ID] = STORAGE.ID
+                    dateMap[CHIELD_RECEPT_CHEK]=false
 
                     dateMapEng[CHIELD_RECEPT_ID] = ID
                     dateMapEng[CHIELD_RECEPT_ANGNAME] =name
                     dateMapEng[CHIELD_RECEPT_ANGINGRIDIENS] = ingridients
                     dateMapEng[CHIELD_RECEPT_ANGFORMULA] = formula
                     dateMapEng[CHIELD_RECEPT_USER_ID] = STORAGE.ID
+                    dateMap[CHIELD_RECEPT_CHEK]=false
 
                     if(STORAGE.Language=="Rus")
                         REF_DABATABSE_ROOT.child(NODE_RECEPTS).child(ID).updateChildren(dateMap)

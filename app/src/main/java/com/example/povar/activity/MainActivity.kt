@@ -203,12 +203,11 @@ fun TemaPriRefresh(){
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     for (snapshot: DataSnapshot in dataSnapshot.children) {
                         val recept = snapshot.getValue(Recept::class.java) ?: Recept()
-
-                        MassivOffReload.add(recept)
-                        initOfflineBase()
-                        counterOffReload++
-
-
+                            if(recept.chek==true) {
+                                MassivOffReload.add(recept)
+                                initOfflineBase()
+                                counterOffReload++
+                            }
                     }
 
                 }
